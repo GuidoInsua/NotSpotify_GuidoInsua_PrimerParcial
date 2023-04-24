@@ -65,5 +65,20 @@ namespace NotSpotify.InterfazGrafica
                 btn_menuHome.ForeColor = Color.Silver;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelMovimiento2_Load(object sender, EventArgs e)
+        {
+            panelMovimiento2.EstablecerPadre(this);
+        }
+
+        private void botonCerrar1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

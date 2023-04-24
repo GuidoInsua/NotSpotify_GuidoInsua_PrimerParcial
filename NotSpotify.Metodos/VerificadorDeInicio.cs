@@ -8,7 +8,7 @@ using NotSpotify.Clases;
 
 namespace NotSpotify.Metodos
 {
-    static public class Login
+    static public class VerificadorDeInicio
     {
         static private List<Usuario> _usuariosCargados;
         static private Administrador _admin;
@@ -16,7 +16,7 @@ namespace NotSpotify.Metodos
         static public List<Usuario> UsuariosCargados { get => _usuariosCargados; set => _usuariosCargados = value; }
         static public Administrador Admin { get => _admin; set => _admin = value; }
 
-        static Login()
+        static VerificadorDeInicio()
         {
             UsuariosCargados = ModificadorDeUsuraios.HardCodearUsuarios();
             Admin = ModificadorDeUsuraios.HardCodearAdmin();

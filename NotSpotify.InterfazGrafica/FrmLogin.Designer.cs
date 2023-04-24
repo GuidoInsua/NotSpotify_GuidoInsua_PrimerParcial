@@ -36,10 +36,9 @@
             lbl_loginLabel = new Label();
             lbl_loginPassword = new Label();
             pbx_loginLogo = new PictureBox();
-            btn_loginCerrar = new Button();
-            pnl_topBar = new Panel();
+            pnl_topBar = new PanelMovimiento();
+            btn_cerrar = new Controles.BotonCerrar();
             ((System.ComponentModel.ISupportInitialize)pbx_loginLogo).BeginInit();
-            pnl_topBar.SuspendLayout();
             SuspendLayout();
             // 
             // tbx_loginMail
@@ -124,32 +123,25 @@
             pbx_loginLogo.TabIndex = 6;
             pbx_loginLogo.TabStop = false;
             // 
-            // btn_loginCerrar
-            // 
-            btn_loginCerrar.BackColor = Color.Red;
-            btn_loginCerrar.FlatAppearance.BorderSize = 0;
-            btn_loginCerrar.FlatStyle = FlatStyle.Flat;
-            btn_loginCerrar.Font = new Font("Segoe UI", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_loginCerrar.Location = new Point(506, 0);
-            btn_loginCerrar.Name = "btn_loginCerrar";
-            btn_loginCerrar.Size = new Size(18, 18);
-            btn_loginCerrar.TabIndex = 7;
-            btn_loginCerrar.Text = "X";
-            btn_loginCerrar.UseVisualStyleBackColor = false;
-            btn_loginCerrar.Click += btn_loginCerrar_Click;
-            // 
             // pnl_topBar
             // 
-            pnl_topBar.Controls.Add(pbx_loginLogo);
-            pnl_topBar.Controls.Add(btn_loginCerrar);
+            pnl_topBar.BackColor = Color.Transparent;
             pnl_topBar.Dock = DockStyle.Top;
             pnl_topBar.Location = new Point(0, 0);
             pnl_topBar.Name = "pnl_topBar";
-            pnl_topBar.Size = new Size(524, 79);
+            pnl_topBar.Size = new Size(524, 78);
             pnl_topBar.TabIndex = 8;
-            pnl_topBar.MouseDown += pnl_topBar_MouseDown;
-            pnl_topBar.MouseMove += pnl_topBar_MouseMove;
-            pnl_topBar.MouseUp += pnl_topBar_MouseUp;
+            pnl_topBar.Load += pnl_topBar_Load;
+            // 
+            // btn_cerrar
+            // 
+            btn_cerrar.BackColor = Color.Transparent;
+            btn_cerrar.BackgroundImageLayout = ImageLayout.Center;
+            btn_cerrar.Location = new Point(503, 0);
+            btn_cerrar.Name = "btn_cerrar";
+            btn_cerrar.Size = new Size(21, 21);
+            btn_cerrar.TabIndex = 9;
+            btn_cerrar.Click += btn_cerrar_Click;
             // 
             // FrmLogin
             // 
@@ -158,19 +150,20 @@
             BackColor = Color.Black;
             ClientSize = new Size(524, 300);
             ControlBox = false;
-            Controls.Add(pnl_topBar);
+            Controls.Add(btn_cerrar);
+            Controls.Add(pbx_loginLogo);
             Controls.Add(lbl_loginPassword);
             Controls.Add(lbl_loginLabel);
             Controls.Add(btn_loginAutoCompletar);
             Controls.Add(btn_loginAceptar);
             Controls.Add(tbx_loginPassword);
             Controls.Add(tbx_loginMail);
+            Controls.Add(pnl_topBar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Load += FrmLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pbx_loginLogo).EndInit();
-            pnl_topBar.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -184,7 +177,7 @@
         private Label lbl_loginLabel;
         private Label lbl_loginPassword;
         private PictureBox pbx_loginLogo;
-        private Button btn_loginCerrar;
-        private Panel pnl_topBar;
+        private PanelMovimiento pnl_topBar;
+        private Controles.BotonCerrar btn_cerrar;
     }
 }

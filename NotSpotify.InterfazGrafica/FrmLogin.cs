@@ -14,9 +14,6 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmLogin : Form
     {
-        private bool isDragging = false;
-        private Point startPoint = new Point(0, 0);
-
         public int usuarioAutenticado;
         private string _eMail;
         private string _password;
@@ -39,7 +36,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_loginAceptar_Click(object sender, EventArgs e)
         {
-            UsuarioAutenticado = Login.VerificarDatosDeIngreso(Email, Password);
+            UsuarioAutenticado = VerificadorDeInicio.VerificarDatosDeIngreso(Email, Password);
 
             if (UsuarioAutenticado == 1 || UsuarioAutenticado == 2)
             {
@@ -70,25 +67,14 @@ namespace NotSpotify.InterfazGrafica
             Password = tbx_loginPassword.Text;
         }
 
-        private void pnl_topBar_MouseDown(object sender, MouseEventArgs e)
+        private void pnl_topBar_Load(object sender, EventArgs e)
         {
-            isDragging = true;
-            startPoint = new Point(e.X, e.Y);
+            pnl_topBar.EstablecerPadre(this);
         }
 
-        private void pnl_topBar_MouseUp(object sender, MouseEventArgs e)
+        private void btn_cerrar_Click(object sender, EventArgs e)
         {
-            isDragging = false;
-        }
-
-        private void pnl_topBar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
-            {
-                Point p = PointToScreen(e.Location);
-                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
-
-            }
+            Close();
         }
     }
 }
