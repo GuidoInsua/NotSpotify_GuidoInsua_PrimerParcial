@@ -24,51 +24,12 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_menuLibarary_Click(object sender, EventArgs e)
         {
-            if (btn_menuHome.ImageIndex == 1)
-            {
-                btn_menuHome.ImageIndex = 0;
-                btn_menuHome.ForeColor = Color.Silver;
-            }
+            btn_menuHome.ApagarBotonHome();
 
             FrmLibrary libraryForm = new FrmLibrary();
             libraryForm.TopLevel = false;
             pnl_menuFormChanger.Controls.Add(libraryForm);
             libraryForm.Show();
-        }
-
-        private void btn_menuHome_Click(object sender, EventArgs e)
-        {
-            if (btn_menuHome.ImageIndex == 0)
-            {
-                btn_menuHome.ImageIndex = 1;
-                btn_menuHome.ForeColor = Color.White;
-            }
-
-            FrmHome homeForm = new FrmHome();
-            homeForm.TopLevel = false;
-            pnl_menuFormChanger.Controls.Add(homeForm);
-            homeForm.Show();
-        }
-
-        private void btn_menuHome_MouseEnter(object sender, EventArgs e)
-        {
-            if (btn_menuHome.ImageIndex == 0)
-            {
-                btn_menuHome.ForeColor = Color.White;
-            }
-        }
-
-        private void btn_menuHome_MouseLeave(object sender, EventArgs e)
-        {
-            if (btn_menuHome.ImageIndex == 0)
-            {
-                btn_menuHome.ForeColor = Color.Silver;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void panelMovimiento2_Load(object sender, EventArgs e)
@@ -79,6 +40,14 @@ namespace NotSpotify.InterfazGrafica
         private void botonCerrar1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_menuHome_Click(object sender, EventArgs e)
+        {
+            FrmHome homeForm = new FrmHome();
+            homeForm.TopLevel = false;
+            pnl_menuFormChanger.Controls.Add(homeForm);
+            homeForm.Show();
         }
     }
 }

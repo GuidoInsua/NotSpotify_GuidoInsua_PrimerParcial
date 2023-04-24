@@ -32,10 +32,5 @@ namespace NotSpotify.Controles
         {
             pbx_imagen.BackColor = Color.Transparent;
         }
-
-        private void pbx_imagen_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

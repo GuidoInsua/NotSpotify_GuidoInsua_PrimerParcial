@@ -31,11 +31,11 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             pnl_menuBarraIzquierda = new Panel();
+            btn_menuHome = new Controles.BotonHome();
             listBox1 = new ListBox();
             btn_menuLibarary = new Button();
-            btn_menuHome = new Button();
-            imageList1 = new ImageList(components);
             pbx_menuImagenCancion = new PictureBox();
+            imageList1 = new ImageList(components);
             pnl_menuBarraInferior = new Panel();
             button1 = new Button();
             trackBar1 = new TrackBar();
@@ -51,15 +51,24 @@
             // pnl_menuBarraIzquierda
             // 
             pnl_menuBarraIzquierda.BackColor = Color.Black;
+            pnl_menuBarraIzquierda.Controls.Add(btn_menuHome);
             pnl_menuBarraIzquierda.Controls.Add(listBox1);
             pnl_menuBarraIzquierda.Controls.Add(btn_menuLibarary);
-            pnl_menuBarraIzquierda.Controls.Add(btn_menuHome);
             pnl_menuBarraIzquierda.Controls.Add(pbx_menuImagenCancion);
             pnl_menuBarraIzquierda.Dock = DockStyle.Left;
             pnl_menuBarraIzquierda.Location = new Point(0, 21);
             pnl_menuBarraIzquierda.Name = "pnl_menuBarraIzquierda";
             pnl_menuBarraIzquierda.Size = new Size(162, 496);
             pnl_menuBarraIzquierda.TabIndex = 0;
+            // 
+            // btn_menuHome
+            // 
+            btn_menuHome.BackColor = Color.Transparent;
+            btn_menuHome.Location = new Point(0, 33);
+            btn_menuHome.Name = "btn_menuHome";
+            btn_menuHome.Size = new Size(162, 39);
+            btn_menuHome.TabIndex = 4;
+            btn_menuHome.Click += btn_menuHome_Click;
             // 
             // listBox1
             // 
@@ -87,37 +96,6 @@
             btn_menuLibarary.UseVisualStyleBackColor = true;
             btn_menuLibarary.Click += btn_menuLibarary_Click;
             // 
-            // btn_menuHome
-            // 
-            btn_menuHome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btn_menuHome.BackgroundImageLayout = ImageLayout.Center;
-            btn_menuHome.FlatAppearance.BorderSize = 0;
-            btn_menuHome.FlatAppearance.MouseDownBackColor = Color.Black;
-            btn_menuHome.FlatAppearance.MouseOverBackColor = Color.Black;
-            btn_menuHome.FlatStyle = FlatStyle.Flat;
-            btn_menuHome.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_menuHome.ForeColor = Color.Silver;
-            btn_menuHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_menuHome.ImageIndex = 0;
-            btn_menuHome.ImageList = imageList1;
-            btn_menuHome.Location = new Point(0, 33);
-            btn_menuHome.Name = "btn_menuHome";
-            btn_menuHome.Size = new Size(162, 39);
-            btn_menuHome.TabIndex = 1;
-            btn_menuHome.Text = "Home";
-            btn_menuHome.UseVisualStyleBackColor = true;
-            btn_menuHome.Click += btn_menuHome_Click;
-            btn_menuHome.MouseEnter += btn_menuHome_MouseEnter;
-            btn_menuHome.MouseLeave += btn_menuHome_MouseLeave;
-            // 
-            // imageList1
-            // 
-            imageList1.ColorDepth = ColorDepth.Depth8Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-            imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "home.PNG");
-            imageList1.Images.SetKeyName(1, "home2.PNG");
-            // 
             // pbx_menuImagenCancion
             // 
             pbx_menuImagenCancion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -127,6 +105,14 @@
             pbx_menuImagenCancion.Size = new Size(115, 80);
             pbx_menuImagenCancion.TabIndex = 0;
             pbx_menuImagenCancion.TabStop = false;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth8Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "home.PNG");
+            imageList1.Images.SetKeyName(1, "home2.PNG");
             // 
             // pnl_menuBarraInferior
             // 
@@ -147,7 +133,6 @@
             button1.TabIndex = 1;
             button1.Text = "Play";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // trackBar1
             // 
@@ -214,7 +199,6 @@
         private Panel pnl_menuBarraInferior;
         private Panel pnl_menuFormChanger;
         private PictureBox pbx_menuImagenCancion;
-        private Button btn_menuHome;
         private Button btn_menuLibarary;
         private ImageList imageList1;
         private Button button1;
@@ -222,5 +206,6 @@
         private ListBox listBox1;
         private PanelMovimiento panelMovimiento2;
         private Controles.BotonCerrar botonCerrar1;
+        private Controles.BotonHome btn_menuHome;
     }
 }

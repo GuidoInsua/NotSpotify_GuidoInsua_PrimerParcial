@@ -42,6 +42,10 @@ namespace NotSpotify.InterfazGrafica
             {
                 Close();
             }
+            else
+            {
+                lbl_mensajeError.Text = "ERROR, Ingrese un usuario valido";
+            }
         }
 
         private void btn_loginAutoCompletar_Click(object sender, EventArgs e)

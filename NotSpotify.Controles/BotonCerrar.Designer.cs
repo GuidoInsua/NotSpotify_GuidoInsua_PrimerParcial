@@ -36,15 +36,15 @@
             // pbx_imagen
             // 
             pbx_imagen.BackColor = Color.Transparent;
-            pbx_imagen.BackgroundImage = (Image)resources.GetObject("pbx_imagen.BackgroundImage");
             pbx_imagen.BackgroundImageLayout = ImageLayout.Center;
             pbx_imagen.Dock = DockStyle.Fill;
+            pbx_imagen.Image = (Image)resources.GetObject("pbx_imagen.Image");
             pbx_imagen.Location = new Point(0, 0);
             pbx_imagen.Name = "pbx_imagen";
             pbx_imagen.Size = new Size(21, 21);
+            pbx_imagen.SizeMode = PictureBoxSizeMode.CenterImage;
             pbx_imagen.TabIndex = 0;
             pbx_imagen.TabStop = false;
-            pbx_imagen.Click += pbx_imagen_Click;
             pbx_imagen.MouseEnter += pbx_imagen_MouseEnter;
             pbx_imagen.MouseLeave += pbx_imagen_MouseLeave;
             // 

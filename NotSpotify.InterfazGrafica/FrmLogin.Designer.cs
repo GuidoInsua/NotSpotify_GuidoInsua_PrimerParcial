@@ -38,6 +38,7 @@
             pbx_loginLogo = new PictureBox();
             pnl_topBar = new PanelMovimiento();
             btn_cerrar = new Controles.BotonCerrar();
+            lbl_mensajeError = new Label();
             ((System.ComponentModel.ISupportInitialize)pbx_loginLogo).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             tbx_loginMail.BackColor = Color.Gray;
             tbx_loginMail.BorderStyle = BorderStyle.None;
             tbx_loginMail.ForeColor = Color.White;
-            tbx_loginMail.Location = new Point(152, 108);
+            tbx_loginMail.Location = new Point(152, 173);
             tbx_loginMail.Name = "tbx_loginMail";
             tbx_loginMail.Size = new Size(215, 16);
             tbx_loginMail.TabIndex = 0;
@@ -57,7 +58,7 @@
             tbx_loginPassword.BackColor = Color.Gray;
             tbx_loginPassword.BorderStyle = BorderStyle.None;
             tbx_loginPassword.ForeColor = Color.White;
-            tbx_loginPassword.Location = new Point(152, 147);
+            tbx_loginPassword.Location = new Point(152, 214);
             tbx_loginPassword.Name = "tbx_loginPassword";
             tbx_loginPassword.Size = new Size(215, 16);
             tbx_loginPassword.TabIndex = 1;
@@ -68,7 +69,7 @@
             btn_loginAceptar.BackColor = Color.FromArgb(0, 192, 0);
             btn_loginAceptar.FlatAppearance.BorderSize = 0;
             btn_loginAceptar.FlatStyle = FlatStyle.Flat;
-            btn_loginAceptar.Location = new Point(273, 183);
+            btn_loginAceptar.Location = new Point(273, 255);
             btn_loginAceptar.Name = "btn_loginAceptar";
             btn_loginAceptar.Size = new Size(94, 26);
             btn_loginAceptar.TabIndex = 2;
@@ -81,7 +82,7 @@
             btn_loginAutoCompletar.BackColor = Color.FromArgb(0, 192, 0);
             btn_loginAutoCompletar.FlatAppearance.BorderSize = 0;
             btn_loginAutoCompletar.FlatStyle = FlatStyle.Flat;
-            btn_loginAutoCompletar.Location = new Point(152, 183);
+            btn_loginAutoCompletar.Location = new Point(152, 255);
             btn_loginAutoCompletar.Name = "btn_loginAutoCompletar";
             btn_loginAutoCompletar.Size = new Size(115, 26);
             btn_loginAutoCompletar.TabIndex = 3;
@@ -95,7 +96,7 @@
             lbl_loginLabel.BackColor = Color.Transparent;
             lbl_loginLabel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_loginLabel.ForeColor = Color.Silver;
-            lbl_loginLabel.Location = new Point(152, 86);
+            lbl_loginLabel.Location = new Point(152, 151);
             lbl_loginLabel.Name = "lbl_loginLabel";
             lbl_loginLabel.Size = new Size(41, 19);
             lbl_loginLabel.TabIndex = 4;
@@ -107,7 +108,7 @@
             lbl_loginPassword.BackColor = Color.Transparent;
             lbl_loginPassword.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_loginPassword.ForeColor = Color.Silver;
-            lbl_loginPassword.Location = new Point(152, 127);
+            lbl_loginPassword.Location = new Point(152, 192);
             lbl_loginPassword.Name = "lbl_loginPassword";
             lbl_loginPassword.Size = new Size(67, 19);
             lbl_loginPassword.TabIndex = 5;
@@ -143,22 +144,32 @@
             btn_cerrar.TabIndex = 9;
             btn_cerrar.Click += btn_cerrar_Click;
             // 
+            // lbl_mensajeError
+            // 
+            lbl_mensajeError.AutoSize = true;
+            lbl_mensajeError.ForeColor = Color.FromArgb(255, 128, 128);
+            lbl_mensajeError.Location = new Point(152, 119);
+            lbl_mensajeError.Name = "lbl_mensajeError";
+            lbl_mensajeError.Size = new Size(0, 15);
+            lbl_mensajeError.TabIndex = 10;
+            // 
             // FrmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(524, 300);
+            ClientSize = new Size(524, 336);
             ControlBox = false;
+            Controls.Add(lbl_mensajeError);
             Controls.Add(btn_cerrar);
             Controls.Add(pbx_loginLogo);
             Controls.Add(lbl_loginPassword);
             Controls.Add(lbl_loginLabel);
             Controls.Add(btn_loginAutoCompletar);
             Controls.Add(btn_loginAceptar);
+            Controls.Add(pnl_topBar);
             Controls.Add(tbx_loginPassword);
             Controls.Add(tbx_loginMail);
-            Controls.Add(pnl_topBar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
@@ -179,5 +190,6 @@
         private PictureBox pbx_loginLogo;
         private PanelMovimiento pnl_topBar;
         private Controles.BotonCerrar btn_cerrar;
+        private Label lbl_mensajeError;
     }
 }
