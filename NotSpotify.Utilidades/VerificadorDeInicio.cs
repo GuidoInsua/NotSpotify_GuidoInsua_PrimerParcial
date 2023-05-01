@@ -24,8 +24,10 @@ namespace NotSpotify.Utilidades
 
         static VerificadorDeInicio()
         {
-            UsuariosCargados = AdministradorDatos.CargarListaDesdeArchivo<Usuario>("D:\\Code\\C#\\PrimerParcial_GuidoInsua_C#\\NotSpotify\\Archivos\\Usuarios.csv");
-            AdminsCargados = AdministradorDatos.CargarListaDesdeArchivo<Administrador>("D:\\Code\\C#\\PrimerParcial_GuidoInsua_C#\\NotSpotify\\Archivos\\Administradores.csv");
+            string[] dir = Directory.GetDirectories(".\\");
+
+            UsuariosCargados = AdministradorDatos.CargarListaDesdeArchivo<Usuario>("..\\..\\..\\..\\Archivos\\Usuarios.csv");
+            AdminsCargados = AdministradorDatos.CargarListaDesdeArchivo<Administrador>("..\\..\\..\\..\\Archivos\\Administradores.csv");
         }
 
         static public EnumOpcionSesion VerificarDatosDeIngreso(string eMailIngresado, string passwordIngresada)

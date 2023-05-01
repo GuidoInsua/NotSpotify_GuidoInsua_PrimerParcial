@@ -35,7 +35,6 @@
             btn_usuarios = new Button();
             pnl_topBarrr = new Panel();
             btn_canciones = new Button();
-            btn_playLists = new Button();
             btn_admins = new Button();
             pnl_topBarrr.SuspendLayout();
             SuspendLayout();
@@ -100,7 +99,6 @@
             pnl_topBarrr.Controls.Add(btn_cerrar);
             pnl_topBarrr.Controls.Add(btn_canciones);
             pnl_topBarrr.Controls.Add(pnl_movimientoTopBar);
-            pnl_topBarrr.Controls.Add(btn_playLists);
             pnl_topBarrr.Controls.Add(btn_admins);
             pnl_topBarrr.Controls.Add(btn_usuarios);
             pnl_topBarrr.Dock = DockStyle.Top;
@@ -115,25 +113,12 @@
             btn_canciones.FlatAppearance.BorderSize = 0;
             btn_canciones.FlatStyle = FlatStyle.Flat;
             btn_canciones.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_canciones.Location = new Point(414, 27);
+            btn_canciones.Location = new Point(277, 27);
             btn_canciones.Name = "btn_canciones";
             btn_canciones.Size = new Size(131, 36);
             btn_canciones.TabIndex = 3;
             btn_canciones.Text = "Canciones";
             btn_canciones.UseVisualStyleBackColor = false;
-            // 
-            // btn_playLists
-            // 
-            btn_playLists.BackColor = Color.FromArgb(128, 255, 255);
-            btn_playLists.FlatAppearance.BorderSize = 0;
-            btn_playLists.FlatStyle = FlatStyle.Flat;
-            btn_playLists.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_playLists.Location = new Point(277, 27);
-            btn_playLists.Name = "btn_playLists";
-            btn_playLists.Size = new Size(131, 36);
-            btn_playLists.TabIndex = 2;
-            btn_playLists.Text = "PlayLists";
-            btn_playLists.UseVisualStyleBackColor = false;
             // 
             // btn_admins
             // 
@@ -147,6 +132,7 @@
             btn_admins.TabIndex = 1;
             btn_admins.Text = "Admins";
             btn_admins.UseVisualStyleBackColor = false;
+            btn_admins.Click += btn_admins_Click;
             // 
             // FrmAdmin
             // 
@@ -170,7 +156,6 @@
         private Button btn_usuarios;
         private Panel pnl_topBarrr;
         private Button btn_canciones;
-        private Button btn_playLists;
         private Button btn_admins;
     }
 }

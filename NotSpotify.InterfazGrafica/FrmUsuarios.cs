@@ -19,11 +19,6 @@ namespace NotSpotify.InterfazGrafica
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
             int i = 0;
@@ -38,11 +33,6 @@ namespace NotSpotify.InterfazGrafica
 
                 i++;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
