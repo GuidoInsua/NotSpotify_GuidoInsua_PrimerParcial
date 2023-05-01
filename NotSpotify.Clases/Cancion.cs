@@ -15,6 +15,10 @@ namespace NotSpotify.Clases
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
 
+        public Cancion()
+        { 
+        }
+
         public Cancion(string nombre, string direccion)
         {
             Nombre = nombre;

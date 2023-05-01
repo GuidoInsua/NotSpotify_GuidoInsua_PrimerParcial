@@ -1,5 +1,6 @@
-using NotSpotify.Metodos;
-using static NotSpotify.Metodos.VerificadorDeInicio;
+
+
+using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
 {

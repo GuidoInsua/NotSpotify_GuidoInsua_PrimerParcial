@@ -41,7 +41,6 @@
             pnl_movimiento.Name = "pnl_movimiento";
             pnl_movimiento.Size = new Size(150, 150);
             pnl_movimiento.TabIndex = 0;
-            pnl_movimiento.Paint += pnl_movimiento_Paint;
             pnl_movimiento.MouseDown += pnl_movimiento_MouseDown;
             pnl_movimiento.MouseMove += pnl_movimiento_MouseMove;
             pnl_movimiento.MouseUp += pnl_movimiento_MouseUp;

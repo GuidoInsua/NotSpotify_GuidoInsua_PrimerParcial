@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NotSpotify.Controles\NotSpotify.Controles.csproj" />
-    <ProjectReference Include="..\NotSpotify.Metodos\NotSpotify.Metodos.csproj" />
+    <ProjectReference Include="..\NotSpotify.Utilidades\NotSpotify.Utilidades.csproj" />
   </ItemGroup>
 
   <ItemGroup>

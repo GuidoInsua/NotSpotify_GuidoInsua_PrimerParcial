@@ -18,6 +18,10 @@ namespace NotSpotify.Clases
         public List<Cancion> Canciones { get => _canciones; set => _canciones = value; }
         public string DireccionDeImagen { get => _direccionDeImagen; set => _direccionDeImagen = value; }
 
+        public PlayList()
+        {
+        }
+
         public PlayList(string nombre, List<Cancion> canciones)
         {
             Nombre = nombre;

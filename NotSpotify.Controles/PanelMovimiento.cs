@@ -46,10 +46,5 @@ namespace NotSpotify.InterfazGrafica
                 miForm.Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
             }
         }
-
-        private void pnl_movimiento_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

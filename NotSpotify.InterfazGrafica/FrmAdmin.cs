@@ -17,11 +17,6 @@ namespace NotSpotify.InterfazGrafica
             InitializeComponent();
         }
 
-        private void botonCerrar1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void pnl_movimientoTopBar_Load(object sender, EventArgs e)
         {
             pnl_movimientoTopBar.EstablecerPadre(this);
@@ -31,12 +26,12 @@ namespace NotSpotify.InterfazGrafica
         {
             FrmUsuarios usuariosForm = new FrmUsuarios();
             usuariosForm.TopLevel = false;
-            panel1.Controls.Add(usuariosForm);
+            pnl_FrmChanger.Controls.Add(usuariosForm);
             usuariosForm.Dock = DockStyle.Fill;
             usuariosForm.Show();
         }
 
-        private void botonMaximizar1_Click(object sender, EventArgs e)
+        private void btn_maximizar_Click(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
             {
@@ -46,6 +41,11 @@ namespace NotSpotify.InterfazGrafica
             {
                 WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void btn_cerrar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

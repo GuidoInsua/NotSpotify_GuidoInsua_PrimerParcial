@@ -61,6 +61,7 @@
             tbx_loginPassword.ForeColor = Color.White;
             tbx_loginPassword.Location = new Point(138, 214);
             tbx_loginPassword.Name = "tbx_loginPassword";
+            tbx_loginPassword.PasswordChar = '*';
             tbx_loginPassword.Size = new Size(236, 16);
             tbx_loginPassword.TabIndex = 1;
             tbx_loginPassword.Leave += tbx_loginPassword_Leave;

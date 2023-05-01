@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotSpotify.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +9,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NotSpotify.Metodos;
-using static NotSpotify.Metodos.VerificadorDeInicio;
+using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
 {
@@ -51,18 +51,16 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_completarUsuario_Click(object sender, EventArgs e)
         {
-            tbx_loginMail.Text = "guido@gmail.com";
-            Email = tbx_loginMail.Text;
-            tbx_loginPassword.Text = "123";
-            Password = tbx_loginPassword.Text;
+            VerificadorDeInicio.AutoCompletarUsuario(out _eMail, out _password);
+            tbx_loginMail.Text = Email;
+            tbx_loginPassword.Text = Password;
         }
 
         private void btn_completarAdmin_Click(object sender, EventArgs e)
         {
-            tbx_loginMail.Text = "insua@gmail.com";
-            Email = tbx_loginMail.Text;
-            tbx_loginPassword.Text = "123";
-            Password = tbx_loginPassword.Text;
+            VerificadorDeInicio.AutoCompletarAdmin(out _eMail, out _password);
+            tbx_loginMail.Text = Email;
+            tbx_loginPassword.Text = Password;
         }
 
         private void tbx_loginMail_Leave(object sender, EventArgs e)
