@@ -9,19 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NotSpotify.Metodos;
+using static NotSpotify.Metodos.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmLogin : Form
     {
-        public int usuarioAutenticado;
+        public EnumOpcionSesion estadoUsuarioAutenticado;
         private string _eMail;
         private string _password;
 
         private string Email { get => _eMail; set => _eMail = value; }
         private string Password { get => _password; set => _password = value; }
 
-        public int UsuarioAutenticado { get => usuarioAutenticado; private set => usuarioAutenticado = value; }
+        public EnumOpcionSesion EstadoUsuarioAutenticado { get => estadoUsuarioAutenticado; private set => estadoUsuarioAutenticado = value; }
 
         public FrmLogin()
         {
@@ -36,9 +37,9 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_loginAceptar_Click(object sender, EventArgs e)
         {
-            UsuarioAutenticado = VerificadorDeInicio.VerificarDatosDeIngreso(Email, Password);
+            EstadoUsuarioAutenticado = VerificadorDeInicio.VerificarDatosDeIngreso(Email, Password);
 
-            if (UsuarioAutenticado == 1 || UsuarioAutenticado == 2)
+            if (EstadoUsuarioAutenticado == EnumOpcionSesion.admin || EstadoUsuarioAutenticado == EnumOpcionSesion.usuario)
             {
                 Close();
             }
@@ -48,7 +49,7 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
-        private void btn_loginAutoCompletar_Click(object sender, EventArgs e)
+        private void btn_completarUsuario_Click(object sender, EventArgs e)
         {
             tbx_loginMail.Text = "guido@gmail.com";
             Email = tbx_loginMail.Text;
@@ -56,9 +57,12 @@ namespace NotSpotify.InterfazGrafica
             Password = tbx_loginPassword.Text;
         }
 
-        private void btn_loginCerrar_Click(object sender, EventArgs e)
+        private void btn_completarAdmin_Click(object sender, EventArgs e)
         {
-            Close();
+            tbx_loginMail.Text = "insua@gmail.com";
+            Email = tbx_loginMail.Text;
+            tbx_loginPassword.Text = "123";
+            Password = tbx_loginPassword.Text;
         }
 
         private void tbx_loginMail_Leave(object sender, EventArgs e)

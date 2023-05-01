@@ -10,37 +10,44 @@ namespace NotSpotify.Metodos
 {
     static public class VerificadorDeInicio
     {
+        public enum EnumOpcionSesion 
+        {
+            admin = 1,
+            usuario = 2,
+            error = 0
+        }
+
         static private List<Usuario> _usuariosCargados;
-        static private Administrador _admin;
+        static private List<Administrador> _adminsCargados;
 
         static public List<Usuario> UsuariosCargados { get => _usuariosCargados; set => _usuariosCargados = value; }
-        static public Administrador Admin { get => _admin; set => _admin = value; }
+        static public List<Administrador> AdminsCargados { get => _adminsCargados; set => _adminsCargados = value; }
 
         static VerificadorDeInicio()
         {
-            UsuariosCargados = ModificadorDeUsuraios.HardCodearUsuarios();
-            Admin = ModificadorDeUsuraios.HardCodearAdmin();
+            UsuariosCargados = AdministradorDeUsuarios.CargarDatosDesdeArchivo<Usuario>("D:\\Code\\C#\\PrimerParcial_GuidoInsua_C#\\NotSpotify\\Archivos\\Usuarios.csv");
+            AdminsCargados = AdministradorDeUsuarios.CargarDatosDesdeArchivo<Administrador>("D:\\Code\\C#\\PrimerParcial_GuidoInsua_C#\\NotSpotify\\Archivos\\Administradores.csv");
         }
 
-        static public int VerificarDatosDeIngreso(string eMailIngresado, string passwordIngresada)
+        static public EnumOpcionSesion VerificarDatosDeIngreso(string eMailIngresado, string passwordIngresada)
         {
 
-            if (EsAdmin(eMailIngresado,passwordIngresada))
+            if (EsAdmin(eMailIngresado, passwordIngresada))
             {
-                return 1;
+                return EnumOpcionSesion.admin;
             }
 
             if (EsUsuario(eMailIngresado, passwordIngresada))
             {
-                return 2;
+                return EnumOpcionSesion.usuario;
             }
 
-            return 0;
+            return EnumOpcionSesion.error;
         }
 
         static private bool EsUsuario(string eMailIngresado, string passwordIngresada)
         {
-            foreach (Usuario usuario in _usuariosCargados)
+            foreach (Usuario usuario in UsuariosCargados)
             {
                 if (usuario.Email == eMailIngresado && usuario.Password == passwordIngresada)
                 {
@@ -53,9 +60,12 @@ namespace NotSpotify.Metodos
 
         static private bool EsAdmin(string eMailIngresado, string passwordIngresada)
         {
-            if (Admin.Email == eMailIngresado && Admin.Password == passwordIngresada)
+            foreach (Administrador admin in AdminsCargados)
             {
-                return true;
+                if (admin.Email == eMailIngresado && admin.Password == passwordIngresada)
+                {
+                    return true;
+                }
             }
 
             return false;

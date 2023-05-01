@@ -1,4 +1,5 @@
 using NotSpotify.Metodos;
+using static NotSpotify.Metodos.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
 {
@@ -17,12 +18,12 @@ namespace NotSpotify.InterfazGrafica
             FrmLogin loginForm = new FrmLogin();
             Application.Run(loginForm);
 
-            if(loginForm.UsuarioAutenticado == 2)
+            if(loginForm.EstadoUsuarioAutenticado == EnumOpcionSesion.usuario)
             {
                 Application.Run(new FrmMenu());
             }
 
-            if (loginForm.UsuarioAutenticado == 1)
+            if (loginForm.EstadoUsuarioAutenticado == EnumOpcionSesion.admin)
             {
                 Application.Run(new FrmAdmin());
             }

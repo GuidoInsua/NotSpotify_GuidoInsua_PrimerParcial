@@ -58,31 +58,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btn_menuLibarary.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAARsAAAAwCAYAAAAhMd5gAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAABGtJREFUeF7t3K1v20AYBvDwmhUURioYSlFIg8qCisKKQgoDqpDJKChFQWaRKhlZ
-        LTByiVmQWf6nd/dhe479pr1LXw94z6SftD4+28mke3ZnTxupXwQA8A+wIQCANDYEAJDGhgAA0tgQAEAa
-        GwIASGNDAABpbAgAII0NAQCksSEAgDQ2BACQxoYAANLY0Nnr66vhmkdRRG9vb3R3d9c5BgCDxobOPj8/
-        Dd9c02V0c3PTGQMAg8SGzr4rlXP5x8dH/fvn52e6urrqjAWAQWFDZ1Vh+Oa6XF5eXuqf39/f6f7+vjMe
-        AAaDDZ1VZXFpfnt7a7ZT58YDwGCwobNzJSGVX+oxOtDxeKRjtqFJI59ssjLf0qyR92Kd2Hsla+b4lDaZ
-        OnY8ULTQP68p0WMPEc07YwEGgQ2d+ZaHb36xYElxoSdzQfEyaGU57eat8X34smxmtEXZwP+FDZ35lodv
-        /hNjNdmLxgSel6udw/6JgtbYXnxZNm0oGxg8NnTmWx6++c9Myq3KkbLdjjI9mYuYloE+FtBDmFBuVjra
-        gdJoSVNzTOkUxZyigx6X0Nr8XJVDSnGqS0ytUNqrpW/KZp3Y+9rzquvtaRfn9jy1KsuTkB7Kz1SVZRbH
-        lNfXndBTlNLBjLfXy/areuvYPec3LePCZPluZsZos529py7iKgMQxobOfMvDN/+x+c5OMqOgNJyYfBKm
-        ZXaqUBN4rM9zLZuaUNkwinhpVmJVcdT0dR83lOa2PJqy7dTcgz1nVv6ZqGJbmM9SfTe1vZydfkYAQWzo
-        zLc8fPOfC+hpX064+mHxgvZmchWUhDO6Vtn1XE1as8rJaDtVY5zLRl9jym/LLiqbnKLFWF0voOlyb1cs
-        ejWmxtfFkUe0uO5eb3T9ix42ZYmW9+TPGVOY6nsVFK8CGi3sfeqiBegHGzrzLQ/fXEQ56Q/RvMz+blns
-        3+xWNfn3+oGta9kcInpsXOPEJWVz8szm9J5VcaRh+cBbCx4oTKptlyqMalvYKpuTc7SyYI7phkKzrSq/
-        d3MMgCw2dOZbHr65iE7ZeKxsdCGpFUEw3dhnPkzZnH2ge0nZOKxskvXfawTVd9sv7Dlqe2geirfKpnmO
-        NaNdru9X2ILKd/3/UwD437GhM9/y8M1FdMpmRBOVmUnZUm8lxiGlzPGLyqbDXsP1mU31ub8qm45vy6bx
-        tk5Jw3HnOIAwNnTmWx6+uQimbOzbqJgys8LRWm+jlMmqfIOjz01C2ppySCk0Y3oqm5O3UfozPXXeLJ0W
-        x4RWzfHbyJakQ9mMgrJQ1cpp1fjeAD1hQ2e+5eGbQ3+q193NV+AAPWJDZ77l4ZtDX6rnVmqlNuaOA4hj
-        Q2e+5eGbQz+q5zVFvOJf2wPIY0NnvuVR5ee0xwPAYLChs3P//edXOVcyGjceAAaDDQEApLEhAIA0NgQA
-        kMaGAADS2BAAQBobAgBIY0MAAGlsCAAgjQ0BAKSxIQCANDYEAJDGhgAA0tgQAEAaGwIASGNDAABpbAgA
-        IGhEfwBoOVA8UIIVSAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="pbx_menuImagenCancion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKYAAACmCAIAAADf6mMgAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKM+VkT1I
@@ -669,7 +644,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAADAoAAAJNU0Z0AUkBTAIBAQIB
-        AAHwAQAB8AEAASgBAAEkAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAaADAAEkAwABAQEAAQgF
+        AAGoAQEBqAEBASgBAAEkAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAaADAAEkAwABAQEAAQgF
         AAGAARYYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHAAQAB8AHKAaYBAAEzBQAB
         MwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5AQABgAF8Af8BAAJQAf8B
         AAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMAAWYDAAGZAwABzAIAATMD

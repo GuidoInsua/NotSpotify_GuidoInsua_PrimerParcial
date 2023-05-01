@@ -12,6 +12,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmMenu : Form
     {
+        FrmHome homeForm = new FrmHome();
+        FrmLibrary libraryForm = new FrmLibrary();
+
         public FrmMenu()
         {
             InitializeComponent();
@@ -19,17 +22,6 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void btn_menuLibarary_Click(object sender, EventArgs e)
-        {
-            btn_menuHome.ApagarBotonHome();
-
-            FrmLibrary libraryForm = new FrmLibrary();
-            libraryForm.TopLevel = false;
-            pnl_menuFormChanger.Controls.Add(libraryForm);
-            libraryForm.Show();
         }
 
         private void panelMovimiento2_Load(object sender, EventArgs e)
@@ -44,10 +36,49 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_menuHome_Click(object sender, EventArgs e)
         {
-            FrmHome homeForm = new FrmHome();
-            homeForm.TopLevel = false;
-            pnl_menuFormChanger.Controls.Add(homeForm);
-            homeForm.Show();
+            btn_menuLibrary.ApagarBotonLibrary();
+
+            ManejadorForms("Home");
+        }
+
+        private void btn_menuLibrary_Click(object sender, EventArgs e)
+        {
+            btn_menuHome.ApagarBotonHome();
+
+            ManejadorForms("Library");
+        }
+
+        private void ManejadorForms(string form)
+        {
+            if (form == "Home")
+            {
+                libraryForm.Hide();
+                homeForm.TopLevel = false;
+                pnl_menuFormChanger.Controls.Add(homeForm);
+                homeForm.Dock = DockStyle.Fill;
+                homeForm.Show();
+            }
+
+            if (form == "Library")
+            {
+                homeForm.Hide();
+                libraryForm.TopLevel = false;
+                pnl_menuFormChanger.Controls.Add(libraryForm);
+                libraryForm.Dock = DockStyle.Fill;
+                libraryForm.Show();
+            }
+        }
+
+        private void botonMaximizar1_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
         }
     }
 }

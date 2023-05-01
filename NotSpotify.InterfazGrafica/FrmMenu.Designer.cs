@@ -31,9 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             pnl_menuBarraIzquierda = new Panel();
+            btn_menuLibrary = new Controles.BotonLibrary();
             btn_menuHome = new Controles.BotonHome();
             listBox1 = new ListBox();
-            btn_menuLibarary = new Button();
             pbx_menuImagenCancion = new PictureBox();
             imageList1 = new ImageList(components);
             pnl_menuBarraInferior = new Panel();
@@ -42,6 +42,7 @@
             pnl_menuFormChanger = new Panel();
             panelMovimiento2 = new PanelMovimiento();
             botonCerrar1 = new Controles.BotonCerrar();
+            botonMaximizar1 = new Controles.BotonMaximizar();
             pnl_menuBarraIzquierda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbx_menuImagenCancion).BeginInit();
             pnl_menuBarraInferior.SuspendLayout();
@@ -51,9 +52,9 @@
             // pnl_menuBarraIzquierda
             // 
             pnl_menuBarraIzquierda.BackColor = Color.Black;
+            pnl_menuBarraIzquierda.Controls.Add(btn_menuLibrary);
             pnl_menuBarraIzquierda.Controls.Add(btn_menuHome);
             pnl_menuBarraIzquierda.Controls.Add(listBox1);
-            pnl_menuBarraIzquierda.Controls.Add(btn_menuLibarary);
             pnl_menuBarraIzquierda.Controls.Add(pbx_menuImagenCancion);
             pnl_menuBarraIzquierda.Dock = DockStyle.Left;
             pnl_menuBarraIzquierda.Location = new Point(0, 21);
@@ -61,10 +62,21 @@
             pnl_menuBarraIzquierda.Size = new Size(162, 496);
             pnl_menuBarraIzquierda.TabIndex = 0;
             // 
+            // btn_menuLibrary
+            // 
+            btn_menuLibrary.BackColor = Color.Transparent;
+            btn_menuLibrary.Dock = DockStyle.Top;
+            btn_menuLibrary.Location = new Point(0, 39);
+            btn_menuLibrary.Name = "btn_menuLibrary";
+            btn_menuLibrary.Size = new Size(162, 39);
+            btn_menuLibrary.TabIndex = 5;
+            btn_menuLibrary.Click += btn_menuLibrary_Click;
+            // 
             // btn_menuHome
             // 
             btn_menuHome.BackColor = Color.Transparent;
-            btn_menuHome.Location = new Point(0, 33);
+            btn_menuHome.Dock = DockStyle.Top;
+            btn_menuHome.Location = new Point(0, 0);
             btn_menuHome.Name = "btn_menuHome";
             btn_menuHome.Size = new Size(162, 39);
             btn_menuHome.TabIndex = 4;
@@ -72,37 +84,26 @@
             // 
             // listBox1
             // 
+            listBox1.BackColor = Color.Black;
+            listBox1.BorderStyle = BorderStyle.None;
+            listBox1.Dock = DockStyle.Bottom;
+            listBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            listBox1.ForeColor = Color.White;
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(3, 264);
+            listBox1.ItemHeight = 17;
+            listBox1.Items.AddRange(new object[] { "-PlayList 1", "-PlayList 2", "-PlayList 3" });
+            listBox1.Location = new Point(0, 133);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(157, 94);
+            listBox1.Size = new Size(162, 221);
             listBox1.TabIndex = 3;
-            // 
-            // btn_menuLibarary
-            // 
-            btn_menuLibarary.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btn_menuLibarary.BackgroundImage = (Image)resources.GetObject("btn_menuLibarary.BackgroundImage");
-            btn_menuLibarary.BackgroundImageLayout = ImageLayout.Center;
-            btn_menuLibarary.FlatAppearance.BorderSize = 0;
-            btn_menuLibarary.FlatStyle = FlatStyle.Flat;
-            btn_menuLibarary.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_menuLibarary.ForeColor = Color.FromArgb(224, 224, 224);
-            btn_menuLibarary.Location = new Point(-3, 78);
-            btn_menuLibarary.Name = "btn_menuLibarary";
-            btn_menuLibarary.Size = new Size(162, 41);
-            btn_menuLibarary.TabIndex = 2;
-            btn_menuLibarary.TextAlign = ContentAlignment.MiddleLeft;
-            btn_menuLibarary.UseVisualStyleBackColor = true;
-            btn_menuLibarary.Click += btn_menuLibarary_Click;
             // 
             // pbx_menuImagenCancion
             // 
-            pbx_menuImagenCancion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pbx_menuImagenCancion.Dock = DockStyle.Bottom;
             pbx_menuImagenCancion.Image = (Image)resources.GetObject("pbx_menuImagenCancion.Image");
-            pbx_menuImagenCancion.Location = new Point(22, 410);
+            pbx_menuImagenCancion.Location = new Point(0, 354);
             pbx_menuImagenCancion.Name = "pbx_menuImagenCancion";
-            pbx_menuImagenCancion.Size = new Size(115, 80);
+            pbx_menuImagenCancion.Size = new Size(162, 142);
             pbx_menuImagenCancion.TabIndex = 0;
             pbx_menuImagenCancion.TabStop = false;
             // 
@@ -143,11 +144,12 @@
             // 
             // pnl_menuFormChanger
             // 
+            pnl_menuFormChanger.AutoSize = true;
             pnl_menuFormChanger.BackColor = Color.FromArgb(255, 192, 192);
             pnl_menuFormChanger.Dock = DockStyle.Fill;
-            pnl_menuFormChanger.Location = new Point(0, 21);
+            pnl_menuFormChanger.Location = new Point(162, 21);
             pnl_menuFormChanger.Name = "pnl_menuFormChanger";
-            pnl_menuFormChanger.Size = new Size(963, 496);
+            pnl_menuFormChanger.Size = new Size(801, 496);
             pnl_menuFormChanger.TabIndex = 2;
             // 
             // panelMovimiento2
@@ -162,6 +164,7 @@
             // 
             // botonCerrar1
             // 
+            botonCerrar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonCerrar1.BackColor = Color.Transparent;
             botonCerrar1.BackgroundImageLayout = ImageLayout.Center;
             botonCerrar1.Location = new Point(942, 0);
@@ -170,6 +173,16 @@
             botonCerrar1.TabIndex = 4;
             botonCerrar1.Click += botonCerrar1_Click;
             // 
+            // botonMaximizar1
+            // 
+            botonMaximizar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            botonMaximizar1.BackColor = Color.Transparent;
+            botonMaximizar1.Location = new Point(914, 0);
+            botonMaximizar1.Name = "botonMaximizar1";
+            botonMaximizar1.Size = new Size(22, 21);
+            botonMaximizar1.TabIndex = 5;
+            botonMaximizar1.Click += botonMaximizar1_Click;
+            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -177,9 +190,10 @@
             BackColor = Color.Black;
             ClientSize = new Size(963, 577);
             ControlBox = false;
+            Controls.Add(botonMaximizar1); 
             Controls.Add(botonCerrar1);
-            Controls.Add(pnl_menuBarraIzquierda);
             Controls.Add(pnl_menuFormChanger);
+            Controls.Add(pnl_menuBarraIzquierda);
             Controls.Add(pnl_menuBarraInferior);
             Controls.Add(panelMovimiento2);
             Name = "FrmMenu";
@@ -191,6 +205,7 @@
             pnl_menuBarraInferior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -199,7 +214,6 @@
         private Panel pnl_menuBarraInferior;
         private Panel pnl_menuFormChanger;
         private PictureBox pbx_menuImagenCancion;
-        private Button btn_menuLibarary;
         private ImageList imageList1;
         private Button button1;
         private TrackBar trackBar1;
@@ -207,5 +221,7 @@
         private PanelMovimiento panelMovimiento2;
         private Controles.BotonCerrar botonCerrar1;
         private Controles.BotonHome btn_menuHome;
+        private Controles.BotonLibrary btn_menuLibrary;
+        private Controles.BotonMaximizar botonMaximizar1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotSpotify.Clases.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -7,15 +8,39 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Administrador : Persona
+    public class Administrador : Persona, ICargable
     {
         private string _dni;
 
         public string Dni { get => _dni; set => _dni = value; }
 
+        public Administrador() 
+        {
+        }
+
         public Administrador(string nombre, string apellido, string eMail, string password, string dni) : base(nombre, apellido, eMail, password)
         {
             Dni = dni;
+        }
+
+        public void CargarDatosDesdeLinea(string linea, string separador)
+        {
+            string[] fila = linea.Split(separador);
+            Nombre = fila[0];
+            Apellido = fila[1];
+            Email = fila[2];
+            Password = fila[3];
+            Dni = fila[4];
+        }
+
+        public static bool operator ==(Administrador A1, Administrador A2)
+        {
+            return (A1.Email == A2.Email && A1.Password == A2.Password);
+        }
+
+        public static bool operator !=(Administrador A1, Administrador A2)
+        {
+            return !(A1 == A2);
         }
     }
 }

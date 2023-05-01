@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotSpotify.Clases.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Persona
+    public abstract class Persona
     {
         private string _nombre;
         private string _apellido;
@@ -19,6 +20,10 @@ namespace NotSpotify.Clases
         public string Email { get => _eMail; set => _eMail = value; }
         public string Password { get => _password; set => _password = value; }
 
+        public Persona()
+        {
+        }
+
         public Persona(string nombre, string apellido, string eMail, string password)
         {
             Nombre = nombre;
@@ -26,5 +31,6 @@ namespace NotSpotify.Clases
             Email = eMail;
             Password = password;
         }
+
     }
 }

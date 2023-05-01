@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotSpotify.Clases.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Cancion
+    public class Cancion : ICargable
     {
         private string _nombre;
         private string _direccion;
@@ -18,6 +19,13 @@ namespace NotSpotify.Clases
         {
             Nombre = nombre;
             Direccion = direccion;
+        }
+
+        public void CargarDatosDesdeLinea(string linea, string separador)
+        {
+            string[] fila = linea.Split(separador);
+            Nombre = fila[0];
+            Direccion = fila[1];
         }
     }
 }
