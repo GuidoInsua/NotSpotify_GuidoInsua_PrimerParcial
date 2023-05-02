@@ -34,7 +34,7 @@ namespace NotSpotify.Clases
 
         public static bool operator ==(Usuario U1, Usuario U2)
         {
-            return (U1.Email == U2.Email && U1.Password == U2.Password);
+            return (U1.Email == U2.Email);
         }
 
         public static bool operator !=(Usuario U1, Usuario U2)

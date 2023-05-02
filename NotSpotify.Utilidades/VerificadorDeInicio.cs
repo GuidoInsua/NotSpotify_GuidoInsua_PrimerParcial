@@ -11,9 +11,9 @@ namespace NotSpotify.Utilidades
     {
         public enum EnumOpcionSesion
         {
-            admin = 1,
-            usuario = 2,
-            error = 0
+            esAdmin = 1,
+            esUsuario = 2,
+            noExiste = 0
         }
 
         static private List<Usuario> _usuariosCargados;
@@ -30,33 +30,20 @@ namespace NotSpotify.Utilidades
             AdminsCargados = AdministradorDatos.CargarListaDesdeArchivo<Administrador>("..\\..\\..\\..\\Archivos\\Administradores.csv");
         }
 
-        static public EnumOpcionSesion VerificarDatosDeIngreso(string eMailIngresado, string passwordIngresada)
+        static public EnumOpcionSesion VerificarExistePersona(string eMailIngresado, string passwordIngresada)
         {
 
-            if (CompararDatos<Administrador>(eMailIngresado, passwordIngresada, AdminsCargados))
+            if (AdministradorDatos.CompararDatos<Administrador>(eMailIngresado, passwordIngresada, AdminsCargados))
             {
-                return EnumOpcionSesion.admin;
+                return EnumOpcionSesion.esAdmin;
             }
 
-            if (CompararDatos<Usuario>(eMailIngresado, passwordIngresada, UsuariosCargados))
+            if (AdministradorDatos.CompararDatos<Usuario>(eMailIngresado, passwordIngresada, UsuariosCargados))
             {
-                return EnumOpcionSesion.usuario;
+                return EnumOpcionSesion.esUsuario;
             }
 
-            return EnumOpcionSesion.error;
-        }
-
-        static private bool CompararDatos<T>(string eMailIngresado, string passwordIngresada, List<T> personas) where T : Persona
-        {
-            foreach (T persona in personas)
-            {
-                if (persona.Email == eMailIngresado && persona.Password == passwordIngresada)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return EnumOpcionSesion.noExiste;
         }
 
         static public void AutoCompletarUsuario(out string eMail, out string password)

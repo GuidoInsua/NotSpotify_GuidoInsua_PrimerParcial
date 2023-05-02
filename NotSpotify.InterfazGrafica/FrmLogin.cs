@@ -37,15 +37,15 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_loginAceptar_Click(object sender, EventArgs e)
         {
-            EstadoUsuarioAutenticado = VerificadorDeInicio.VerificarDatosDeIngreso(Email, Password);
+            EstadoUsuarioAutenticado = VerificadorDeInicio.VerificarExistePersona(Email, Password);
 
-            if (EstadoUsuarioAutenticado == EnumOpcionSesion.admin || EstadoUsuarioAutenticado == EnumOpcionSesion.usuario)
+            if (EstadoUsuarioAutenticado == EnumOpcionSesion.esAdmin || EstadoUsuarioAutenticado == EnumOpcionSesion.esUsuario)
             {
                 Close();
             }
             else
             {
-                lbl_mensajeError.Text = "ERROR, Ingrese un usuario valido";
+                lbl_mensajeError.Text = "ERROR, Ingrese un Usuario valido";
             }
         }
 
