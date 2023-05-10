@@ -19,14 +19,14 @@ namespace NotSpotify.InterfazGrafica
             FrmLogin loginForm = new FrmLogin();
             Application.Run(loginForm);
 
-            if(loginForm.EstadoUsuarioAutenticado == EnumOpcionSesion.esUsuario)
+            if(loginForm.TipoDeUsuarioAutenticado == EnumOpcionSesion.esUsuario)
             {
                 Application.Run(new FrmMenu());
             }
 
-            if (loginForm.EstadoUsuarioAutenticado == EnumOpcionSesion.esAdmin)
+            if (loginForm.TipoDeUsuarioAutenticado == EnumOpcionSesion.esAdmin)
             {
-                Application.Run(new FrmAdmin());
+                Application.Run(new FrmEditorDatos());
             }
         }
     }

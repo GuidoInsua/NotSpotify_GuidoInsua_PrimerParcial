@@ -23,9 +23,8 @@ namespace NotSpotify.Clases
             _playLists = new List<PlayList>();
         }
 
-        public void CargarDatosDesdeLinea(string linea, string separador)
+        public void CargarDatosDesdeArray(string[] fila)
         {
-            string[] fila = linea.Split(separador);
             Nombre = fila[0];
             Apellido = fila[1];
             Email = fila[2];

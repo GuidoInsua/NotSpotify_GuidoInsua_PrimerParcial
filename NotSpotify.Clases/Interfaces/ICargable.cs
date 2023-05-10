@@ -8,6 +8,6 @@ namespace NotSpotify.Clases.Interfaces
 {
     public interface ICargable
     {
-        public void CargarDatosDesdeLinea(string linea, string separador);
+        public void CargarDatosDesdeArray(string[] fila);
     }
 }

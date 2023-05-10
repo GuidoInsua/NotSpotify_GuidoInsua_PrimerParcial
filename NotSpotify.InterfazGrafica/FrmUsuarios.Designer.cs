@@ -37,11 +37,10 @@
             Apellido = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Password = new DataGridViewTextBoxColumn();
-            btn_add = new Button();
-            btn_modificar = new Button();
-            btn_delete = new Button();
             lbl_usuarios = new Label();
-            btn_refresh = new Button();
+            btn_add = new Controles.BotonAdd();
+            btn_borrar = new Controles.BotonBorrar();
+            btn_editar = new Controles.BotonEditar();
             ((System.ComponentModel.ISupportInitialize)dgv_usuariosCargados).BeginInit();
             SuspendLayout();
             // 
@@ -96,7 +95,7 @@
             dgv_usuariosCargados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgv_usuariosCargados.RowTemplate.Height = 25;
             dgv_usuariosCargados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_usuariosCargados.Size = new Size(688, 463);
+            dgv_usuariosCargados.Size = new Size(808, 463);
             dgv_usuariosCargados.TabIndex = 0;
             // 
             // Nombre
@@ -105,7 +104,7 @@
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
             Nombre.Resizable = DataGridViewTriState.False;
-            Nombre.Width = 160;
+            Nombre.Width = 170;
             // 
             // Apellido
             // 
@@ -113,7 +112,7 @@
             Apellido.Name = "Apellido";
             Apellido.ReadOnly = true;
             Apellido.Resizable = DataGridViewTriState.False;
-            Apellido.Width = 160;
+            Apellido.Width = 170;
             // 
             // Email
             // 
@@ -121,7 +120,7 @@
             Email.Name = "Email";
             Email.ReadOnly = true;
             Email.Resizable = DataGridViewTriState.False;
-            Email.Width = 160;
+            Email.Width = 230;
             // 
             // Password
             // 
@@ -129,46 +128,7 @@
             Password.Name = "Password";
             Password.ReadOnly = true;
             Password.Resizable = DataGridViewTriState.False;
-            Password.Width = 160;
-            // 
-            // btn_add
-            // 
-            btn_add.BackColor = Color.FromArgb(128, 255, 255);
-            btn_add.FlatAppearance.BorderSize = 0;
-            btn_add.FlatStyle = FlatStyle.Flat;
-            btn_add.Location = new Point(659, 91);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(41, 23);
-            btn_add.TabIndex = 1;
-            btn_add.Text = "Add";
-            btn_add.UseVisualStyleBackColor = false;
-            btn_add.Click += btn_add_Click;
-            // 
-            // btn_modificar
-            // 
-            btn_modificar.BackColor = Color.FromArgb(128, 255, 255);
-            btn_modificar.FlatAppearance.BorderSize = 0;
-            btn_modificar.FlatStyle = FlatStyle.Flat;
-            btn_modificar.Location = new Point(608, 91);
-            btn_modificar.Name = "btn_modificar";
-            btn_modificar.Size = new Size(45, 23);
-            btn_modificar.TabIndex = 2;
-            btn_modificar.Text = "Mod";
-            btn_modificar.UseVisualStyleBackColor = false;
-            btn_modificar.Click += btn_modificar_Click;
-            // 
-            // btn_delete
-            // 
-            btn_delete.BackColor = Color.FromArgb(128, 255, 255);
-            btn_delete.FlatAppearance.BorderSize = 0;
-            btn_delete.FlatStyle = FlatStyle.Flat;
-            btn_delete.Location = new Point(563, 91);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(39, 23);
-            btn_delete.TabIndex = 3;
-            btn_delete.Text = "Del";
-            btn_delete.UseVisualStyleBackColor = false;
-            btn_delete.Click += btn_delete_Click;
+            Password.Width = 200;
             // 
             // lbl_usuarios
             // 
@@ -181,31 +141,40 @@
             lbl_usuarios.TabIndex = 4;
             lbl_usuarios.Text = "Usuarios";
             // 
-            // btn_refresh
+            // btn_add
             // 
-            btn_refresh.BackColor = Color.FromArgb(128, 255, 255);
-            btn_refresh.FlatAppearance.BorderSize = 0;
-            btn_refresh.FlatStyle = FlatStyle.Flat;
-            btn_refresh.Location = new Point(518, 91);
-            btn_refresh.Name = "btn_refresh";
-            btn_refresh.Size = new Size(39, 23);
-            btn_refresh.TabIndex = 5;
-            btn_refresh.Text = "Ref";
-            btn_refresh.UseVisualStyleBackColor = false;
-            btn_refresh.Click += btn_refresh_Click;
+            btn_add.Location = new Point(777, 91);
+            btn_add.Name = "btn_add";
+            btn_add.Size = new Size(26, 26);
+            btn_add.TabIndex = 8;
+            btn_add.Click += btn_add_Click;
+            // 
+            // btn_borrar
+            // 
+            btn_borrar.Location = new Point(713, 91);
+            btn_borrar.Name = "btn_borrar";
+            btn_borrar.Size = new Size(26, 26);
+            btn_borrar.TabIndex = 9;
+            btn_borrar.Click += btn_borrar_Click;
+            // 
+            // btn_editar
+            // 
+            btn_editar.Location = new Point(745, 91);
+            btn_editar.Name = "btn_editar";
+            btn_editar.Size = new Size(26, 26);
+            btn_editar.TabIndex = 10;
             // 
             // FrmUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(812, 595);
+            ClientSize = new Size(1009, 595);
             ControlBox = false;
-            Controls.Add(btn_refresh);
-            Controls.Add(lbl_usuarios);
-            Controls.Add(btn_delete);
-            Controls.Add(btn_modificar);
+            Controls.Add(btn_editar);
+            Controls.Add(btn_borrar);
             Controls.Add(btn_add);
+            Controls.Add(lbl_usuarios);
             Controls.Add(dgv_usuariosCargados);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
@@ -220,14 +189,13 @@
         #endregion
 
         private DataGridView dgv_usuariosCargados;
-        private Button btn_add;
-        private Button btn_modificar;
-        private Button btn_delete;
         private Label lbl_usuarios;
-        private Button btn_refresh;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Password;
+        private Controles.BotonAdd btn_add;
+        private Controles.BotonBorrar btn_borrar;
+        private Controles.BotonEditar btn_editar;
     }
 }

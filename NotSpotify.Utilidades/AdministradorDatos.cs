@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using NotSpotify.Clases;
+using NotSpotify.Clases.Factories;
 using NotSpotify.Clases.Interfaces;
 
 namespace NotSpotify.Utilidades
@@ -24,8 +26,10 @@ namespace NotSpotify.Utilidades
 
             while ((linea = sr.ReadLine()) != null)
             {
+                string[] fila = linea.Split(separador);
+
                 unCargable = new T();
-                unCargable.CargarDatosDesdeLinea(linea, separador);
+                unCargable.CargarDatosDesdeArray(fila);
 
                 listaDeCargabe.Add(unCargable);
             }
@@ -36,24 +40,28 @@ namespace NotSpotify.Utilidades
             return listaDeCargabe;
         }
 
-        static public void AgregarUsuarioEnLista(string nombre, string apellido, string eMail, string password)
-        {
-            Usuario unUsuario = new Usuario(nombre,apellido,eMail,password);
+        static public void CargarListaPersonasDesdeArchivo(string path)
+        {            
+            using StreamReader sr = File.OpenText(path);
+            string linea;
 
-            VerificadorDeInicio.UsuariosCargados.Add(unUsuario);
+            while ((linea = sr.ReadLine()) != null)
+            {
+                PersonaFactory.CargarPersonaPorLastOrDefault(linea, ",");
+            }
         }
 
-        static public bool CompararDatos<T>(string eMailIngresado, string passwordIngresada, List<T> personas) where T : Persona
+        static public Persona BuscarPersonaLogueada(string eMailIngresado, string passwordIngresada, List<Persona> personas)
         {
-            foreach (T persona in personas)
+            foreach (Persona persona in personas)
             {
                 if (persona.Email == eMailIngresado && persona.Password == passwordIngresada)
                 {
-                    return true;
+                    return persona;
                 }
             }
 
-            return false;
+            throw new Exception("Persona no logueada");
         }
     }
 }

@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace NotSpotify.InterfazGrafica
 {
-    public partial class FrmAdmin : Form
+    public partial class FrmEditorDatos : Form
     {
         FrmUsuarios usuariosForm = new FrmUsuarios();
         FrmAdministradores administradoresForm = new FrmAdministradores();
 
-        public FrmAdmin()
+        public FrmEditorDatos()
         {
             InitializeComponent();
+        }
+
+        private void FrmEditorDatos_Load(object sender, EventArgs e)
+        {
+            ManejadorForms("Usuarios");
         }
 
         private void pnl_movimientoTopBar_Load(object sender, EventArgs e)
@@ -54,22 +59,22 @@ namespace NotSpotify.InterfazGrafica
 
         private void ManejadorForms(string form)
         {
-            if (form == "Usuarios")
+            switch (form) 
             {
-                administradoresForm.Hide();
-                usuariosForm.TopLevel = false;
-                pnl_FrmChanger.Controls.Add(usuariosForm);
-                usuariosForm.Dock = DockStyle.Fill;
-                usuariosForm.Show();
-            }
-
-            if (form == "Admins")
-            {
-                usuariosForm.Hide();
-                administradoresForm.TopLevel = false;
-                pnl_FrmChanger.Controls.Add(administradoresForm);
-                administradoresForm.Dock = DockStyle.Fill;
-                administradoresForm.Show();
+                case "Usuarios":
+                    administradoresForm.Hide();
+                    usuariosForm.TopLevel = false;
+                    pnl_FrmChanger.Controls.Add(usuariosForm);
+                    usuariosForm.Dock = DockStyle.Fill;
+                    usuariosForm.Show();
+                    break;
+                case "Admins":
+                    usuariosForm.Hide();
+                    administradoresForm.TopLevel = false;
+                    pnl_FrmChanger.Controls.Add(administradoresForm);
+                    administradoresForm.Dock = DockStyle.Fill;
+                    administradoresForm.Show();
+                    break;
             }
         }
     }

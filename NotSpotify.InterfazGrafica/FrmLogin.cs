@@ -1,4 +1,5 @@
-﻿using NotSpotify.Utilidades;
+﻿using NotSpotify.Clases;
+using NotSpotify.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,13 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmLogin : Form
     {
-        public EnumOpcionSesion estadoUsuarioAutenticado;
+        private EnumOpcionSesion _tipoDeUsuarioAutenticado;
         private string _eMail;
         private string _password;
 
         private string Email { get => _eMail; set => _eMail = value; }
         private string Password { get => _password; set => _password = value; }
-
-        public EnumOpcionSesion EstadoUsuarioAutenticado { get => estadoUsuarioAutenticado; private set => estadoUsuarioAutenticado = value; }
+        public EnumOpcionSesion TipoDeUsuarioAutenticado { get => _tipoDeUsuarioAutenticado; private set => _tipoDeUsuarioAutenticado = value; }
 
         public FrmLogin()
         {
@@ -37,13 +37,12 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_loginAceptar_Click(object sender, EventArgs e)
         {
-            EstadoUsuarioAutenticado = VerificadorDeInicio.VerificarExistePersona(Email, Password);
-
-            if (EstadoUsuarioAutenticado == EnumOpcionSesion.esAdmin || EstadoUsuarioAutenticado == EnumOpcionSesion.esUsuario)
+            try
             {
+                TipoDeUsuarioAutenticado = VerificadorDeInicio.VerificarTipoDePersona(Email, Password);
                 Close();
             }
-            else
+            catch 
             {
                 lbl_mensajeError.Text = "ERROR, Ingrese un Usuario valido";
             }
@@ -51,14 +50,14 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_completarUsuario_Click(object sender, EventArgs e)
         {
-            VerificadorDeInicio.AutoCompletarUsuario(out _eMail, out _password);
+            VerificadorDeInicio.AutoCompletarLogin<Usuario>(ref _eMail, ref _password);
             tbx_loginMail.Text = Email;
             tbx_loginPassword.Text = Password;
         }
 
         private void btn_completarAdmin_Click(object sender, EventArgs e)
         {
-            VerificadorDeInicio.AutoCompletarAdmin(out _eMail, out _password);
+            VerificadorDeInicio.AutoCompletarLogin<Administrador>(ref _eMail, ref _password);
             tbx_loginMail.Text = Email;
             tbx_loginPassword.Text = Password;
         }

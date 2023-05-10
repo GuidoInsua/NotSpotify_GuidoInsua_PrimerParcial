@@ -13,57 +13,55 @@ namespace NotSpotify.Utilidades
         {
             esAdmin = 1,
             esUsuario = 2,
-            noExiste = 0
         }
 
-        static private List<Usuario> _usuariosCargados;
-        static private List<Administrador> _adminsCargados;
+        static private List<Persona> _personasCargadas;
+        static private Persona _personaLogueada = new Persona();   
 
-        static public List<Usuario> UsuariosCargados { get => _usuariosCargados; set => _usuariosCargados = value; }
-        static public List<Administrador> AdminsCargados { get => _adminsCargados; set => _adminsCargados = value; }
+        static public Persona PersonaLogueada { get => _personaLogueada; set => _personaLogueada = value; }
+        static public List<Persona> PersonasCargadas { get => _personasCargadas; set => _personasCargadas = value; }
 
         static VerificadorDeInicio()
         {
-            string[] dir = Directory.GetDirectories(".\\");
-
-            UsuariosCargados = AdministradorDatos.CargarListaDesdeArchivo<Usuario>("..\\..\\..\\..\\Archivos\\Usuarios.csv");
-            AdminsCargados = AdministradorDatos.CargarListaDesdeArchivo<Administrador>("..\\..\\..\\..\\Archivos\\Administradores.csv");
+            _personasCargadas = new List<Persona>();
+            AdministradorDatos.CargarListaPersonasDesdeArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
         }
 
-        static public EnumOpcionSesion VerificarExistePersona(string eMailIngresado, string passwordIngresada)
+        static public EnumOpcionSesion VerificarTipoDePersona(string eMailIngresado, string passwordIngresada)
         {
-
-            if (AdministradorDatos.CompararDatos<Administrador>(eMailIngresado, passwordIngresada, AdminsCargados))
+            try
             {
-                return EnumOpcionSesion.esAdmin;
-            }
+                PersonaLogueada = AdministradorDatos.BuscarPersonaLogueada(eMailIngresado, passwordIngresada, PersonasCargadas);
 
-            if (AdministradorDatos.CompararDatos<Usuario>(eMailIngresado, passwordIngresada, UsuariosCargados))
+                if (PersonaLogueada is Administrador)
+                {
+                    return EnumOpcionSesion.esAdmin;
+                }
+
+                if (PersonaLogueada is Usuario)
+                {
+                    return EnumOpcionSesion.esUsuario;
+                }
+
+                throw new Exception("Datos correctos, no existe clase");
+            }
+            catch
             {
-                return EnumOpcionSesion.esUsuario;
+                throw;
+            }         
+        }
+
+        static public void AutoCompletarLogin<T>(ref string eMail, ref string password) where T : Persona
+        {
+            foreach (Persona persona in PersonasCargadas)
+            {
+                if(persona is T)
+                {
+                    eMail = persona.Email;
+                    password = persona.Password;
+                    break;
+                }
             }
-
-            return EnumOpcionSesion.noExiste;
-        }
-
-        static public void AutoCompletarUsuario(out string eMail, out string password)
-        {
-            Random numRandom = new Random();
-
-            Usuario usuario = UsuariosCargados[numRandom.Next(UsuariosCargados.Count)];
-
-            eMail = usuario.Email;
-            password = usuario.Password;
-        }
-
-        static public void AutoCompletarAdmin(out string eMail, out string password)
-        {
-            Random numRandom = new Random();
-
-            Administrador admin = AdminsCargados[numRandom.Next(AdminsCargados.Count)];
-
-            eMail = admin.Email;
-            password = admin.Password;
         }
     }
 }

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             lbl_administradores = new Label();
             dgv_adminsCargados = new DataGridView();
             Nombre = new DataGridViewTextBoxColumn();
@@ -35,9 +39,9 @@
             Email = new DataGridViewTextBoxColumn();
             Password = new DataGridViewTextBoxColumn();
             Dni = new DataGridViewTextBoxColumn();
-            btn_add = new Button();
-            btn_modificar = new Button();
-            btn_delete = new Button();
+            btn_add = new Controles.BotonAdd();
+            btn_editar = new Controles.BotonEditar();
+            btn_borrar = new Controles.BotonBorrar();
             ((System.ComponentModel.ISupportInitialize)dgv_adminsCargados).BeginInit();
             SuspendLayout();
             // 
@@ -51,93 +55,133 @@
             lbl_administradores.Size = new Size(215, 35);
             lbl_administradores.TabIndex = 5;
             lbl_administradores.Text = "Administradores";
-            lbl_administradores.Click += lbl_administradores_Click;
             // 
             // dgv_adminsCargados
             // 
+            dgv_adminsCargados.AllowUserToAddRows = false;
+            dgv_adminsCargados.AllowUserToDeleteRows = false;
+            dgv_adminsCargados.AllowUserToResizeColumns = false;
+            dgv_adminsCargados.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 128, 128);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dgv_adminsCargados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgv_adminsCargados.BackgroundColor = Color.Black;
-            dgv_adminsCargados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_adminsCargados.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgv_adminsCargados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Firebrick;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Firebrick;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv_adminsCargados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgv_adminsCargados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_adminsCargados.Columns.AddRange(new DataGridViewColumn[] { Nombre, Apellido, Email, Password, Dni });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv_adminsCargados.DefaultCellStyle = dataGridViewCellStyle3;
+            dgv_adminsCargados.EnableHeadersVisualStyles = false;
             dgv_adminsCargados.Location = new Point(12, 130);
+            dgv_adminsCargados.MultiSelect = false;
             dgv_adminsCargados.Name = "dgv_adminsCargados";
+            dgv_adminsCargados.ReadOnly = true;
+            dgv_adminsCargados.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Firebrick;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Firebrick;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgv_adminsCargados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgv_adminsCargados.RowHeadersWidth = 20;
+            dgv_adminsCargados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgv_adminsCargados.RowTemplate.Height = 25;
-            dgv_adminsCargados.Size = new Size(796, 308);
-            dgv_adminsCargados.TabIndex = 6;
+            dgv_adminsCargados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_adminsCargados.Size = new Size(966, 349);
+            dgv_adminsCargados.TabIndex = 10;
             // 
             // Nombre
             // 
             Nombre.HeaderText = "Nombre";
             Nombre.Name = "Nombre";
-            Nombre.Width = 160;
+            Nombre.ReadOnly = true;
+            Nombre.Resizable = DataGridViewTriState.False;
+            Nombre.Width = 170;
             // 
             // Apellido
             // 
             Apellido.HeaderText = "Apellido";
             Apellido.Name = "Apellido";
-            Apellido.Width = 160;
+            Apellido.ReadOnly = true;
+            Apellido.Resizable = DataGridViewTriState.False;
+            Apellido.Width = 170;
             // 
             // Email
             // 
             Email.HeaderText = "Email";
             Email.Name = "Email";
-            Email.Width = 160;
+            Email.ReadOnly = true;
+            Email.Resizable = DataGridViewTriState.False;
+            Email.Width = 230;
             // 
             // Password
             // 
             Password.HeaderText = "Password";
             Password.Name = "Password";
-            Password.Width = 160;
+            Password.ReadOnly = true;
+            Password.Resizable = DataGridViewTriState.False;
+            Password.Width = 200;
             // 
             // Dni
             // 
             Dni.HeaderText = "Dni";
             Dni.Name = "Dni";
+            Dni.ReadOnly = true;
+            Dni.Resizable = DataGridViewTriState.False;
+            Dni.Width = 160;
             // 
             // btn_add
             // 
-            btn_add.BackColor = Color.FromArgb(128, 255, 255);
-            btn_add.FlatAppearance.BorderSize = 0;
-            btn_add.FlatStyle = FlatStyle.Flat;
-            btn_add.Location = new Point(814, 130);
+            btn_add.Location = new Point(936, 101);
             btn_add.Name = "btn_add";
-            btn_add.Size = new Size(75, 23);
-            btn_add.TabIndex = 7;
-            btn_add.Text = "Add";
-            btn_add.UseVisualStyleBackColor = false;
+            btn_add.Size = new Size(26, 26);
+            btn_add.TabIndex = 11;
+            btn_add.Click += btn_add_Click;
             // 
-            // btn_modificar
+            // btn_editar
             // 
-            btn_modificar.BackColor = Color.FromArgb(128, 255, 255);
-            btn_modificar.FlatAppearance.BorderSize = 0;
-            btn_modificar.FlatStyle = FlatStyle.Flat;
-            btn_modificar.Location = new Point(814, 159);
-            btn_modificar.Name = "btn_modificar";
-            btn_modificar.Size = new Size(75, 23);
-            btn_modificar.TabIndex = 8;
-            btn_modificar.Text = "Mod";
-            btn_modificar.UseVisualStyleBackColor = false;
+            btn_editar.Location = new Point(904, 101);
+            btn_editar.Name = "btn_editar";
+            btn_editar.Size = new Size(26, 26);
+            btn_editar.TabIndex = 12;
             // 
-            // btn_delete
+            // btn_borrar
             // 
-            btn_delete.BackColor = Color.FromArgb(128, 255, 255);
-            btn_delete.FlatAppearance.BorderSize = 0;
-            btn_delete.FlatStyle = FlatStyle.Flat;
-            btn_delete.Location = new Point(814, 188);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(75, 23);
-            btn_delete.TabIndex = 9;
-            btn_delete.Text = "Del";
-            btn_delete.UseVisualStyleBackColor = false;
+            btn_borrar.Location = new Point(872, 101);
+            btn_borrar.Name = "btn_borrar";
+            btn_borrar.Size = new Size(26, 26);
+            btn_borrar.TabIndex = 13;
+            btn_borrar.Click += btn_borrar_Click;
             // 
             // FrmAdministradores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(895, 450);
+            ClientSize = new Size(990, 540);
             ControlBox = false;
-            Controls.Add(btn_delete);
-            Controls.Add(btn_modificar);
+            Controls.Add(btn_borrar);
+            Controls.Add(btn_editar);
             Controls.Add(btn_add);
             Controls.Add(dgv_adminsCargados);
             Controls.Add(lbl_administradores);
@@ -159,9 +203,9 @@
         private DataGridViewTextBoxColumn Apellido;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Password;
-        private Button btn_add;
-        private Button btn_modificar;
-        private Button btn_delete;
         private DataGridViewTextBoxColumn Dni;
+        private Controles.BotonAdd btn_add;
+        private Controles.BotonEditar btn_editar;
+        private Controles.BotonBorrar btn_borrar;
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public abstract class Persona
+    public class Persona
     {
         private string _nombre;
         private string _apellido;
@@ -30,6 +30,16 @@ namespace NotSpotify.Clases
             Apellido = apellido;
             Email = eMail;
             Password = password;
+        }
+
+        public static bool operator ==(Persona P1, Persona P2)
+        {
+            return (P1.Email == P2.Email);
+        }
+
+        public static bool operator !=(Persona P1, Persona P2)
+        {
+            return !(P1 == P2);
         }
 
     }

@@ -57,19 +57,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Apellido.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Email.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Password.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Dni.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbx_imagen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABgWlDQ1BJQ0MgcHJvZmlsZQAAKM+VkUso
+        RFEcxn8uE2lkYZJkcRdYUUKy1BApSmOU18K9d15q7jXdO7KxVLbKwmPjtbCxZmthq5TyKNnaWBEb6fqf
+        O1MzqVFOnc6v75zv65zvgHaYtWyvpgdsJ+/GxqL67Ny8XvtCCI1mwjQblpebnB6NU3F83lGl1ttulcX/
+        RkMi6VlQpQsPWTk3L7wkPLCWzyneFY5YGSMhfCbc5coFhR+Ubhb4VXE6YE1lRtx4bFg4Iqyny9gsYyvj
+        2sL9wu0J25F8bbbACcXriu3sqlW8p3phOOnMTCtdZhtjjDPJFDomqyyTJU+3rI4oHjHZj1bwtwb+KXGZ
+        4lrGEscIK9gYgR/1B7+79VJ9vYWkcBRCz77/3gG12/C95ftfR77/fQzVT3DplPwrhzD4IfpWSWs/gMYN
+        OL8qaeYOXGxCy2POcI1AqpappVLwdirfNAdNN1C/UOituM/JPcSlq4lr2NuHzrRkL1Z4d115b3+eCfoj
+        +gMvLHKMmJCbCgAAAAlwSFlzAAAOwAAADsABataJCQAAAAd0SU1FB+cFAhYPIXYmFTIAAACYSURBVEhL
+        5ZNRCoAgEET97UJdtFNVx+kAtRMYIuZbqSDqwUCDO6MihV8wm9YTae0yt28wmkplHimLTKZS2CNl34FO
+        0nKa1vnjyhE9Zlqg7/SB83kkD7R6hArII1RAHqEC8ggVkEeogDxCBeQRKiCP5IHHfzSieYPFpEC/uzqa
+        0awybgZTPJVXyrjpTArEm9SkGc0q8zlC2ACiX5/bCuJLdwAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using NotSpotify.Clases;
+using NotSpotify.Clases.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,22 +13,58 @@ namespace NotSpotify.Utilidades
 {
     public class AdministradorABM
     {
-
-        static public void CargarUsuario(string nombre, string apellido, string eMail, string password)
+        static public bool BorrarPersonaDeLista(Persona unaPersona)
         {
-            Usuario unUsuario = new Usuario(nombre,apellido,eMail,password);
-            VerificadorDeInicio.UsuariosCargados.Insert(0, unUsuario);
+            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
+            {
+                if (persona == unaPersona)
+                {
+                    return VerificadorDeInicio.PersonasCargadas.Remove(persona);                
+                }
+            }
+            return false; 
         }
 
-        public static bool VerificarDatosPersona(string nombre, string apellido, string eMail, string password)
+        public static bool CargarPersonaEnLista<T>(string[] datos) where T : Persona, ICargable, new()
         {
-            if (VerificadorDeInicio.VerificarExistePersona(eMail, password) == EnumOpcionSesion.noExiste
-                && IsValidEmail(eMail) && VerificarAlphabetico(nombre) && VerificarAlphabetico(apellido) && !string.IsNullOrWhiteSpace(password))
+            T unaPersona = new T();
+            unaPersona.CargarDatosDesdeArray(datos);
+
+            if (VerificarDatosPersona(unaPersona))
             {
+                VerificadorDeInicio.PersonasCargadas.Insert(0, unaPersona);
                 return true;
             }
 
             return false;
+        }
+
+        public static bool VerificarDatosPersona(Persona unaPersona)
+        {
+            if (VerificarEmailLibre(unaPersona.Email) && IsValidEmail(unaPersona.Email) && VerificarAlphabetico(unaPersona.Nombre) && VerificarAlphabetico(unaPersona.Apellido) && !string.IsNullOrWhiteSpace(unaPersona.Password))
+            {
+                if (unaPersona is Administrador && string.IsNullOrWhiteSpace(((Administrador)unaPersona).Dni))
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool VerificarEmailLibre(string eMail)
+        {
+            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas) 
+            {
+                if(persona.Email == eMail)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public static bool IsValidEmail(string email)

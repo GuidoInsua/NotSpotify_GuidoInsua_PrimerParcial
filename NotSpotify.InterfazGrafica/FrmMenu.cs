@@ -20,10 +20,6 @@ namespace NotSpotify.InterfazGrafica
             InitializeComponent();
         }
 
-        private void FrmMenu_Load(object sender, EventArgs e)
-        {
-        }
-
         private void panelMovimiento2_Load(object sender, EventArgs e)
         {
             panelMovimiento2.EstablecerPadre(this);
@@ -50,22 +46,22 @@ namespace NotSpotify.InterfazGrafica
 
         private void ManejadorForms(string form)
         {
-            if (form == "Home")
+            switch (form) 
             {
-                libraryForm.Hide();
-                homeForm.TopLevel = false;
-                pnl_menuFormChanger.Controls.Add(homeForm);
-                homeForm.Dock = DockStyle.Fill;
-                homeForm.Show();
-            }
-
-            if (form == "Library")
-            {
-                homeForm.Hide();
-                libraryForm.TopLevel = false;
-                pnl_menuFormChanger.Controls.Add(libraryForm);
-                libraryForm.Dock = DockStyle.Fill;
-                libraryForm.Show();
+                case "Home":
+                    libraryForm.Hide();
+                    homeForm.TopLevel = false;
+                    pnl_menuFormChanger.Controls.Add(homeForm);
+                    homeForm.Dock = DockStyle.Fill;
+                    homeForm.Show();
+                    break;
+                case "Library":
+                    homeForm.Hide();
+                    libraryForm.TopLevel = false;
+                    pnl_menuFormChanger.Controls.Add(libraryForm);
+                    libraryForm.Dock = DockStyle.Fill;
+                    libraryForm.Show();
+                    break;
             }
         }
 

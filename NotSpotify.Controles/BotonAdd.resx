@@ -57,19 +57,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="Nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Apellido.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Email.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Password.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Dni.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbx_imagen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABgWlDQ1BJQ0MgcHJvZmlsZQAAKM+VkUso
+        RFEcxn9zEYksTBIWd4GVKSFZaogUpTHKa+HeOw9q7jXdO7KxVLbKwmPjtbCxZmthq5TyKNnaWBEb6fqf
+        O1MzqVFOnc6v75zv65zvgHaYsWyvshtsJ+fGRqP6zOycXv1CFRpNtFJvWF52YmokTtnxeUdIrbcRlcX/
+        Rn0i6VkQ0oUHraybE14U7l/LZRXvCoetJSMhfCbc5coFhR+Ubub5VXE6YE1lht14bEg4LKynS9gsYWvJ
+        tYX7hNsTtiP52kyeE4rXFduZVatwT/XCuqQzPaV0mW2MMsYEk+iYrLJMhhwRWR1RPGKyHy3jbwn8k+Iy
+        xbWMJY5hVrAxAj/qD35366V6e/JJdVGoevb99w6o3obvLd//OvL972OoeIJLp+hfOYSBD9G3ilr7ATRs
+        wPlVUTN34GITmh+zhmsEUoVMLZWCt1P5pllovIHa+XxvhX1O7iEuXY1fw94+dKYle6HMu2tKe/vzTNAf
+        0R8+OHKS6GWyQwAAAAlwSFlzAAAOwAAADsABataJCQAAAAd0SU1FB+cFAhYbMUU/0gMAAABASURBVEhL
+        YxgF1AanoZhm4D8U0wyMWkAQjFoATuMwQ8jFePMJzS0gBGCG0AyMWkAQjFpAEIDSOEXpfBSgAQYGAE7S
+        Qh3urBxqAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

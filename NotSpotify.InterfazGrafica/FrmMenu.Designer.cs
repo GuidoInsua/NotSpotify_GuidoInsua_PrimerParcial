@@ -198,7 +198,6 @@
             Controls.Add(panelMovimiento2);
             Name = "FrmMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += FrmMenu_Load;
             pnl_menuBarraIzquierda.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbx_menuImagenCancion).EndInit();
             pnl_menuBarraInferior.ResumeLayout(false);

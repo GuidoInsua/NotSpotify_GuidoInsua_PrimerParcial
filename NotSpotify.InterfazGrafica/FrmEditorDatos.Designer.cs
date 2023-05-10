@@ -1,6 +1,6 @@
 ﻿namespace NotSpotify.InterfazGrafica
 {
-    partial class FrmAdmin
+    partial class FrmEditorDatos
     {
         /// <summary>
         /// Required designer variable.
@@ -43,7 +43,7 @@
             // 
             btn_maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_maximizar.BackColor = Color.Transparent;
-            btn_maximizar.Location = new Point(955, 0);
+            btn_maximizar.Location = new Point(999, 0);
             btn_maximizar.Name = "btn_maximizar";
             btn_maximizar.Size = new Size(21, 21);
             btn_maximizar.TabIndex = 2;
@@ -54,7 +54,7 @@
             btn_cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_cerrar.BackColor = Color.Transparent;
             btn_cerrar.BackgroundImageLayout = ImageLayout.Center;
-            btn_cerrar.Location = new Point(979, 0);
+            btn_cerrar.Location = new Point(1023, 0);
             btn_cerrar.Name = "btn_cerrar";
             btn_cerrar.Size = new Size(21, 21);
             btn_cerrar.TabIndex = 1;
@@ -65,7 +65,7 @@
             pnl_movimientoTopBar.Dock = DockStyle.Top;
             pnl_movimientoTopBar.Location = new Point(0, 0);
             pnl_movimientoTopBar.Name = "pnl_movimientoTopBar";
-            pnl_movimientoTopBar.Size = new Size(1003, 21);
+            pnl_movimientoTopBar.Size = new Size(1047, 21);
             pnl_movimientoTopBar.TabIndex = 0;
             pnl_movimientoTopBar.Load += pnl_movimientoTopBar_Load;
             // 
@@ -75,7 +75,7 @@
             pnl_FrmChanger.Dock = DockStyle.Fill;
             pnl_FrmChanger.Location = new Point(0, 0);
             pnl_FrmChanger.Name = "pnl_FrmChanger";
-            pnl_FrmChanger.Size = new Size(1003, 449);
+            pnl_FrmChanger.Size = new Size(1047, 564);
             pnl_FrmChanger.TabIndex = 6;
             // 
             // btn_usuarios
@@ -104,7 +104,7 @@
             pnl_topBarrr.Dock = DockStyle.Top;
             pnl_topBarrr.Location = new Point(0, 0);
             pnl_topBarrr.Name = "pnl_topBarrr";
-            pnl_topBarrr.Size = new Size(1003, 72);
+            pnl_topBarrr.Size = new Size(1047, 72);
             pnl_topBarrr.TabIndex = 8;
             // 
             // btn_canciones
@@ -134,16 +134,17 @@
             btn_admins.UseVisualStyleBackColor = false;
             btn_admins.Click += btn_admins_Click;
             // 
-            // FrmAdmin
+            // FrmEditorDatos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1003, 449);
+            ClientSize = new Size(1047, 564);
             ControlBox = false;
             Controls.Add(pnl_topBarrr);
             Controls.Add(pnl_FrmChanger);
             IsMdiContainer = true;
-            Name = "FrmAdmin";
+            Name = "FrmEditorDatos";
+            Load += FrmEditorDatos_Load;
             pnl_topBarrr.ResumeLayout(false);
             ResumeLayout(false);
         }
