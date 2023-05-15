@@ -31,7 +31,7 @@ namespace NotSpotify.InterfazGrafica
 
             while (frmPopUp.accepto)
             {
-                string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni};
+                string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni };
 
                 if (AdministradorABM.CargarPersonaEnLista<Administrador>(datos))
                 {
@@ -81,16 +81,67 @@ namespace NotSpotify.InterfazGrafica
                 string password = dgv_adminsCargados.SelectedRows[0].Cells[3].Value.ToString();
                 string dni = dgv_adminsCargados.SelectedRows[0].Cells[4].Value.ToString();
 
-                MessageBox.Show($" {nombre} \n {apellido} \n {eMail} \n {password} \n {dni}");
-
                 Administrador admin = new Administrador(nombre, apellido, eMail, password, dni);
 
-                if (AdministradorABM.BorrarPersonaDeLista(admin))
+                DialogResult dialogResult = MessageBox.Show($"Esta seguro que desea borrar a: \n\n {nombre} \n {eMail}", "", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes) 
                 {
-                    MessageBox.Show("ok");
+                    if (AdministradorABM.BorrarPersonaDeLista(admin))
+                    {
+                        MessageBox.Show($"Administrador eliminado");
+                    }
                 }
 
                 actualizarDataGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Obj null");
+            }
+        }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombre = dgv_adminsCargados.SelectedRows[0].Cells[0].Value.ToString();
+                string apellido = dgv_adminsCargados.SelectedRows[0].Cells[1].Value.ToString();
+                string eMail = dgv_adminsCargados.SelectedRows[0].Cells[2].Value.ToString();
+                string password = dgv_adminsCargados.SelectedRows[0].Cells[3].Value.ToString();
+                string dni = dgv_adminsCargados.SelectedRows[0].Cells[4].Value.ToString();
+
+                Administrador admin = new Administrador(nombre, apellido, eMail, password, dni);
+
+                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esAdmin);
+
+                frmPopUp.titulo = "Editar";
+
+                frmPopUp.nombre = nombre;
+                frmPopUp.apellido = apellido;
+                frmPopUp.eMail = eMail; 
+                frmPopUp.password = password;
+                frmPopUp.dni = dni;
+
+                frmPopUp.ShowDialog();
+
+                while (frmPopUp.accepto)
+                {
+                    string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni };
+
+                    if (AdministradorABM.ModificarPersonaEnLista<Administrador>(admin,datos))
+                    {
+                        MessageBox.Show("Administrador actualizado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmPopUp.accepto = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Datos no validos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        frmPopUp.ShowDialog();
+                    }
+                }
+
+                actualizarDataGrid();
+                
             }
             catch (Exception ex)
             {

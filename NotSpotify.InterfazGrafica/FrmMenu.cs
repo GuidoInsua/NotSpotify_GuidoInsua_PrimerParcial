@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
 {
@@ -14,10 +15,22 @@ namespace NotSpotify.InterfazGrafica
     {
         FrmHome homeForm = new FrmHome();
         FrmLibrary libraryForm = new FrmLibrary();
+        private EnumOpcionSesion _tipoDeUsuarioAutenticado;
 
-        public FrmMenu()
+        public FrmMenu(EnumOpcionSesion tipoUsuario)
         {
             InitializeComponent();
+            _tipoDeUsuarioAutenticado = tipoUsuario;
+        }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+            if (_tipoDeUsuarioAutenticado == EnumOpcionSesion.esAdmin)
+            {
+                btn_admin.Visible = true;
+            }
+
+            ManejadorForms("Home");
         }
 
         private void panelMovimiento2_Load(object sender, EventArgs e)
@@ -46,7 +59,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void ManejadorForms(string form)
         {
-            switch (form) 
+            switch (form)
             {
                 case "Home":
                     libraryForm.Hide();
@@ -75,6 +88,17 @@ namespace NotSpotify.InterfazGrafica
             {
                 WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void btn_admin_Click(object sender, EventArgs e)
+        {
+            FrmEditorDatos frmEditorDatos = new FrmEditorDatos();
+            frmEditorDatos.ShowDialog();
+        }
+
+        private void botonMinimizar1_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -163,6 +163,7 @@
             btn_editar.Name = "btn_editar";
             btn_editar.Size = new Size(26, 26);
             btn_editar.TabIndex = 10;
+            btn_editar.Click += btn_editar_Click;
             // 
             // FrmUsuarios
             // 

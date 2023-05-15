@@ -30,18 +30,38 @@ namespace NotSpotify.Utilidades
             T unaPersona = new T();
             unaPersona.CargarDatosDesdeArray(datos);
 
-            if (VerificarDatosPersona(unaPersona))
+            if (VerificarDatosPersona(unaPersona) && VerificarEmailLibre(unaPersona.Email))
             {
                 VerificadorDeInicio.PersonasCargadas.Insert(0, unaPersona);
                 return true;
             }
+            return false;
+        }
 
+        public static bool ModificarPersonaEnLista<T>(Persona unaPersona, string[] datos) where T : Persona, ICargable, new()
+        {
+            T personaModificada = new T();
+            personaModificada.CargarDatosDesdeArray(datos);
+
+            if(!VerificarDatosPersona(personaModificada))
+            {
+                return false;
+            }
+
+            for (int i = 0; i < VerificadorDeInicio.PersonasCargadas.Count; i++)
+            {
+                if (VerificadorDeInicio.PersonasCargadas[i] == unaPersona)
+                {
+                    VerificadorDeInicio.PersonasCargadas[i] = personaModificada;
+                    return true;
+                }
+            }
             return false;
         }
 
         public static bool VerificarDatosPersona(Persona unaPersona)
         {
-            if (VerificarEmailLibre(unaPersona.Email) && IsValidEmail(unaPersona.Email) && VerificarAlphabetico(unaPersona.Nombre) && VerificarAlphabetico(unaPersona.Apellido) && !string.IsNullOrWhiteSpace(unaPersona.Password))
+            if (IsValidEmail(unaPersona.Email) && VerificarAlphabetico(unaPersona.Nombre) && VerificarAlphabetico(unaPersona.Apellido) && !string.IsNullOrWhiteSpace(unaPersona.Password))
             {
                 if (unaPersona is Administrador && string.IsNullOrWhiteSpace(((Administrador)unaPersona).Dni))
                 {
@@ -50,7 +70,6 @@ namespace NotSpotify.Utilidades
 
                 return true;
             }
-
             return false;
         }
 
@@ -63,7 +82,6 @@ namespace NotSpotify.Utilidades
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -119,7 +137,6 @@ namespace NotSpotify.Utilidades
             {
                 return false;
             }
-
             return true;
         }
     }

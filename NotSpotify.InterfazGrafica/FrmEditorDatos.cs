@@ -59,7 +59,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void ManejadorForms(string form)
         {
-            switch (form) 
+            switch (form)
             {
                 case "Usuarios":
                     administradoresForm.Hide();
@@ -76,6 +76,11 @@ namespace NotSpotify.InterfazGrafica
                     administradoresForm.Show();
                     break;
             }
+        }
+
+        private void botonMinimizar1_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

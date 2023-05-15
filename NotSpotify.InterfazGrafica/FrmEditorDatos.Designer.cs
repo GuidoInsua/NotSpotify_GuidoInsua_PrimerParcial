@@ -34,6 +34,7 @@
             pnl_FrmChanger = new Panel();
             btn_usuarios = new Button();
             pnl_topBarrr = new Panel();
+            botonMinimizar1 = new Controles.BotonMinimizar();
             btn_canciones = new Button();
             btn_admins = new Button();
             pnl_topBarrr.SuspendLayout();
@@ -95,6 +96,7 @@
             // pnl_topBarrr
             // 
             pnl_topBarrr.BackColor = Color.Black;
+            pnl_topBarrr.Controls.Add(botonMinimizar1);
             pnl_topBarrr.Controls.Add(btn_maximizar);
             pnl_topBarrr.Controls.Add(btn_cerrar);
             pnl_topBarrr.Controls.Add(btn_canciones);
@@ -106,6 +108,16 @@
             pnl_topBarrr.Name = "pnl_topBarrr";
             pnl_topBarrr.Size = new Size(1047, 72);
             pnl_topBarrr.TabIndex = 8;
+            // 
+            // botonMinimizar1
+            // 
+            botonMinimizar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            botonMinimizar1.BackColor = Color.Transparent;
+            botonMinimizar1.Location = new Point(972, 0);
+            botonMinimizar1.Name = "botonMinimizar1";
+            botonMinimizar1.Size = new Size(21, 21);
+            botonMinimizar1.TabIndex = 4;
+            botonMinimizar1.Click += botonMinimizar1_Click;
             // 
             // btn_canciones
             // 
@@ -158,5 +170,6 @@
         private Panel pnl_topBarrr;
         private Button btn_canciones;
         private Button btn_admins;
+        private Controles.BotonMinimizar botonMinimizar1;
     }
 }

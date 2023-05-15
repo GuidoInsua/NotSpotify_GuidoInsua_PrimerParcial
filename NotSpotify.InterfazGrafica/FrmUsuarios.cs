@@ -31,7 +31,7 @@ namespace NotSpotify.InterfazGrafica
 
             while (frmPopUp.accepto)
             {
-                string[] datos = {frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password};
+                string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password };
 
                 if (AdministradorABM.CargarPersonaEnLista<Usuario>(datos))
                 {
@@ -79,16 +79,65 @@ namespace NotSpotify.InterfazGrafica
                 string eMail = dgv_usuariosCargados.SelectedRows[0].Cells[2].Value.ToString();
                 string password = dgv_usuariosCargados.SelectedRows[0].Cells[3].Value.ToString();
 
-                MessageBox.Show($" {nombre} \n {apellido} \n {eMail} \n {password}");
-
                 Usuario usuario = new Usuario(nombre, apellido, eMail, password);
 
-                if (AdministradorABM.BorrarPersonaDeLista(usuario))
+                DialogResult dialogResult = MessageBox.Show($"Esta seguro que desea borrar a: \n\n {nombre} \n {eMail}", "", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("ok");
+                    if (AdministradorABM.BorrarPersonaDeLista(usuario))
+                    {
+                        MessageBox.Show($"Usuario eliminado");
+                    }
                 }
 
                 actualizarDataGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Obj null");
+            }
+        }
+
+        private void btn_editar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombre = dgv_usuariosCargados.SelectedRows[0].Cells[0].Value.ToString();
+                string apellido = dgv_usuariosCargados.SelectedRows[0].Cells[1].Value.ToString();
+                string eMail = dgv_usuariosCargados.SelectedRows[0].Cells[2].Value.ToString();
+                string password = dgv_usuariosCargados.SelectedRows[0].Cells[3].Value.ToString();
+
+                Usuario usuario = new Usuario(nombre, apellido, eMail, password);
+
+                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esUsuario);
+
+                frmPopUp.titulo = "Editar";
+
+                frmPopUp.nombre = nombre;
+                frmPopUp.apellido = apellido;
+                frmPopUp.eMail = eMail;
+                frmPopUp.password = password;
+
+                frmPopUp.ShowDialog();
+
+                while (frmPopUp.accepto)
+                {
+                    string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password};
+
+                    if (AdministradorABM.ModificarPersonaEnLista<Usuario>(usuario, datos))
+                    {
+                        MessageBox.Show("Usuario actualizado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        frmPopUp.accepto = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Datos no validos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        frmPopUp.ShowDialog();
+                    }
+                }
+
+                actualizarDataGrid();
+
             }
             catch (Exception ex)
             {

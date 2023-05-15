@@ -24,16 +24,12 @@ namespace NotSpotify.InterfazGrafica
         public string dni;
         public EnumOpcionSesion tipoPersona;
         public bool accepto;
+        public string titulo = "Agregar";
 
         public FrmPopUp(EnumOpcionSesion tipo)
         {
             InitializeComponent();
             tipoPersona = tipo;
-            nombre = string.Empty;
-            apellido = string.Empty;
-            eMail = string.Empty;
-            password = string.Empty;
-            dni = string.Empty;
             accepto = false;
         }
 
@@ -61,6 +57,14 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmPopUp_Load(object sender, EventArgs e)
         {
+            tbx_nombre.Text = nombre;
+            tbx_apellido.Text = apellido;
+            tbx_eMail.Text = eMail;
+            tbx_password.Text = password;
+            tbx_dni.Text = dni;
+
+            lbl_titulo.Text = titulo;
+
             if (tipoPersona == EnumOpcionSesion.esAdmin)
             {
                 lbl_dni.Visible = true;
