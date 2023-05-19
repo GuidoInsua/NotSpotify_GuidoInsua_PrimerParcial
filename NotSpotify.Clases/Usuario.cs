@@ -40,5 +40,17 @@ namespace NotSpotify.Clases
         {
             return !(U1 == U2);
         }
+
+        //public static explicit operator Administrador(Usuario unUsuario)
+        //{
+        //    Administrador admin = new Administrador();
+
+        //    admin.Nombre = unUsuario.Nombre;
+        //    admin.Apellido = unUsuario.Apellido;
+        //    admin.Email = unUsuario.Email;
+        //    admin.Password = unUsuario.Password;
+
+        //    return admin;
+        //}
     }
 }

@@ -33,6 +33,19 @@ namespace NotSpotify.InterfazGrafica
             accepto = false;
         }
 
+        public FrmPopUp(EnumOpcionSesion tipo,string nombre, string apellido, string eMail, string password) : this(tipo)
+        {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.eMail = eMail;
+            this.password = password;
+        }
+
+        public FrmPopUp(EnumOpcionSesion tipo, string nombre, string apellido, string eMail, string password, string dni) : this(tipo, nombre, apellido, eMail, password)
+        {
+            this.dni = dni;
+        }
+
         private void btn_acceptar_Click(object sender, EventArgs e)
         {
             nombre = tbx_nombre.Text;

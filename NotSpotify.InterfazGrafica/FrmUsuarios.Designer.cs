@@ -41,6 +41,7 @@
             btn_add = new Controles.BotonAdd();
             btn_borrar = new Controles.BotonBorrar();
             btn_editar = new Controles.BotonEditar();
+            btn_ascender = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_usuariosCargados).BeginInit();
             SuspendLayout();
             // 
@@ -165,6 +166,20 @@
             btn_editar.TabIndex = 10;
             btn_editar.Click += btn_editar_Click;
             // 
+            // btn_ascender
+            // 
+            btn_ascender.BackColor = Color.Cyan;
+            btn_ascender.FlatAppearance.BorderSize = 0;
+            btn_ascender.FlatStyle = FlatStyle.Flat;
+            btn_ascender.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_ascender.Location = new Point(681, 91);
+            btn_ascender.Name = "btn_ascender";
+            btn_ascender.Size = new Size(26, 26);
+            btn_ascender.TabIndex = 15;
+            btn_ascender.Text = "^";
+            btn_ascender.UseVisualStyleBackColor = false;
+            btn_ascender.Click += btn_ascender_Click;
+            // 
             // FrmUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -172,6 +187,7 @@
             BackColor = Color.Black;
             ClientSize = new Size(1009, 595);
             ControlBox = false;
+            Controls.Add(btn_ascender);
             Controls.Add(btn_editar);
             Controls.Add(btn_borrar);
             Controls.Add(btn_add);
@@ -198,5 +214,6 @@
         private Controles.BotonAdd btn_add;
         private Controles.BotonBorrar btn_borrar;
         private Controles.BotonEditar btn_editar;
+        private Button btn_ascender;
     }
 }

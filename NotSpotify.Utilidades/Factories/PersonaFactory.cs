@@ -16,10 +16,10 @@ namespace NotSpotify.Clases.Factories
             switch (fila.LastOrDefault())
             {
                 case "Administrador":
-                    AdministradorABM.CargarPersonaEnLista<Administrador>(fila);
+                    AdministradorABM.AgregarPersonaEnLista<Administrador>(fila);
                     break;
                 case "Usuario":
-                    AdministradorABM.CargarPersonaEnLista<Usuario>(fila);
+                    AdministradorABM.AgregarPersonaEnLista<Usuario>(fila);
                     break;
                 default:
                     throw new ArgumentException("Error");

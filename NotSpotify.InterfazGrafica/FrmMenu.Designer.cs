@@ -146,12 +146,13 @@
             // 
             // button1
             // 
-            button1.Location = new Point(311, 6);
+            button1.Location = new Point(316, 6);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 1;
             button1.Text = "Play";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // trackBar1
             // 

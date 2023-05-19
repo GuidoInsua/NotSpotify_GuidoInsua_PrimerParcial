@@ -13,19 +13,7 @@ namespace NotSpotify.Utilidades
 {
     public class AdministradorABM
     {
-        static public bool BorrarPersonaDeLista(Persona unaPersona)
-        {
-            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
-            {
-                if (persona == unaPersona)
-                {
-                    return VerificadorDeInicio.PersonasCargadas.Remove(persona);                
-                }
-            }
-            return false; 
-        }
-
-        public static bool CargarPersonaEnLista<T>(string[] datos) where T : Persona, ICargable, new()
+        public static bool AgregarPersonaEnLista<T>(string[] datos) where T : Persona, ICargable, new()
         {
             T unaPersona = new T();
             unaPersona.CargarDatosDesdeArray(datos);
@@ -38,7 +26,19 @@ namespace NotSpotify.Utilidades
             return false;
         }
 
-        public static bool ModificarPersonaEnLista<T>(Persona unaPersona, string[] datos) where T : Persona, ICargable, new()
+        static public bool BorrarPersonaDeLista(Persona unaPersona)
+        {
+            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
+            {
+                if (persona == unaPersona)
+                {
+                    return VerificadorDeInicio.PersonasCargadas.Remove(persona);                
+                }
+            }
+            return false; 
+        }
+
+        public static bool ModificarPersonaEnLista<T>(T unaPersona, string[] datos) where T : Persona, ICargable, new()
         {
             T personaModificada = new T();
             personaModificada.CargarDatosDesdeArray(datos);
@@ -138,6 +138,33 @@ namespace NotSpotify.Utilidades
                 return false;
             }
             return true;
+        }
+
+        public static bool ConveritAdminEnUsuario(Administrador unAdmin)
+        {          
+            if (BorrarPersonaDeLista(unAdmin))
+            {
+                string[] datos = { unAdmin.Nombre, unAdmin.Apellido, unAdmin.Email, unAdmin.Password };
+                AgregarPersonaEnLista<Usuario>(datos);
+                return true;
+            }
+            
+            return false;
+        }
+
+        public static bool ConveritUsuarioEnAdmin(Usuario unUsuario, string dni)
+        {
+            if (!string.IsNullOrWhiteSpace(dni))
+            {
+                if (BorrarPersonaDeLista(unUsuario))
+                {
+                    string[] datos = { unUsuario.Nombre, unUsuario.Apellido, unUsuario.Email, unUsuario.Password, dni };
+                    AgregarPersonaEnLista<Administrador>(datos);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

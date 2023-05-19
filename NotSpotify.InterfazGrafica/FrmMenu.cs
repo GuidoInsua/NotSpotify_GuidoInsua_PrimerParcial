@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace NotSpotify.InterfazGrafica
         FrmHome homeForm = new FrmHome();
         FrmLibrary libraryForm = new FrmLibrary();
         private EnumOpcionSesion _tipoDeUsuarioAutenticado;
+        public bool reproduciendo = false;
+        SoundPlayer musicPlayer = new SoundPlayer();
 
         public FrmMenu(EnumOpcionSesion tipoUsuario)
         {
@@ -99,6 +102,21 @@ namespace NotSpotify.InterfazGrafica
         private void botonMinimizar1_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(reproduciendo == false || musicPlayer.SoundLocation != libraryForm.tema)
+            {
+                musicPlayer.SoundLocation = libraryForm.tema;
+                musicPlayer.Play();
+                reproduciendo = true;
+            }
+            else
+            {
+                musicPlayer.Stop();
+                reproduciendo = false;
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmAdministradores_Load(object sender, EventArgs e)
         {
-            actualizarDataGrid();
+            UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace NotSpotify.InterfazGrafica
             {
                 string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni };
 
-                if (AdministradorABM.CargarPersonaEnLista<Administrador>(datos))
+                if (AdministradorABM.AgregarPersonaEnLista<Administrador>(datos))
                 {
                     MessageBox.Show("Administrador Cargado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmPopUp.accepto = false;
@@ -45,58 +45,35 @@ namespace NotSpotify.InterfazGrafica
                 }
             }
 
-            actualizarDataGrid();
-        }
-
-        private void actualizarDataGrid()
-        {
-            dgv_adminsCargados.Rows.Clear();
-            int i = 0;
-
-            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
-            {
-                if (persona is Administrador)
-                {
-                    Administrador admin = (Administrador)persona;
-
-                    dgv_adminsCargados.Rows.Add();
-                    dgv_adminsCargados.Rows[i].Cells[0].Value = admin.Nombre;
-                    dgv_adminsCargados.Rows[i].Cells[1].Value = admin.Apellido;
-                    dgv_adminsCargados.Rows[i].Cells[2].Value = admin.Email;
-                    dgv_adminsCargados.Rows[i].Cells[3].Value = admin.Password;
-                    dgv_adminsCargados.Rows[i].Cells[4].Value = admin.Dni;
-
-                    i++;
-                }
-            }
+            UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
         private void btn_borrar_Click(object sender, EventArgs e)
         {
             try
             {
-                string nombre = dgv_adminsCargados.SelectedRows[0].Cells[0].Value.ToString();
-                string apellido = dgv_adminsCargados.SelectedRows[0].Cells[1].Value.ToString();
-                string eMail = dgv_adminsCargados.SelectedRows[0].Cells[2].Value.ToString();
-                string password = dgv_adminsCargados.SelectedRows[0].Cells[3].Value.ToString();
-                string dni = dgv_adminsCargados.SelectedRows[0].Cells[4].Value.ToString();
+                Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
 
-                Administrador admin = new Administrador(nombre, apellido, eMail, password, dni);
+                FrmInformacion informacionForm = new FrmInformacion(FrmInformacion.modoForm.borrarAdministrador, admin.Nombre, admin.Email);
+                informacionForm.ShowDialog();
 
-                DialogResult dialogResult = MessageBox.Show($"Esta seguro que desea borrar a: \n\n {nombre} \n {eMail}", "", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes) 
+                if (informacionForm.accepto)
                 {
                     if (AdministradorABM.BorrarPersonaDeLista(admin))
                     {
-                        MessageBox.Show($"Administrador eliminado");
+                        MessageBox.Show("Administrador eliminado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
-                actualizarDataGrid();
+                UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Obj null");
+                MessageBox.Show($"Obj null {ex}");
             }
         }
 
@@ -104,31 +81,17 @@ namespace NotSpotify.InterfazGrafica
         {
             try
             {
-                string nombre = dgv_adminsCargados.SelectedRows[0].Cells[0].Value.ToString();
-                string apellido = dgv_adminsCargados.SelectedRows[0].Cells[1].Value.ToString();
-                string eMail = dgv_adminsCargados.SelectedRows[0].Cells[2].Value.ToString();
-                string password = dgv_adminsCargados.SelectedRows[0].Cells[3].Value.ToString();
-                string dni = dgv_adminsCargados.SelectedRows[0].Cells[4].Value.ToString();
+                Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
 
-                Administrador admin = new Administrador(nombre, apellido, eMail, password, dni);
-
-                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esAdmin);
-
+                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esAdmin, admin.Nombre, admin.Apellido, admin.Email, admin.Password, admin.Dni);
                 frmPopUp.titulo = "Editar";
-
-                frmPopUp.nombre = nombre;
-                frmPopUp.apellido = apellido;
-                frmPopUp.eMail = eMail; 
-                frmPopUp.password = password;
-                frmPopUp.dni = dni;
-
                 frmPopUp.ShowDialog();
 
                 while (frmPopUp.accepto)
                 {
                     string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni };
 
-                    if (AdministradorABM.ModificarPersonaEnLista<Administrador>(admin,datos))
+                    if (AdministradorABM.ModificarPersonaEnLista<Administrador>(admin, datos))
                     {
                         MessageBox.Show("Administrador actualizado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         frmPopUp.accepto = false;
@@ -140,12 +103,47 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                actualizarDataGrid();
-                
+                UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Obj null");
+                MessageBox.Show($"Obj null {ex}");
+            }
+        }
+
+        public new void Show()
+        {
+            UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+            base.Show();
+        }
+
+        private void btn_degradar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
+
+                FrmInformacion informacionForm = new FrmInformacion(FrmInformacion.modoForm.degradarAdministrador,admin.Nombre,admin.Email);
+                informacionForm.ShowDialog();
+
+                while (informacionForm.accepto)
+                {
+                    if (AdministradorABM.ConveritAdminEnUsuario(admin))
+                    {
+                        MessageBox.Show("Administrador degradado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        informacionForm.accepto = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Obj null {ex}");
             }
         }
     }

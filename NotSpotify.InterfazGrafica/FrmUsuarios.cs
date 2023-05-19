@@ -21,7 +21,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            actualizarDataGrid();
+            UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace NotSpotify.InterfazGrafica
             {
                 string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password };
 
-                if (AdministradorABM.CargarPersonaEnLista<Usuario>(datos))
+                if (AdministradorABM.AgregarPersonaEnLista<Usuario>(datos))
                 {
                     MessageBox.Show("Usuario Cargado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     frmPopUp.accepto = false;
@@ -45,56 +45,35 @@ namespace NotSpotify.InterfazGrafica
                 }
             }
 
-            actualizarDataGrid();
-        }
-
-        private void actualizarDataGrid()
-        {
-            dgv_usuariosCargados.Rows.Clear();
-            int i = 0;
-
-            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
-            {
-                if (persona is Usuario)
-                {
-                    Usuario usuario = (Usuario)persona;
-
-                    dgv_usuariosCargados.Rows.Add();
-                    dgv_usuariosCargados.Rows[i].Cells[0].Value = usuario.Nombre;
-                    dgv_usuariosCargados.Rows[i].Cells[1].Value = usuario.Apellido;
-                    dgv_usuariosCargados.Rows[i].Cells[2].Value = usuario.Email;
-                    dgv_usuariosCargados.Rows[i].Cells[3].Value = usuario.Password;
-
-                    i++;
-                }
-            }
+            UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
         }
 
         private void btn_borrar_Click(object sender, EventArgs e)
         {
             try
             {
-                string nombre = dgv_usuariosCargados.SelectedRows[0].Cells[0].Value.ToString();
-                string apellido = dgv_usuariosCargados.SelectedRows[0].Cells[1].Value.ToString();
-                string eMail = dgv_usuariosCargados.SelectedRows[0].Cells[2].Value.ToString();
-                string password = dgv_usuariosCargados.SelectedRows[0].Cells[3].Value.ToString();
+                Usuario usuario = UtilidadesForms.ObtenerPersonaDeDataGrid<Usuario>(dgv_usuariosCargados);
 
-                Usuario usuario = new Usuario(nombre, apellido, eMail, password);
+                FrmInformacion informacionForm = new FrmInformacion(FrmInformacion.modoForm.borrarUsuario, usuario.Nombre, usuario.Email);
+                informacionForm.ShowDialog();
 
-                DialogResult dialogResult = MessageBox.Show($"Esta seguro que desea borrar a: \n\n {nombre} \n {eMail}", "", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                if (informacionForm.accepto)
                 {
                     if (AdministradorABM.BorrarPersonaDeLista(usuario))
                     {
-                        MessageBox.Show($"Usuario eliminado");
+                        MessageBox.Show("Usuario eliminado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
-                actualizarDataGrid();
+                UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Obj null");
+                MessageBox.Show($"Obj null {ex}");
             }
         }
 
@@ -102,27 +81,15 @@ namespace NotSpotify.InterfazGrafica
         {
             try
             {
-                string nombre = dgv_usuariosCargados.SelectedRows[0].Cells[0].Value.ToString();
-                string apellido = dgv_usuariosCargados.SelectedRows[0].Cells[1].Value.ToString();
-                string eMail = dgv_usuariosCargados.SelectedRows[0].Cells[2].Value.ToString();
-                string password = dgv_usuariosCargados.SelectedRows[0].Cells[3].Value.ToString();
+                Usuario usuario = UtilidadesForms.ObtenerPersonaDeDataGrid<Usuario>(dgv_usuariosCargados);
 
-                Usuario usuario = new Usuario(nombre, apellido, eMail, password);
-
-                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esUsuario);
-
+                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esUsuario, usuario.Nombre, usuario.Apellido, usuario.Email, usuario.Password);
                 frmPopUp.titulo = "Editar";
-
-                frmPopUp.nombre = nombre;
-                frmPopUp.apellido = apellido;
-                frmPopUp.eMail = eMail;
-                frmPopUp.password = password;
-
                 frmPopUp.ShowDialog();
 
                 while (frmPopUp.accepto)
                 {
-                    string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password};
+                    string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password };
 
                     if (AdministradorABM.ModificarPersonaEnLista<Usuario>(usuario, datos))
                     {
@@ -136,12 +103,49 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                actualizarDataGrid();
-
+                UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Obj null");
+                MessageBox.Show($"Obj null {ex}");
+            }
+        }
+
+        public new void Show()
+        {
+            UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+            base.Show();
+        }
+
+        private void btn_ascender_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Usuario usuario = UtilidadesForms.ObtenerPersonaDeDataGrid<Usuario>(dgv_usuariosCargados);
+                string dni;
+
+                FrmInformacion informacionForm = new FrmInformacion(FrmInformacion.modoForm.ascenderUsuario, usuario.Nombre, usuario.Email);
+                informacionForm.ShowDialog();
+
+                while (informacionForm.accepto)
+                {
+                    if (AdministradorABM.ConveritUsuarioEnAdmin(usuario,informacionForm.dni))
+                    {
+                        MessageBox.Show("Usuario ascendido", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        informacionForm.accepto = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Para ascender al usuario se necesita un Dni valido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        informacionForm.ShowDialog();
+                    }
+                }
+
+                UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Obj null {ex}");
             }
         }
     }
