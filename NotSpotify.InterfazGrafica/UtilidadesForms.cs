@@ -12,6 +12,13 @@ namespace NotSpotify.InterfazGrafica
 {
     public class UtilidadesForms
     {
+        static public Panel panel;
+        static public PlayList unaPlayList;
+
+        static FrmHome homeForm = new FrmHome();
+        static FrmLibrary libraryForm = new FrmLibrary();
+        static FrmUnaPlayList unaPlayListForm = new FrmUnaPlayList();
+
         static public T ObtenerPersonaDeDataGrid<T>(DataGridView dataGrid) where T : Persona, ICargable, new()
         {
             T persona = new T();
@@ -33,7 +40,7 @@ namespace NotSpotify.InterfazGrafica
             return persona;
         }
 
-        static public void actualizarDataGridPersona<T>(DataGridView dataGrid) where T : Persona
+        static public void ActualizarDataGridPersona<T>(DataGridView dataGrid) where T : Persona
         {
             dataGrid.Rows.Clear();
             int i = 0;
@@ -55,6 +62,37 @@ namespace NotSpotify.InterfazGrafica
 
                     i++;
                 }
+            }
+        }
+
+        static public void ManejadorFormsMenu(string form)
+        {
+            switch (form)
+            {
+                case "Home":
+                    libraryForm.Hide();
+                    unaPlayListForm.Hide();
+                    homeForm.TopLevel = false;
+                    panel.Controls.Add(homeForm);
+                    homeForm.Dock = DockStyle.Fill;
+                    homeForm.Show();
+                    break;
+                case "Library":               
+                    homeForm.Hide();
+                    unaPlayListForm.Hide();
+                    libraryForm.TopLevel = false;
+                    panel.Controls.Add(libraryForm);
+                    libraryForm.Dock = DockStyle.Fill;
+                    libraryForm.Show();
+                    break;
+                case "PlayList":
+                    homeForm.Hide();
+                    unaPlayListForm.TopLevel = false;
+                    panel.Controls.Add(unaPlayListForm);
+                    unaPlayListForm.Dock = DockStyle.Fill;
+                    unaPlayListForm.playList = unaPlayList;
+                    unaPlayListForm.Show();
+                    break;
             }
         }
     }

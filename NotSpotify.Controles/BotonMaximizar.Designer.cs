@@ -40,7 +40,7 @@
             imgl_imagenes.ImageStream = (ImageListStreamer)resources.GetObject("imgl_imagenes.ImageStream");
             imgl_imagenes.TransparentColor = Color.Transparent;
             imgl_imagenes.Images.SetKeyName(0, "imgMaximizar.png");
-            imgl_imagenes.Images.SetKeyName(1, "imgMinimizar.png");
+            imgl_imagenes.Images.SetKeyName(1, "imgDesMaximizar.png");
             // 
             // btn_maximizar
             // 
@@ -53,6 +53,7 @@
             btn_maximizar.ImageIndex = 0;
             btn_maximizar.ImageList = imgl_imagenes;
             btn_maximizar.Location = new Point(0, 0);
+            btn_maximizar.Margin = new Padding(0);
             btn_maximizar.Name = "btn_maximizar";
             btn_maximizar.Size = new Size(22, 21);
             btn_maximizar.TabIndex = 0;
@@ -64,6 +65,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(btn_maximizar);
+            Margin = new Padding(0);
             Name = "BotonMaximizar";
             Size = new Size(22, 21);
             Click += BotonMaximizar_Click;

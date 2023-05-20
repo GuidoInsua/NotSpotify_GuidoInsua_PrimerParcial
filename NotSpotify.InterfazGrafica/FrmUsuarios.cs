@@ -21,7 +21,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+            UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace NotSpotify.InterfazGrafica
                 }
             }
 
-            UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+            UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
         }
 
         private void btn_borrar_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+                UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+                UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
             }
             catch (Exception ex)
             {
@@ -113,7 +113,7 @@ namespace NotSpotify.InterfazGrafica
 
         public new void Show()
         {
-            UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+            UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
             base.Show();
         }
 
@@ -141,7 +141,7 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                UtilidadesForms.actualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
+                UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
             }
             catch (Exception ex)
             {

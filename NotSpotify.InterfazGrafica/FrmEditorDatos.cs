@@ -31,18 +31,6 @@ namespace NotSpotify.InterfazGrafica
             pnl_movimientoTopBar.EstablecerPadre(this);
         }
 
-        private void btn_maximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -79,7 +67,19 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
-        private void botonMinimizar1_Click(object sender, EventArgs e)
+        private void btn_maximizar_Click_1(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void btn_minimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }

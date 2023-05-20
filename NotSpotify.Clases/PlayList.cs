@@ -33,5 +33,12 @@ namespace NotSpotify.Clases
             Descripccion = descripccion;
             DireccionDeImagen = direccionDeImagen;
         }
+
+        public PlayList(string nombre, string descripccion, string direccionDeImagen)
+        {
+            Nombre = nombre;
+            Descripccion = descripccion;
+            DireccionDeImagen = direccionDeImagen;
+        }
     }
 }

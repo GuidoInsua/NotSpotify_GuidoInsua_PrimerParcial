@@ -21,7 +21,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmAdministradores_Load(object sender, EventArgs e)
         {
-            UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+            UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace NotSpotify.InterfazGrafica
                 }
             }
 
-            UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+            UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
         private void btn_borrar_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+                UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+                UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
             }
             catch (Exception ex)
             {
@@ -113,7 +113,7 @@ namespace NotSpotify.InterfazGrafica
 
         public new void Show()
         {
-            UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+            UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
             base.Show();
         }
 
@@ -139,7 +139,7 @@ namespace NotSpotify.InterfazGrafica
                     }
                 }
 
-                UtilidadesForms.actualizarDataGridPersona<Administrador>(dgv_adminsCargados);
+                UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
             }
             catch (Exception ex)
             {

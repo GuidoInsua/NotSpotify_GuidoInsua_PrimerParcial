@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BotonMinimizar));
             pbx_imagen = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbx_imagen).BeginInit();
             SuspendLayout();
@@ -36,8 +35,9 @@
             // pbx_imagen
             // 
             pbx_imagen.Dock = DockStyle.Fill;
-            pbx_imagen.Image = (Image)resources.GetObject("pbx_imagen.Image");
+            pbx_imagen.Image = Properties.Resources.imgMinimizar;
             pbx_imagen.Location = new Point(0, 0);
+            pbx_imagen.Margin = new Padding(0);
             pbx_imagen.Name = "pbx_imagen";
             pbx_imagen.Size = new Size(21, 21);
             pbx_imagen.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -52,6 +52,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(pbx_imagen);
+            Margin = new Padding(0);
             Name = "BotonMinimizar";
             Size = new Size(21, 21);
             ((System.ComponentModel.ISupportInitialize)pbx_imagen).EndInit();

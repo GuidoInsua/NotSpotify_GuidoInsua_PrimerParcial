@@ -54,6 +54,7 @@
             // pnl_menuBarraIzquierda
             // 
             pnl_menuBarraIzquierda.BackColor = Color.Black;
+            pnl_menuBarraIzquierda.BackgroundImageLayout = ImageLayout.None;
             pnl_menuBarraIzquierda.Controls.Add(btn_admin);
             pnl_menuBarraIzquierda.Controls.Add(btn_menuLibrary);
             pnl_menuBarraIzquierda.Controls.Add(btn_menuHome);
@@ -61,6 +62,7 @@
             pnl_menuBarraIzquierda.Controls.Add(pbx_menuImagenCancion);
             pnl_menuBarraIzquierda.Dock = DockStyle.Left;
             pnl_menuBarraIzquierda.Location = new Point(0, 21);
+            pnl_menuBarraIzquierda.Margin = new Padding(0);
             pnl_menuBarraIzquierda.Name = "pnl_menuBarraIzquierda";
             pnl_menuBarraIzquierda.Size = new Size(162, 610);
             pnl_menuBarraIzquierda.TabIndex = 0;
@@ -111,6 +113,7 @@
             listBox1.ItemHeight = 17;
             listBox1.Items.AddRange(new object[] { "-PlayList 1", "-PlayList 2", "-PlayList 3" });
             listBox1.Location = new Point(0, 247);
+            listBox1.Margin = new Padding(0);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(162, 221);
             listBox1.TabIndex = 3;
@@ -120,6 +123,7 @@
             pbx_menuImagenCancion.Dock = DockStyle.Bottom;
             pbx_menuImagenCancion.Image = (Image)resources.GetObject("pbx_menuImagenCancion.Image");
             pbx_menuImagenCancion.Location = new Point(0, 468);
+            pbx_menuImagenCancion.Margin = new Padding(0);
             pbx_menuImagenCancion.Name = "pbx_menuImagenCancion";
             pbx_menuImagenCancion.Size = new Size(162, 142);
             pbx_menuImagenCancion.TabIndex = 0;
@@ -135,11 +139,12 @@
             // 
             // pnl_menuBarraInferior
             // 
-            pnl_menuBarraInferior.BackColor = Color.FromArgb(64, 64, 64);
+            pnl_menuBarraInferior.BackColor = Color.Black;
             pnl_menuBarraInferior.Controls.Add(button1);
             pnl_menuBarraInferior.Controls.Add(trackBar1);
             pnl_menuBarraInferior.Dock = DockStyle.Bottom;
             pnl_menuBarraInferior.Location = new Point(0, 631);
+            pnl_menuBarraInferior.Margin = new Padding(0);
             pnl_menuBarraInferior.Name = "pnl_menuBarraInferior";
             pnl_menuBarraInferior.Size = new Size(1044, 60);
             pnl_menuBarraInferior.TabIndex = 1;
@@ -164,9 +169,11 @@
             // pnl_menuFormChanger
             // 
             pnl_menuFormChanger.AutoSize = true;
-            pnl_menuFormChanger.BackColor = Color.FromArgb(255, 192, 192);
+            pnl_menuFormChanger.BackColor = Color.Transparent;
+            pnl_menuFormChanger.BackgroundImageLayout = ImageLayout.None;
             pnl_menuFormChanger.Dock = DockStyle.Fill;
             pnl_menuFormChanger.Location = new Point(162, 21);
+            pnl_menuFormChanger.Margin = new Padding(0);
             pnl_menuFormChanger.Name = "pnl_menuFormChanger";
             pnl_menuFormChanger.Size = new Size(882, 610);
             pnl_menuFormChanger.TabIndex = 2;
@@ -176,6 +183,7 @@
             panelMovimiento2.BackColor = Color.Black;
             panelMovimiento2.Dock = DockStyle.Top;
             panelMovimiento2.Location = new Point(0, 0);
+            panelMovimiento2.Margin = new Padding(0);
             panelMovimiento2.Name = "panelMovimiento2";
             panelMovimiento2.Size = new Size(1044, 21);
             panelMovimiento2.TabIndex = 3;
@@ -187,6 +195,7 @@
             botonCerrar1.BackColor = Color.Transparent;
             botonCerrar1.BackgroundImageLayout = ImageLayout.Center;
             botonCerrar1.Location = new Point(1023, 0);
+            botonCerrar1.Margin = new Padding(0);
             botonCerrar1.Name = "botonCerrar1";
             botonCerrar1.Size = new Size(21, 21);
             botonCerrar1.TabIndex = 4;
@@ -196,7 +205,8 @@
             // 
             botonMaximizar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonMaximizar1.BackColor = Color.Transparent;
-            botonMaximizar1.Location = new Point(995, 0);
+            botonMaximizar1.Location = new Point(1001, 0);
+            botonMaximizar1.Margin = new Padding(0);
             botonMaximizar1.Name = "botonMaximizar1";
             botonMaximizar1.Size = new Size(22, 21);
             botonMaximizar1.TabIndex = 5;
@@ -206,7 +216,8 @@
             // 
             botonMinimizar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonMinimizar1.BackColor = Color.Transparent;
-            botonMinimizar1.Location = new Point(968, 0);
+            botonMinimizar1.Location = new Point(980, 0);
+            botonMinimizar1.Margin = new Padding(0);
             botonMinimizar1.Name = "botonMinimizar1";
             botonMinimizar1.Size = new Size(21, 21);
             botonMinimizar1.TabIndex = 6;
@@ -220,8 +231,8 @@
             ClientSize = new Size(1044, 691);
             ControlBox = false;
             Controls.Add(botonMinimizar1);
-            Controls.Add(botonMaximizar1);
             Controls.Add(botonCerrar1);
+            Controls.Add(botonMaximizar1);
             Controls.Add(pnl_menuFormChanger);
             Controls.Add(pnl_menuBarraIzquierda);
             Controls.Add(pnl_menuBarraInferior);

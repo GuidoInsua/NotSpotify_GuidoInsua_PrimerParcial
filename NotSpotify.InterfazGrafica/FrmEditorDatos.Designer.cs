@@ -28,34 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btn_maximizar = new Controles.BotonMaximizar();
             btn_cerrar = new Controles.BotonCerrar();
             pnl_movimientoTopBar = new PanelMovimiento();
             pnl_FrmChanger = new Panel();
             btn_usuarios = new Button();
             pnl_topBarrr = new Panel();
-            botonMinimizar1 = new Controles.BotonMinimizar();
+            btn_minimizar = new Controles.BotonMinimizar();
+            btn_maximizar = new Controles.BotonMaximizar();
             btn_canciones = new Button();
             btn_admins = new Button();
             pnl_topBarrr.SuspendLayout();
             SuspendLayout();
-            // 
-            // btn_maximizar
-            // 
-            btn_maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_maximizar.BackColor = Color.Transparent;
-            btn_maximizar.Location = new Point(999, 0);
-            btn_maximizar.Name = "btn_maximizar";
-            btn_maximizar.Size = new Size(21, 21);
-            btn_maximizar.TabIndex = 2;
-            btn_maximizar.Click += btn_maximizar_Click;
             // 
             // btn_cerrar
             // 
             btn_cerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_cerrar.BackColor = Color.Transparent;
             btn_cerrar.BackgroundImageLayout = ImageLayout.Center;
-            btn_cerrar.Location = new Point(1023, 0);
+            btn_cerrar.Location = new Point(1026, 0);
+            btn_cerrar.Margin = new Padding(0);
             btn_cerrar.Name = "btn_cerrar";
             btn_cerrar.Size = new Size(21, 21);
             btn_cerrar.TabIndex = 1;
@@ -96,10 +87,10 @@
             // pnl_topBarrr
             // 
             pnl_topBarrr.BackColor = Color.Black;
-            pnl_topBarrr.Controls.Add(botonMinimizar1);
+            pnl_topBarrr.Controls.Add(btn_minimizar);
             pnl_topBarrr.Controls.Add(btn_maximizar);
-            pnl_topBarrr.Controls.Add(btn_cerrar);
             pnl_topBarrr.Controls.Add(btn_canciones);
+            pnl_topBarrr.Controls.Add(btn_cerrar);
             pnl_topBarrr.Controls.Add(pnl_movimientoTopBar);
             pnl_topBarrr.Controls.Add(btn_admins);
             pnl_topBarrr.Controls.Add(btn_usuarios);
@@ -109,15 +100,26 @@
             pnl_topBarrr.Size = new Size(1047, 72);
             pnl_topBarrr.TabIndex = 8;
             // 
-            // botonMinimizar1
+            // btn_minimizar
             // 
-            botonMinimizar1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            botonMinimizar1.BackColor = Color.Transparent;
-            botonMinimizar1.Location = new Point(972, 0);
-            botonMinimizar1.Name = "botonMinimizar1";
-            botonMinimizar1.Size = new Size(21, 21);
-            botonMinimizar1.TabIndex = 4;
-            botonMinimizar1.Click += botonMinimizar1_Click;
+            btn_minimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_minimizar.BackColor = Color.Transparent;
+            btn_minimizar.Location = new Point(983, 0);
+            btn_minimizar.Margin = new Padding(0);
+            btn_minimizar.Name = "btn_minimizar";
+            btn_minimizar.Size = new Size(21, 21);
+            btn_minimizar.TabIndex = 4;
+            btn_minimizar.Click += btn_minimizar_Click;
+            // 
+            // btn_maximizar
+            // 
+            btn_maximizar.BackColor = Color.Transparent;
+            btn_maximizar.Location = new Point(1004, 0);
+            btn_maximizar.Margin = new Padding(0);
+            btn_maximizar.Name = "btn_maximizar";
+            btn_maximizar.Size = new Size(22, 21);
+            btn_maximizar.TabIndex = 5;
+            btn_maximizar.Click += btn_maximizar_Click_1;
             // 
             // btn_canciones
             // 
@@ -165,11 +167,11 @@
         private Controles.BotonCerrar btn_cerrar;
         private PanelMovimiento pnl_movimientoTopBar;
         private Panel pnl_FrmChanger;
-        private Controles.BotonMaximizar btn_maximizar;
         private Button btn_usuarios;
         private Panel pnl_topBarrr;
         private Button btn_canciones;
         private Button btn_admins;
-        private Controles.BotonMinimizar botonMinimizar1;
+        private Controles.BotonMinimizar btn_minimizar;
+        private Controles.BotonMaximizar btn_maximizar;
     }
 }

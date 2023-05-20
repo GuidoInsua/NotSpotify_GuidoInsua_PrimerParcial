@@ -25,6 +25,7 @@ namespace NotSpotify.Utilidades
         {
             _personasCargadas = new List<Persona>();
             AdministradorDatos.CargarListaPersonasDesdeArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
+            AdministradorPlayLists.CargarPlayLists();
         }
 
         static public EnumOpcionSesion VerificarTipoDePersona(string eMailIngresado, string passwordIngresada)

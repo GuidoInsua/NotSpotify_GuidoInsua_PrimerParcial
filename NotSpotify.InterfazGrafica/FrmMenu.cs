@@ -14,8 +14,6 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmMenu : Form
     {
-        FrmHome homeForm = new FrmHome();
-        FrmLibrary libraryForm = new FrmLibrary();
         private EnumOpcionSesion _tipoDeUsuarioAutenticado;
         public bool reproduciendo = false;
         SoundPlayer musicPlayer = new SoundPlayer();
@@ -33,7 +31,9 @@ namespace NotSpotify.InterfazGrafica
                 btn_admin.Visible = true;
             }
 
-            ManejadorForms("Home");
+            UtilidadesForms.panel = pnl_menuFormChanger;
+
+            UtilidadesForms.ManejadorFormsMenu("Home");
         }
 
         private void panelMovimiento2_Load(object sender, EventArgs e)
@@ -50,35 +50,35 @@ namespace NotSpotify.InterfazGrafica
         {
             btn_menuLibrary.ApagarBotonLibrary();
 
-            ManejadorForms("Home");
+            UtilidadesForms.ManejadorFormsMenu("Home");
         }
 
         private void btn_menuLibrary_Click(object sender, EventArgs e)
         {
             btn_menuHome.ApagarBotonHome();
 
-            ManejadorForms("Library");
+            UtilidadesForms.ManejadorFormsMenu("Library");
         }
 
         private void ManejadorForms(string form)
         {
-            switch (form)
-            {
-                case "Home":
-                    libraryForm.Hide();
-                    homeForm.TopLevel = false;
-                    pnl_menuFormChanger.Controls.Add(homeForm);
-                    homeForm.Dock = DockStyle.Fill;
-                    homeForm.Show();
-                    break;
-                case "Library":
-                    homeForm.Hide();
-                    libraryForm.TopLevel = false;
-                    pnl_menuFormChanger.Controls.Add(libraryForm);
-                    libraryForm.Dock = DockStyle.Fill;
-                    libraryForm.Show();
-                    break;
-            }
+            //switch (form)
+            //{
+            //    case "Home":
+            //        libraryForm.Hide();
+            //        homeForm.TopLevel = false;
+            //        pnl_menuFormChanger.Controls.Add(homeForm);
+            //        homeForm.Dock = DockStyle.Fill;
+            //        homeForm.Show();
+            //        break;
+            //    case "Library":
+            //        homeForm.Hide();
+            //        libraryForm.TopLevel = false;
+            //        pnl_menuFormChanger.Controls.Add(libraryForm);
+            //        libraryForm.Dock = DockStyle.Fill;
+            //        libraryForm.Show();
+            //        break;
+            //}
         }
 
         private void botonMaximizar1_Click(object sender, EventArgs e)
@@ -106,17 +106,17 @@ namespace NotSpotify.InterfazGrafica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(reproduciendo == false || musicPlayer.SoundLocation != libraryForm.tema)
-            {
-                musicPlayer.SoundLocation = libraryForm.tema;
-                musicPlayer.Play();
-                reproduciendo = true;
-            }
-            else
-            {
-                musicPlayer.Stop();
-                reproduciendo = false;
-            }
+            //if (reproduciendo == false || musicPlayer.SoundLocation != libraryForm.tema)
+            //{
+            //    musicPlayer.SoundLocation = libraryForm.tema;
+            //    musicPlayer.Play();
+            //    reproduciendo = true;
+            //}
+            //else
+            //{
+            //    musicPlayer.Stop();
+            //    reproduciendo = false;
+            //}
         }
     }
 }
