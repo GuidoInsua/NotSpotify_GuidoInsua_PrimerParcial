@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             tbx_loginMail = new TextBox();
             tbx_loginPassword = new TextBox();
             btn_loginAceptar = new Button();
@@ -119,7 +118,7 @@
             // pbx_loginLogo
             // 
             pbx_loginLogo.BackColor = Color.Black;
-            pbx_loginLogo.Image = (Image)resources.GetObject("pbx_loginLogo.Image");
+            pbx_loginLogo.Image = Properties.Resources.NotSpotifyLogo;
             pbx_loginLogo.Location = new Point(0, 0);
             pbx_loginLogo.Name = "pbx_loginLogo";
             pbx_loginLogo.Size = new Size(139, 79);
@@ -141,6 +140,7 @@
             btn_cerrar.BackColor = Color.Transparent;
             btn_cerrar.BackgroundImageLayout = ImageLayout.Center;
             btn_cerrar.Location = new Point(503, 0);
+            btn_cerrar.Margin = new Padding(0);
             btn_cerrar.Name = "btn_cerrar";
             btn_cerrar.Size = new Size(21, 21);
             btn_cerrar.TabIndex = 9;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BotonPlayList));
             pbx_imagen = new PictureBox();
             pnl_backGround = new Panel();
             pbx_play = new PictureBox();
@@ -68,7 +67,7 @@
             // pbx_play
             // 
             pbx_play.BackColor = Color.FromArgb(30, 215, 96);
-            pbx_play.Image = (Image)resources.GetObject("pbx_play.Image");
+            pbx_play.Image = Properties.Resources.imgBotonVerde;
             pbx_play.Location = new Point(97, 99);
             pbx_play.Name = "pbx_play";
             pbx_play.Size = new Size(35, 35);

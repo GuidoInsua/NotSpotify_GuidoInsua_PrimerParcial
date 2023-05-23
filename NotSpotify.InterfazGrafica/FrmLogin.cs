@@ -42,7 +42,7 @@ namespace NotSpotify.InterfazGrafica
                 TipoDeUsuarioAutenticado = VerificadorDeInicio.VerificarTipoDePersona(Email, Password);
                 Close();
             }
-            catch 
+            catch
             {
                 lbl_mensajeError.Text = "ERROR, Ingrese un Usuario valido";
             }

@@ -14,8 +14,8 @@ namespace NotSpotify.InterfazGrafica
     public partial class PanelMovimiento : UserControl
     {
         public bool isDragging = false;
-        public Point startPoint = new Point(0, 0);
-        public Form miForm = new Form();
+        public Point startPoint = new(0, 0);
+        public Form miForm = new();
 
         public PanelMovimiento()
         {

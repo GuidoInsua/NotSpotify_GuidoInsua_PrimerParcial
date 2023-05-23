@@ -34,12 +34,12 @@
             btn_admin = new Button();
             btn_menuLibrary = new Controles.BotonLibrary();
             btn_menuHome = new Controles.BotonHome();
-            listBox1 = new ListBox();
             pbx_menuImagenCancion = new PictureBox();
             imageList1 = new ImageList(components);
             pnl_menuBarraInferior = new Panel();
-            button1 = new Button();
-            trackBar1 = new TrackBar();
+            pbx_anterior = new PictureBox();
+            pbx_siguiente = new PictureBox();
+            btn_play = new Controles.BotonPlay();
             pnl_menuFormChanger = new Panel();
             panelMovimiento2 = new PanelMovimiento();
             botonCerrar1 = new Controles.BotonCerrar();
@@ -48,7 +48,8 @@
             pnl_menuBarraIzquierda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbx_menuImagenCancion).BeginInit();
             pnl_menuBarraInferior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_anterior).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_siguiente).BeginInit();
             SuspendLayout();
             // 
             // pnl_menuBarraIzquierda
@@ -58,7 +59,6 @@
             pnl_menuBarraIzquierda.Controls.Add(btn_admin);
             pnl_menuBarraIzquierda.Controls.Add(btn_menuLibrary);
             pnl_menuBarraIzquierda.Controls.Add(btn_menuHome);
-            pnl_menuBarraIzquierda.Controls.Add(listBox1);
             pnl_menuBarraIzquierda.Controls.Add(pbx_menuImagenCancion);
             pnl_menuBarraIzquierda.Dock = DockStyle.Left;
             pnl_menuBarraIzquierda.Location = new Point(0, 21);
@@ -102,22 +102,6 @@
             btn_menuHome.TabIndex = 4;
             btn_menuHome.Click += btn_menuHome_Click;
             // 
-            // listBox1
-            // 
-            listBox1.BackColor = Color.Black;
-            listBox1.BorderStyle = BorderStyle.None;
-            listBox1.Dock = DockStyle.Bottom;
-            listBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            listBox1.ForeColor = Color.White;
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 17;
-            listBox1.Items.AddRange(new object[] { "-PlayList 1", "-PlayList 2", "-PlayList 3" });
-            listBox1.Location = new Point(0, 247);
-            listBox1.Margin = new Padding(0);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(162, 221);
-            listBox1.TabIndex = 3;
-            // 
             // pbx_menuImagenCancion
             // 
             pbx_menuImagenCancion.Dock = DockStyle.Bottom;
@@ -140,8 +124,9 @@
             // pnl_menuBarraInferior
             // 
             pnl_menuBarraInferior.BackColor = Color.Black;
-            pnl_menuBarraInferior.Controls.Add(button1);
-            pnl_menuBarraInferior.Controls.Add(trackBar1);
+            pnl_menuBarraInferior.Controls.Add(pbx_anterior);
+            pnl_menuBarraInferior.Controls.Add(pbx_siguiente);
+            pnl_menuBarraInferior.Controls.Add(btn_play);
             pnl_menuBarraInferior.Dock = DockStyle.Bottom;
             pnl_menuBarraInferior.Location = new Point(0, 631);
             pnl_menuBarraInferior.Margin = new Padding(0);
@@ -149,22 +134,39 @@
             pnl_menuBarraInferior.Size = new Size(1044, 60);
             pnl_menuBarraInferior.TabIndex = 1;
             // 
-            // button1
+            // pbx_anterior
             // 
-            button1.Location = new Point(316, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Play";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            pbx_anterior.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            pbx_anterior.Image = (Image)resources.GetObject("pbx_anterior.Image");
+            pbx_anterior.Location = new Point(475, 13);
+            pbx_anterior.Name = "pbx_anterior";
+            pbx_anterior.Size = new Size(38, 35);
+            pbx_anterior.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbx_anterior.TabIndex = 9;
+            pbx_anterior.TabStop = false;
+            pbx_anterior.Click += pbx_anterior_Click;
             // 
-            // trackBar1
+            // pbx_siguiente
             // 
-            trackBar1.Location = new Point(409, 6);
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(406, 45);
-            trackBar1.TabIndex = 0;
+            pbx_siguiente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            pbx_siguiente.Image = (Image)resources.GetObject("pbx_siguiente.Image");
+            pbx_siguiente.Location = new Point(563, 12);
+            pbx_siguiente.Name = "pbx_siguiente";
+            pbx_siguiente.Size = new Size(38, 36);
+            pbx_siguiente.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbx_siguiente.TabIndex = 8;
+            pbx_siguiente.TabStop = false;
+            pbx_siguiente.Click += pbx_siguiente_Click;
+            // 
+            // btn_play
+            // 
+            btn_play.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btn_play.BackColor = Color.Black;
+            btn_play.Location = new Point(519, 12);
+            btn_play.Name = "btn_play";
+            btn_play.Size = new Size(38, 36);
+            btn_play.TabIndex = 7;
+            btn_play.Click += btn_play_Click;
             // 
             // pnl_menuFormChanger
             // 
@@ -236,16 +238,17 @@
             Controls.Add(botonMaximizar1);
             Controls.Add(pnl_menuFormChanger);
             Controls.Add(pnl_menuBarraIzquierda);
-            Controls.Add(pnl_menuBarraInferior);
             Controls.Add(panelMovimiento2);
+            Controls.Add(pnl_menuBarraInferior);
             Name = "FrmMenu";
             StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Load += FrmMenu_Load;
             pnl_menuBarraIzquierda.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbx_menuImagenCancion).EndInit();
             pnl_menuBarraInferior.ResumeLayout(false);
-            pnl_menuBarraInferior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_anterior).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_siguiente).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -257,9 +260,6 @@
         private Panel pnl_menuFormChanger;
         private PictureBox pbx_menuImagenCancion;
         private ImageList imageList1;
-        private Button button1;
-        private TrackBar trackBar1;
-        private ListBox listBox1;
         private PanelMovimiento panelMovimiento2;
         private Controles.BotonCerrar botonCerrar1;
         private Controles.BotonHome btn_menuHome;
@@ -267,5 +267,8 @@
         private Controles.BotonMaximizar botonMaximizar1;
         private Button btn_admin;
         private Controles.BotonMinimizar botonMinimizar1;
+        private Controles.BotonPlay btn_play;
+        private PictureBox pbx_anterior;
+        private PictureBox pbx_siguiente;
     }
 }

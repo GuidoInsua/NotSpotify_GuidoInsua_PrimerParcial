@@ -100,5 +100,27 @@ namespace NotSpotify.InterfazGrafica
                     break;
             }
         }
+
+        static public Cancion ObtenerCancionDeDataGrid(DataGridView dataGrid)
+        {
+            StringBuilder sb = new();
+
+            sb.Append($"{dataGrid.SelectedRows[0].Cells[0].Value.ToString()},");
+
+            string[] datos = sb.ToString().Split(",");
+
+            Cancion unaCancion = new(datos[0], datos[1]);
+
+            return unaCancion;
+        }
+
+        static public void TocarCancionRandom()
+        {
+            Random r = new();
+
+            AdministradorCanciones.tema = VerificadorDeInicio.CancionesCargadas[r.Next(0, VerificadorDeInicio.CancionesCargadas.Count)].Direccion;
+
+            FrmMenu.IniciarDetenerTema();
+        }
     }
 }

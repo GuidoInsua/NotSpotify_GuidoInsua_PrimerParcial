@@ -32,7 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLibrary));
             dgv_canciones = new DataGridView();
             Nombre = new DataGridViewTextBoxColumn();
             lbl_canciones = new Label();
@@ -101,6 +100,7 @@
             dgv_canciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_canciones.Size = new Size(1002, 370);
             dgv_canciones.TabIndex = 11;
+            dgv_canciones.CellClick += dgv_canciones_CellClick;
             // 
             // Nombre
             // 
@@ -134,7 +134,7 @@
             // pbx_imagenBanner
             // 
             pbx_imagenBanner.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbx_imagenBanner.Image = (Image)resources.GetObject("pbx_imagenBanner.Image");
+            pbx_imagenBanner.Image = Properties.Resources.imgNotas;
             pbx_imagenBanner.Location = new Point(384, 0);
             pbx_imagenBanner.Name = "pbx_imagenBanner";
             pbx_imagenBanner.Size = new Size(674, 114);

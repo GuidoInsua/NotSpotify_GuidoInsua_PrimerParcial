@@ -3,37 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VideoLibrary.Exceptions;
-using VideoLibrary;
-using MediaToolkit.Model;
-using MediaToolkit;
+//using VideoLibrary.Exceptions;
+using System.Media;
+//using VideoLibrary;
+//using MediaToolkit.Model;
+//using MediaToolkit;
 using NotSpotify.Clases;
+
+
 
 namespace NotSpotify.Utilidades
 {
     public static class AdministradorCanciones
     {
+        static public string tema = "..\\..\\..\\..\\Canciones\\Estallando.mp3";
+
         public static void SaveMP3(string SaveToFolder, string VideoURL, string MP3Name)
         {
-            string source = SaveToFolder;
-            var youtube = YouTube.Default;
-            var vid = youtube.GetVideo(VideoURL);
-            string videopath = Path.Combine(source, vid.FullName);
-            File.WriteAllBytes(videopath, vid.GetBytes());
+            //string source = SaveToFolder;
+            //var youtube = YouTube.Default;
+            //var vid = youtube.GetVideo(VideoURL);
+            //string videopath = Path.Combine(source, vid.FullName);
+            //File.WriteAllBytes(videopath, vid.GetBytes());
 
-            var inputFile = new MediaFile { Filename = Path.Combine(source, vid.FullName) };
-            var outputFile = new MediaFile { Filename = Path.Combine(source, $"{MP3Name}.mp3") };
+            //var inputFile = new MediaFile { Filename = Path.Combine(source, vid.FullName) };
+            //var outputFile = new MediaFile { Filename = Path.Combine(source, $"{MP3Name}.mp3") };
 
-            using (var engine = new Engine())
-            {
-                engine.GetMetadata(inputFile);
-
-
-                engine.Convert(inputFile, outputFile);
-            }
+            //using (var engine = new Engine())
+            //{
+            //    engine.GetMetadata(inputFile);
 
 
-            File.Delete(Path.Combine(source, vid.FullName));
+            //    engine.Convert(inputFile, outputFile);
+            //}
+
+            //File.Delete(Path.Combine(source, vid.FullName));
         }
 
         public static void CargarListaCancionesDesdeDirectorio(string path)
@@ -77,6 +81,17 @@ namespace NotSpotify.Utilidades
                 {
                     VerificadorDeInicio.CancionesCargadas.Remove(cancion);
                     break;
+                }
+            }
+        }
+
+        public static void SeleccionarCancion(Cancion unaCancion)
+        {
+            foreach (Cancion cancion in VerificadorDeInicio.CancionesCargadas)
+            {
+                if (cancion.Nombre == unaCancion.Nombre)
+                {
+                    tema = cancion.Direccion;
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace NotSpotify.InterfazGrafica
             foreach (Control c in container.Controls)
             {
                 GetAllControls(c);
-                if (c is BotonPlayList a) ControlList.Insert(0,a);
+                if (c is BotonPlayList a) ControlList.Insert(0, a);
             }
         }
 
@@ -46,10 +46,27 @@ namespace NotSpotify.InterfazGrafica
 
             for (int i = 0; i < 20; i++)
             {
-                ControlList[i].Click += BotonPlayList_Click;
+                //ControlList[i].Click += BotonPlayList_Click;
                 ControlList[i].ActualizarLabel(Utilidades.AdministradorPlayLists.playLists[i].Nombre);
                 ControlList[i].ActualizarImagen(Utilidades.AdministradorPlayLists.playLists[i].DireccionDeImagen);
             }
+
+            Random r = new();
+            int num = r.Next(1, 4);
+            switch (num)
+            {
+                case 1:
+                    pbx_banner.Image = Properties.Resources.imgBanner1;
+                    break;
+                case 2:
+                    pbx_banner.Image = Properties.Resources.imgBanner2;
+                    break;
+                case 3:
+                    pbx_banner.Image = Properties.Resources.imgBanner3;
+                    break;
+            }
+
+            
         }
     }
 }

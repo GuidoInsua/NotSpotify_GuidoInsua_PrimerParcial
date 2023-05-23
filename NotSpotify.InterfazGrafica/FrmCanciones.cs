@@ -60,7 +60,7 @@ namespace NotSpotify.InterfazGrafica
 
                     FrmMenu.estadoDescarga = "Descargando...";
                     lbl_cargando.Text = FrmMenu.estadoDescarga;
-                    Thread thread1 = new Thread(() => AgregarCancion(link, nombre));
+                    Thread thread1 = new(() => AgregarCancion(link, nombre));
                     thread1.IsBackground = true;
                     thread1.Start();
                 }
@@ -69,20 +69,6 @@ namespace NotSpotify.InterfazGrafica
                     MessageBox.Show($"ERROR\n{ex.Message}");
                 }
             }
-        }
-
-        public Cancion ObtenerCancionDeDataGrid()
-        {
-            StringBuilder sb = new();
-
-            sb.Append($"{dgv_canciones.SelectedRows[0].Cells[0].Value.ToString()},");
-            sb.Append($"{dgv_canciones.SelectedRows[0].Cells[1].Value.ToString()},");
-
-            string[] datos = sb.ToString().Split(",");
-
-            Cancion unaCancion = new(datos[0], datos[1]);
-
-            return unaCancion;
         }
 
         public void ActualizarDataGridCanciones()
@@ -114,7 +100,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_borrar_Click(object sender, EventArgs e)
         {
-            AdministradorCanciones.BorrarCancionDeLista(ObtenerCancionDeDataGrid());
+            AdministradorCanciones.BorrarCancionDeLista(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones));
             ActualizarDataGridCanciones();
         }
     }

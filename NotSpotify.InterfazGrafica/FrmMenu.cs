@@ -8,6 +8,9 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using NAudio;
+//using NAudio.Wave;
+using NotSpotify.Utilidades;
 using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
@@ -17,7 +20,11 @@ namespace NotSpotify.InterfazGrafica
         private readonly EnumOpcionSesion _tipoDeUsuarioAutenticado;
         public bool reproduciendo = false;
         static public string estadoDescarga = string.Empty;
-        //SoundPlayer musicPlayer = new();
+
+        //static public IWavePlayer waveOutDevice = new WaveOut();
+        //static public AudioFileReader audioFileReader = new(AdministradorCanciones.tema);
+        static public bool play = false;
+
 
         public FrmMenu(EnumOpcionSesion tipoUsuario)
         {
@@ -44,6 +51,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void botonCerrar1_Click(object sender, EventArgs e)
         {
+            //waveOutDevice.Dispose();
             Environment.Exit(Environment.ExitCode);
             Close();
         }
@@ -85,19 +93,40 @@ namespace NotSpotify.InterfazGrafica
             WindowState = FormWindowState.Minimized;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_play_Click(object sender, EventArgs e)
         {
-            //if (reproduciendo == false || musicPlayer.SoundLocation != libraryForm.tema)
+            IniciarDetenerTema();
+            btn_play.CambiarEstadoBoton(play);
+        }
+
+        public static void IniciarDetenerTema()
+        {
+            //audioFileReader = new AudioFileReader(AdministradorCanciones.tema);
+            //waveOutDevice.Init(audioFileReader);
+
+            //if (play)
             //{
-            //    musicPlayer.SoundLocation = libraryForm.tema;
-            //    musicPlayer.Play();
-            //    reproduciendo = true;
+            //    waveOutDevice.Stop();
+            //    audioFileReader.Dispose();
+            //    play = false;
             //}
             //else
             //{
-            //    musicPlayer.Stop();
-            //    reproduciendo = false;
+            //    waveOutDevice.Play();
+            //    play = true;
             //}
+        }
+
+        private void pbx_siguiente_Click(object sender, EventArgs e)
+        {
+            UtilidadesForms.TocarCancionRandom();
+            btn_play.CambiarEstadoBoton(play);
+        }
+
+        private void pbx_anterior_Click(object sender, EventArgs e)
+        {
+            UtilidadesForms.TocarCancionRandom();
+            btn_play.CambiarEstadoBoton(play);
         }
     }
 }

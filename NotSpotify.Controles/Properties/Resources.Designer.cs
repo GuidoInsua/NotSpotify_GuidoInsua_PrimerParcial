@@ -83,9 +83,29 @@ namespace NotSpotify.Controles.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgAnterior {
+            get {
+                object obj = ResourceManager.GetObject("imgAnterior", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgBorrar {
             get {
                 object obj = ResourceManager.GetObject("imgBorrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgBotonVerde {
+            get {
+                object obj = ResourceManager.GetObject("imgBotonVerde", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +216,36 @@ namespace NotSpotify.Controles.Properties {
         internal static System.Drawing.Bitmap imgMinimizar {
             get {
                 object obj = ResourceManager.GetObject("imgMinimizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgPause {
+            get {
+                object obj = ResourceManager.GetObject("imgPause", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgPlay {
+            get {
+                object obj = ResourceManager.GetObject("imgPlay", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgSiguiente {
+            get {
+                object obj = ResourceManager.GetObject("imgSiguiente", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

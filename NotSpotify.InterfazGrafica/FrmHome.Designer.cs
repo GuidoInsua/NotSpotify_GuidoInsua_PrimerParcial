@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHome));
-            pictureBox1 = new PictureBox();
             lbl_madeForYou = new Label();
             lbl_recommended = new Label();
             btn_playList11 = new Controles.BotonPlayList();
@@ -52,19 +50,9 @@
             btn_playList18 = new Controles.BotonPlayList();
             btn_playList19 = new Controles.BotonPlayList();
             btn_playList20 = new Controles.BotonPlayList();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pbx_banner = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbx_banner).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1727, 277);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
             // 
             // lbl_madeForYou
             // 
@@ -268,6 +256,15 @@
             btn_playList20.Size = new Size(152, 239);
             btn_playList20.TabIndex = 19;
             // 
+            // pbx_banner
+            // 
+            pbx_banner.Image = Properties.Resources.imgBanner1;
+            pbx_banner.Location = new Point(226, 12);
+            pbx_banner.Name = "pbx_banner";
+            pbx_banner.Size = new Size(1356, 310);
+            pbx_banner.TabIndex = 23;
+            pbx_banner.TabStop = false;
+            // 
             // FrmHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -277,6 +274,7 @@
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1754, 985);
             ControlBox = false;
+            Controls.Add(pbx_banner);
             Controls.Add(btn_playList20);
             Controls.Add(btn_playList19);
             Controls.Add(btn_playList18);
@@ -299,20 +297,18 @@
             Controls.Add(btn_playList11);
             Controls.Add(lbl_recommended);
             Controls.Add(lbl_madeForYou);
-            Controls.Add(pictureBox1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmHome";
             Load += FrmHome_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_banner).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private PictureBox pictureBox1;
         private Label lbl_madeForYou;
         private Label lbl_recommended;
         private Controles.BotonPlayList btn_playList11;
@@ -335,5 +331,6 @@
         private Controles.BotonPlayList btn_playList18;
         private Controles.BotonPlayList btn_playList19;
         private Controles.BotonPlayList btn_playList20;
+        private PictureBox pbx_banner;
     }
 }

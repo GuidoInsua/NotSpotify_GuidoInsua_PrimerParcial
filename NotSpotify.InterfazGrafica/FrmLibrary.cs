@@ -15,8 +15,6 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmLibrary : Form
     {
-        public string tema = "Sumo.wav";
-
         public FrmLibrary()
         {
             InitializeComponent();
@@ -34,6 +32,11 @@ namespace NotSpotify.InterfazGrafica
 
                 i++;
             }
+        }
+
+        private void dgv_canciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones));
         }
     }
 }

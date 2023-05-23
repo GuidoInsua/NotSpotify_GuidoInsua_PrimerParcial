@@ -9,8 +9,8 @@ namespace NotSpotify.Clases
 {
     public class Cancion
     {
-        private string _nombre;
-        private string _direccion;
+        private string _nombre = string.Empty;
+        private string _direccion = string.Empty;
 
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
