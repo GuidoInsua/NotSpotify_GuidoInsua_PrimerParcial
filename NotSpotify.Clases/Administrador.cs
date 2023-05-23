@@ -23,6 +23,10 @@ namespace NotSpotify.Clases
             Dni = dni;
         }
 
+        /// <summary>
+        /// Completa los campos del administrador con los valores del array
+        /// </summary>
+        /// <param name="fila"></param>
         public void CargarDatosDesdeArray(string[] fila)
         {
             Nombre = fila[0];
@@ -32,6 +36,10 @@ namespace NotSpotify.Clases
             Dni = fila[4];
         }
 
+        /// <summary>
+        /// Retorna una linea string lista para cargar en CSV 
+        /// </summary>
+        /// <returns></returns>
         public override string GuardarDatosEnLinea()
         {
             return $"{Nombre},{Apellido},{Email},{Password},{Dni},Administrador";
@@ -46,17 +54,5 @@ namespace NotSpotify.Clases
         {
             return !(A1 == A2);
         }
-
-        //public static explicit operator Usuario(Administrador unAdmin)
-        //{
-        //    Usuario usuario = new Usuario();
-
-        //    usuario.Nombre = unAdmin.Nombre;
-        //    usuario.Apellido = unAdmin.Apellido;
-        //    usuario.Email = unAdmin.Email;
-        //    usuario.Password = unAdmin.Password;
-
-        //    return usuario;
-        //}
     }
 }

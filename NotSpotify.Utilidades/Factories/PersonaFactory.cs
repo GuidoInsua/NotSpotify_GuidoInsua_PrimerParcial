@@ -9,6 +9,12 @@ namespace NotSpotify.Clases.Factories
 {
     public class PersonaFactory
     {
+        /// <summary>
+        /// carga las personas desde un SCV y las diferencia por su ultimo parametro
+        /// </summary>
+        /// <param name="linea"></param>
+        /// <param name="separador"></param>
+        /// <exception cref="Exception"></exception>
         static public void CargarPersonaPorLastOrDefault(string linea, string separador)
         {
             string[] fila = linea.Split(separador);

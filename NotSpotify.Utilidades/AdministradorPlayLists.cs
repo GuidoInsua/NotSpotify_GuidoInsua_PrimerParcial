@@ -11,11 +11,17 @@ namespace NotSpotify.Utilidades
     {
         public static List<PlayList> playLists = new List<PlayList>();
 
+        /// <summary>
+        /// carga la lista de playlist desde el archivo csv
+        /// </summary>
         public static void CargarPlayLists()
         {
             playLists = AdministradorDatos.CrearListaDesdeArchivo<PlayList>("..\\..\\..\\..\\Archivos\\PlayLists.csv");
         }
 
+        /// <summary>
+        /// genera listas de canciones aleatorias para cada playList
+        /// </summary>
         public static void GenerarListasDeCanciones()
         {
             Random r = new Random();

@@ -24,6 +24,11 @@ namespace NotSpotify.InterfazGrafica
             UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
+        /// <summary>
+        /// Verifica los datos y agrega un administrador a la lista de administradores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
             FrmPopUp frmPopUp = new(VerificadorDeInicio.EnumOpcionSesion.esAdmin);
@@ -50,6 +55,11 @@ namespace NotSpotify.InterfazGrafica
             UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
+        /// <summary>
+        /// Elimina el administrador seleccionado de la lista de administradores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_borrar_Click(object sender, EventArgs e)
         {
             try
@@ -79,6 +89,11 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// Edita los valores de un administrador
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_editar_Click(object sender, EventArgs e)
         {
             try
@@ -121,6 +136,11 @@ namespace NotSpotify.InterfazGrafica
             base.Show();
         }
 
+        /// <summary>
+        /// Convierte un administrador en usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_degradar_Click(object sender, EventArgs e)
         {
             try

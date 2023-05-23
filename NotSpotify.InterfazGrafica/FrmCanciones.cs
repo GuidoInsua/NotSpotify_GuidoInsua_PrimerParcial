@@ -17,8 +17,6 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmCanciones : Form
     {
-
-
         public FrmCanciones()
         {
             InitializeComponent();
@@ -29,6 +27,11 @@ namespace NotSpotify.InterfazGrafica
             ActualizarDataGridCanciones();
         }
 
+        /// <summary>
+        /// Descarga un video de youtube, lo convierte en mp3 y agraga la cancion a la lista de canciones
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="nombre"></param>
         private void AgregarCancion(string link, string nombre)
         {
             AdministradorCanciones.SaveMP3("..\\..\\..\\..\\Canciones", link, nombre);
@@ -44,9 +47,13 @@ namespace NotSpotify.InterfazGrafica
                 FrmMenu.estadoDescarga = "Terminado";
                 lbl_cargando.Text = FrmMenu.estadoDescarga;
             }));
-
         }
 
+        /// <summary>
+        /// Llama a la funcion "Agregar Cancion" desde un nuevo thread
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
             string link = tbx_linkCancion.Text;
@@ -71,6 +78,9 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// Actualiza la tabla de canciones
+        /// </summary>
         public void ActualizarDataGridCanciones()
         {
             dgv_canciones.Rows.Clear();
@@ -93,11 +103,11 @@ namespace NotSpotify.InterfazGrafica
             base.Show();
         }
 
-        private void btn_editar_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Borra una cancion de la lista de canciones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_borrar_Click(object sender, EventArgs e)
         {
             AdministradorCanciones.BorrarCancionDeLista(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones));

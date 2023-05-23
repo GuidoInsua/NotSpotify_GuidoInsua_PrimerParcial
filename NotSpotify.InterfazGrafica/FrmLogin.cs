@@ -35,6 +35,11 @@ namespace NotSpotify.InterfazGrafica
             Password = "0";
         }
 
+        /// <summary>
+        /// Verifica que los datos sean correctos e indica el tipo de persona que logeo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_loginAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -48,6 +53,11 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// Auto completa los datos de inicio con un usuario valido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_completarUsuario_Click(object sender, EventArgs e)
         {
             VerificadorDeInicio.AutoCompletarLogin<Usuario>(ref _eMail, ref _password);
@@ -55,6 +65,11 @@ namespace NotSpotify.InterfazGrafica
             tbx_loginPassword.Text = Password;
         }
 
+        /// <summary>
+        /// Auto completa los datos de inicio con un admin valido
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_completarAdmin_Click(object sender, EventArgs e)
         {
             VerificadorDeInicio.AutoCompletarLogin<Administrador>(ref _eMail, ref _password);

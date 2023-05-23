@@ -40,6 +40,11 @@ namespace NotSpotify.InterfazGrafica
             base.Show();
         }
 
+        /// <summary>
+        /// Selecciona una cancion de la tabala
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgv_canciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones), AdministradorCanciones.CancionesCargadas);

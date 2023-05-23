@@ -13,6 +13,11 @@ namespace NotSpotify.Utilidades
 {
     public class AdministradorABM
     {
+        /// <summary>
+        /// verifica los datos y agrega una persona a la lista de personas
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="datos"></param>
         public static void AgregarPersonaEnLista<T>(string[] datos) where T : Persona, ICargable, new()
         {
             try
@@ -31,6 +36,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// elimina una persona de la lista de personas
+        /// </summary>
+        /// <param name="unaPersona"></param>
+        /// <returns></returns>
         static public bool BorrarPersonaDeLista(Persona unaPersona)
         {
             foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
@@ -43,6 +53,12 @@ namespace NotSpotify.Utilidades
             return false; 
         }
 
+        /// <summary>
+        /// modifica los valores de una persona en la lista
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="unaPersona"></param>
+        /// <param name="datos"></param>
         public static void ModificarPersonaEnLista<T>(T unaPersona, string[] datos) where T : Persona, ICargable, new()
         {
             T personaModificada = new();
@@ -67,6 +83,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+
+        /// <summary>
+        /// verifica los valores de una persona
+        /// </summary>
+        /// <param name="unaPersona"></param>
         public static void VerificarDatosPersona(Persona unaPersona)
         {
             try
@@ -87,6 +108,12 @@ namespace NotSpotify.Utilidades
             }    
         }
 
+        /// <summary>
+        /// valida que una persona no exista con a menos que sea la exepcion
+        /// </summary>
+        /// <param name="unaPersona"></param>
+        /// <param name="exepcion"></param>
+        /// <exception cref="Exception"></exception>
         public static void VerificarPersonaNoExisteConExeccpion(Persona unaPersona, Persona exepcion)
         {
             foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
@@ -103,6 +130,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// Valida que la persona no exista en la lista
+        /// </summary>
+        /// <param name="unaPersona"></param>
+        /// <exception cref="Exception"></exception>
         public static void VerificarPersonaNoExiste(Persona unaPersona)
         {
             foreach (Persona persona in VerificadorDeInicio.PersonasCargadas) 
@@ -114,6 +146,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// Valida que el dni no este en uso por un administrador
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <exception cref="Exception"></exception>
         public static void VerificarDniLibre(string dni)
         {
             foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
@@ -125,6 +162,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// valida que el email sea valido
+        /// </summary>
+        /// <param name="eMail"></param>
+        /// <exception cref="Exception"></exception>
         public static void EmailEsValido(string eMail)
         {
             String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
@@ -135,6 +177,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// valida que el string solo contenga letras
+        /// </summary>
+        /// <param name="palabra"></param>
+        /// <exception cref="Exception"></exception>
         public static void ValidarEsAlphabetico(string palabra)
         {
             Regex name_validation = new(@"^[a-zA-Z]+$");
@@ -145,6 +192,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// valida que el dni solo contenga 8 numeros
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <exception cref="Exception"></exception>
         public static void DniEsValido(string dni)
         {
             if (!int.TryParse(dni, out _) || dni.Length != 8)
@@ -153,6 +205,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// valida que la password contenga la cantidad de caracteres adecuados
+        /// </summary>
+        /// <param name="password"></param>
+        /// <exception cref="Exception"></exception>
         public static void PasswordEsValida(string password)
         {
             if(password.Length < 5 || password.Length > 40)
@@ -161,6 +218,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// genera un usuario con los valores del admin
+        /// </summary>
+        /// <param name="unAdmin"></param>
+        /// <returns></returns>
         public static bool ConveritAdminEnUsuario(Administrador unAdmin)
         {          
             if (BorrarPersonaDeLista(unAdmin))
@@ -172,6 +234,11 @@ namespace NotSpotify.Utilidades
             return false;
         }
 
+        /// <summary>
+        /// genera un admin con los valores del usuario mas un dni
+        /// </summary>
+        /// <param name="unUsuario"></param>
+        /// <param name="dni"></param>
         public static void ConveritUsuarioEnAdmin(Usuario unUsuario, string dni)
         {
             try

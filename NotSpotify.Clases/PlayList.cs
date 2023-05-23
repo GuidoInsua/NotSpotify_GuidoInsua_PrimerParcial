@@ -42,6 +42,10 @@ namespace NotSpotify.Clases
             DireccionDeImagen = direccionDeImagen;
         }
 
+        /// <summary>
+        /// Completa los campos de la playList con los valores del array
+        /// </summary>
+        /// <param name="fila"></param>
         public void CargarDatosDesdeArray(string[] fila)
         {
             Nombre = fila[0];

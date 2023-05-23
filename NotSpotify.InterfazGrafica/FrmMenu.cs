@@ -51,6 +51,11 @@ namespace NotSpotify.InterfazGrafica
             panelMovimiento2.EstablecerPadre(this);
         }
 
+        /// <summary>
+        /// Cierra el programa y termina los threads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void botonCerrar1_Click(object sender, EventArgs e)
         {
             waveOutDevice.Dispose();
@@ -58,6 +63,11 @@ namespace NotSpotify.InterfazGrafica
             Close();
         }
 
+        /// <summary>
+        /// llama al manejador de forms y abre el form home
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_menuHome_Click(object sender, EventArgs e)
         {
             btn_menuLibrary.ApagarBotonLibrary();
@@ -65,6 +75,11 @@ namespace NotSpotify.InterfazGrafica
             UtilidadesForms.ManejadorFormsMenu("Home");
         }
 
+        /// <summary>
+        /// llama al manejador de forms y abre el form Library
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_menuLibrary_Click(object sender, EventArgs e)
         {
             btn_menuHome.ApagarBotonHome();
@@ -72,6 +87,11 @@ namespace NotSpotify.InterfazGrafica
             UtilidadesForms.ManejadorFormsMenu("Library");
         }
 
+        /// <summary>
+        /// maximiza o pone el form en modo ventana
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void botonMaximizar1_Click(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
@@ -84,23 +104,41 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// Abre el form de ABM
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_admin_Click(object sender, EventArgs e)
         {
             FrmEditorDatos frmEditorDatos = new();
             frmEditorDatos.ShowDialog();
         }
 
+        /// <summary>
+        /// minimiza el form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void botonMinimizar1_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
+        /// <summary>
+        /// reproduce el tema que este seleccionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_play_Click(object sender, EventArgs e)
         {
             IniciarDetenerTema();
             btn_play.CambiarEstadoBoton(play);
         }
 
+        /// <summary>
+        /// inicia o detiene el tema que este seleccionado
+        /// </summary>
         public static void IniciarDetenerTema()
         {
             audioFileReader = new AudioFileReader(AdministradorCanciones.tema);
@@ -119,12 +157,22 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// reproduce una cancion random de la lista de canciones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pbx_siguiente_Click(object sender, EventArgs e)
         {
             UtilidadesForms.TocarCancionRandom(AdministradorCanciones.CancionesCargadas);
             btn_play.CambiarEstadoBoton(play);
         }
 
+        /// <summary>
+        /// reproduce una cancion random de la lista de canciones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pbx_anterior_Click(object sender, EventArgs e)
         {
             UtilidadesForms.TocarCancionRandom(AdministradorCanciones.CancionesCargadas);

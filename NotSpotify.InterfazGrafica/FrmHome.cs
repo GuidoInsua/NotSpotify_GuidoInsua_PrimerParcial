@@ -20,6 +20,11 @@ namespace NotSpotify.InterfazGrafica
         public PlayList PlayList = new();
         readonly List<BotonPlayList> ControlList = new();
 
+        /// <summary>
+        /// Actualiza la playList y abre el form playList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void BotonPlayList_Click(object sender, EventArgs e)
         {
             UtilidadesForms.UnaPlayList = Utilidades.AdministradorPlayLists.playLists[((BotonPlayList)sender).TabIndex];
@@ -31,6 +36,10 @@ namespace NotSpotify.InterfazGrafica
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Genera una lista con todos los botones 'BotonPlayList'
+        /// </summary>
+        /// <param name="container"></param>
         private void GetAllControls(Control container)
         {
             foreach (Control c in container.Controls)

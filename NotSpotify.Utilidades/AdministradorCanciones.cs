@@ -21,9 +21,15 @@ namespace NotSpotify.Utilidades
 
         static public List<Cancion> CancionesCargadas { get => _cancionesCargadas; set => _cancionesCargadas = value; }
 
-        public static void SaveMP3(string SaveToFolder, string VideoURL, string MP3Name)
+        /// <summary>
+        /// Descarga un video de youtube, lo convierte en mp3 y lo guarda en el directorio
+        /// </summary>
+        /// <param name="directorio"></param>
+        /// <param name="VideoURL"></param>
+        /// <param name="MP3Name"></param>
+        public static void SaveMP3(string directorio, string VideoURL, string MP3Name)
         {
-            string source = SaveToFolder;
+            string source = directorio;
             var youtube = YouTube.Default;
             var vid = youtube.GetVideo(VideoURL);
             string videopath = Path.Combine(source, vid.FullName);
@@ -43,6 +49,10 @@ namespace NotSpotify.Utilidades
             File.Delete(Path.Combine(source, vid.FullName));
         }
 
+        /// <summary>
+        /// lee los archivos mp3 de un directorio y los guarda en una lista de canciones
+        /// </summary>
+        /// <param name="path"></param>
         public static void CargarListaCancionesDesdeDirectorio(string path)
         {
             string[] pathCanciones = Directory.GetFiles(path, "*.mp3");
@@ -58,6 +68,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// agrega una cancion a la lista de canciones
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="path"></param>
         public static void AgregarCancionEnLista(string nombre, string path) 
         {
             Cancion unaCancion = new(nombre, path);
@@ -65,6 +80,11 @@ namespace NotSpotify.Utilidades
             AdministradorCanciones.CancionesCargadas.Add(unaCancion);
         }
 
+        /// <summary>
+        /// valida que el nombre de la cancion no exista
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <exception cref="Exception"></exception>
         public static void NombreCancionValido(string nombre)
         {
             foreach(Cancion cancion in AdministradorCanciones.CancionesCargadas)
@@ -76,6 +96,10 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// elimina una cancion de la lista de canciones
+        /// </summary>
+        /// <param name="unaCancion"></param>
         public static void BorrarCancionDeLista(Cancion unaCancion)
         {
             foreach (Cancion cancion in AdministradorCanciones.CancionesCargadas)
@@ -88,6 +112,11 @@ namespace NotSpotify.Utilidades
             }
         }
 
+        /// <summary>
+        /// guarda la direccion de la cancion en la variable tema
+        /// </summary>
+        /// <param name="unaCancion"></param>
+        /// <param name="listaCanciones"></param>
         public static void SeleccionarCancion(Cancion unaCancion, List<Cancion> listaCanciones)
         {
             foreach (Cancion cancion in listaCanciones)

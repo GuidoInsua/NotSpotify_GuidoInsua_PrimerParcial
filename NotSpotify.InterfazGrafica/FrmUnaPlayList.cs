@@ -25,7 +25,6 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmUnaPlayList_Load(object sender, EventArgs e)
         {
-
         }
 
         public new void Show()
@@ -48,11 +47,21 @@ namespace NotSpotify.InterfazGrafica
             base.Show();
         }
 
+        /// <summary>
+        /// Selecciona una cancion de la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgv_canciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones), playList.Canciones);
         }
 
+        /// <summary>
+        /// reproduce una cancion random de la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_playListRandom_Click(object sender, EventArgs e)
         {
             UtilidadesForms.TocarCancionRandom(playList.Canciones);

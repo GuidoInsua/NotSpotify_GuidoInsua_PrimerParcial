@@ -21,6 +21,9 @@ namespace NotSpotify.Utilidades
         static public Persona PersonaLogueada { get => _personaLogueada; set => _personaLogueada = value; }
         static public List<Persona> PersonasCargadas { get => _personasCargadas; set => _personasCargadas = value; }
 
+        /// <summary>
+        /// carga las listas de personas, canciones y playlists
+        /// </summary>
         static VerificadorDeInicio()
         {
             _personasCargadas = new List<Persona>();
@@ -30,6 +33,12 @@ namespace NotSpotify.Utilidades
             AdministradorPlayLists.GenerarListasDeCanciones();
         }
 
+        /// <summary>
+        /// varifica el tipo de persona logeada
+        /// </summary>
+        /// <param name="eMailIngresado"></param>
+        /// <param name="passwordIngresada"></param>
+        /// <returns></returns>
         static public EnumOpcionSesion VerificarTipoDePersona(string eMailIngresado, string passwordIngresada)
         {
             try
@@ -54,6 +63,12 @@ namespace NotSpotify.Utilidades
             }         
         }
 
+        /// <summary>
+        /// autocompleta los valores de logeo con una persona valida
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="eMail"></param>
+        /// <param name="password"></param>
         static public void AutoCompletarLogin<T>(ref string eMail, ref string password) where T : Persona
         {
             foreach (Persona persona in PersonasCargadas)

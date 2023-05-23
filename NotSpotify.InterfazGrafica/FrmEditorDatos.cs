@@ -37,21 +37,40 @@ namespace NotSpotify.InterfazGrafica
             Close();
         }
 
+        /// <summary>
+        /// Llama al manejador de forms para abrir el form usuarios
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_usuarios_Click(object sender, EventArgs e)
         {
             ManejadorForms("Usuarios");
         }
 
+        /// <summary>
+        /// llama al manejador de forms para abrir el form admins
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_admins_Click(object sender, EventArgs e)
         {
             ManejadorForms("Admins");
         }
 
+        /// <summary>
+        /// llama al manejador de forms para abril el form canciones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_canciones_Click(object sender, EventArgs e)
         {
             ManejadorForms("Canciones");
         }
 
+        /// <summary>
+        /// dependiendo del nombre del form, esconde los otros y abre al que se llama
+        /// </summary>
+        /// <param name="form"></param>
         private void ManejadorForms(string form)
         {
             switch (form)
@@ -83,6 +102,11 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// maximiza o pone en modo ventana al form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_maximizar_Click_1(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
@@ -95,6 +119,11 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// minimiza el form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_minimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;

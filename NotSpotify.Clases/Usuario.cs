@@ -23,6 +23,10 @@ namespace NotSpotify.Clases
             _playLists = new List<PlayList>();
         }
 
+        /// <summary>
+        /// Completa los campos del usuario con los valores del array
+        /// </summary>
+        /// <param name="fila"></param>
         public void CargarDatosDesdeArray(string[] fila)
         {
             Nombre = fila[0];
@@ -31,6 +35,10 @@ namespace NotSpotify.Clases
             Password = fila[3];
         }
 
+        /// <summary>
+        /// Retorna una linea string lista para cargar en CSV 
+        /// </summary>
+        /// <returns></returns>
         public override string GuardarDatosEnLinea()
         {
             return $"{Nombre},{Apellido},{Email},{Password},Usuario";
@@ -45,17 +53,5 @@ namespace NotSpotify.Clases
         {
             return !(U1 == U2);
         }
-
-        //public static explicit operator Administrador(Usuario unUsuario)
-        //{
-        //    Administrador admin = new Administrador();
-
-        //    admin.Nombre = unUsuario.Nombre;
-        //    admin.Apellido = unUsuario.Apellido;
-        //    admin.Email = unUsuario.Email;
-        //    admin.Password = unUsuario.Password;
-
-        //    return admin;
-        //}
     }
 }

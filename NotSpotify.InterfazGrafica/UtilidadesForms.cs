@@ -22,6 +22,13 @@ namespace NotSpotify.InterfazGrafica
         static readonly FrmLibrary libraryForm = new();
         static readonly FrmUnaPlayList unaPlayListForm = new();
 
+
+        /// <summary>
+        /// genera y retorna una persona con los valores seleccionados de la tabla
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dataGrid"></param>
+        /// <returns></returns>
         static public T ObtenerPersonaDeDataGrid<T>(DataGridView dataGrid) where T : Persona, ICargable, new()
         {
             T persona = new();
@@ -43,6 +50,11 @@ namespace NotSpotify.InterfazGrafica
             return persona;
         }
 
+        /// <summary>
+        /// actuaiza los valor de la tabla
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dataGrid"></param>
         static public void ActualizarDataGridPersona<T>(DataGridView dataGrid) where T : Persona
         {
             dataGrid.Rows.Clear();
@@ -70,6 +82,10 @@ namespace NotSpotify.InterfazGrafica
             AdministradorDatos.GuardarListaPersonasEnArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
         }
 
+        /// <summary>
+        /// indica que form se abre por el parametro form
+        /// </summary>
+        /// <param name="form"></param>
         static public void ManejadorFormsMenu(string form)
         {
             switch (form)
@@ -101,6 +117,11 @@ namespace NotSpotify.InterfazGrafica
             }
         }
 
+        /// <summary>
+        /// retorna una cancion con los valores seleccionados de la tabla
+        /// </summary>
+        /// <param name="dataGrid"></param>
+        /// <returns></returns>
         static public Cancion ObtenerCancionDeDataGrid(DataGridView dataGrid)
         {
             StringBuilder sb = new();
@@ -114,6 +135,10 @@ namespace NotSpotify.InterfazGrafica
             return unaCancion;
         }
 
+        /// <summary>
+        /// reproduce una cancion random de la lista enviada por parametro
+        /// </summary>
+        /// <param name="listaCanciones"></param>
         static public void TocarCancionRandom(List<Cancion> listaCanciones)
         {
             Random r = new();

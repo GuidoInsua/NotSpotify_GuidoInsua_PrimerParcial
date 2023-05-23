@@ -42,6 +42,10 @@ namespace NotSpotify.Clases
             return !(P1 == P2);
         }
 
+        /// <summary>
+        /// Retorna una linea string lista para cargar en CSV 
+        /// </summary>
+        /// <returns></returns>
         public virtual string GuardarDatosEnLinea()
         {
             return $"{Nombre},{Apellido},{Email},{Password}";
