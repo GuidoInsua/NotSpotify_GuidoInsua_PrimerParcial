@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotSpotify.Clases.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class PlayList
+    public class PlayList : ICargable
     {
         private string _nombre;
         private string _descripccion;
@@ -39,6 +40,13 @@ namespace NotSpotify.Clases
             Nombre = nombre;
             Descripccion = descripccion;
             DireccionDeImagen = direccionDeImagen;
+        }
+
+        public void CargarDatosDesdeArray(string[] fila)
+        {
+            Nombre = fila[0];
+            Descripccion = fila[1];
+            DireccionDeImagen = fila[2];
         }
     }
 }

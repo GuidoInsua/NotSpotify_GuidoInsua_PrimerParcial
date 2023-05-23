@@ -13,17 +13,22 @@ namespace NotSpotify.Utilidades
 {
     public class AdministradorABM
     {
-        public static bool AgregarPersonaEnLista<T>(string[] datos) where T : Persona, ICargable, new()
+        public static void AgregarPersonaEnLista<T>(string[] datos) where T : Persona, ICargable, new()
         {
-            T unaPersona = new T();
-            unaPersona.CargarDatosDesdeArray(datos);
-
-            if (VerificarDatosPersona(unaPersona) && VerificarEmailLibre(unaPersona.Email))
+            try
             {
-                VerificadorDeInicio.PersonasCargadas.Insert(0, unaPersona);
-                return true;
+                T unaPersona = new();
+                unaPersona.CargarDatosDesdeArray(datos);
+
+                VerificarDatosPersona(unaPersona); 
+                VerificarPersonaNoExiste(unaPersona);
+                
+                VerificadorDeInicio.PersonasCargadas.Insert(0, unaPersona);            
             }
-            return false;
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         static public bool BorrarPersonaDeLista(Persona unaPersona)
@@ -38,106 +43,122 @@ namespace NotSpotify.Utilidades
             return false; 
         }
 
-        public static bool ModificarPersonaEnLista<T>(T unaPersona, string[] datos) where T : Persona, ICargable, new()
+        public static void ModificarPersonaEnLista<T>(T unaPersona, string[] datos) where T : Persona, ICargable, new()
         {
-            T personaModificada = new T();
+            T personaModificada = new();
             personaModificada.CargarDatosDesdeArray(datos);
 
-            if(!VerificarDatosPersona(personaModificada))
+            try
             {
-                return false;
-            }
+                VerificarDatosPersona(personaModificada);
+                VerificarPersonaNoExisteConExeccpion(personaModificada, unaPersona);
 
-            for (int i = 0; i < VerificadorDeInicio.PersonasCargadas.Count; i++)
-            {
-                if (VerificadorDeInicio.PersonasCargadas[i] == unaPersona)
+                for (int i = 0; i < VerificadorDeInicio.PersonasCargadas.Count; i++)
                 {
-                    VerificadorDeInicio.PersonasCargadas[i] = personaModificada;
-                    return true;
+                    if (VerificadorDeInicio.PersonasCargadas[i] == unaPersona)
+                    {
+                        VerificadorDeInicio.PersonasCargadas[i] = personaModificada;
+                    }
                 }
             }
-            return false;
+            catch
+            {
+                throw;
+            }
         }
 
-        public static bool VerificarDatosPersona(Persona unaPersona)
+        public static void VerificarDatosPersona(Persona unaPersona)
         {
-            if (IsValidEmail(unaPersona.Email) && VerificarAlphabetico(unaPersona.Nombre) && VerificarAlphabetico(unaPersona.Apellido) && !string.IsNullOrWhiteSpace(unaPersona.Password))
+            try
             {
-                if (unaPersona is Administrador && string.IsNullOrWhiteSpace(((Administrador)unaPersona).Dni))
+                EmailEsValido(unaPersona.Email);
+                ValidarEsAlphabetico(unaPersona.Nombre);
+                ValidarEsAlphabetico(unaPersona.Apellido);
+                PasswordEsValida(unaPersona.Password);
+                             
+                if (unaPersona is Administrador administrador)
                 {
-                    return false;
+                    DniEsValido(administrador.Dni);
                 }
-
-                return true;
             }
-            return false;
+            catch (Exception)
+            {
+                throw;
+            }    
         }
 
-        public static bool VerificarEmailLibre(string eMail)
+        public static void VerificarPersonaNoExisteConExeccpion(Persona unaPersona, Persona exepcion)
+        {
+            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
+            {
+                if (persona == exepcion) 
+                {
+                    continue;
+                }
+
+                if (unaPersona == persona || (unaPersona is Administrador unAdministrador && persona is Administrador administrador && unAdministrador == administrador))
+                {
+                    throw new Exception("La persona ya existe");
+                }
+            }
+        }
+
+        public static void VerificarPersonaNoExiste(Persona unaPersona)
         {
             foreach (Persona persona in VerificadorDeInicio.PersonasCargadas) 
             {
-                if(persona.Email == eMail)
+                if(unaPersona == persona || (unaPersona is Administrador unAdministrador && persona is Administrador administrador && unAdministrador == administrador))
                 {
-                    return false;
+                    throw new Exception("La persona ya existe");
                 }
-            }
-            return true;
-        }
-
-        public static bool IsValidEmail(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                return false;
-
-            try
-            {
-                // Normalize the domain
-                email = Regex.Replace(email, @"(@)(.+)$", DomainMapper,
-                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
-
-                // Examines the domain part of the email and normalizes it.
-                string DomainMapper(Match match)
-                {
-                    // Use IdnMapping class to convert Unicode domain names.
-                    var idn = new IdnMapping();
-
-                    // Pull out and process domain name (throws ArgumentException on invalid)
-                    string domainName = idn.GetAscii(match.Groups[2].Value);
-
-                    return match.Groups[1].Value + domainName;
-                }
-            }
-            catch (RegexMatchTimeoutException e)
-            {
-                return false;
-            }
-            catch (ArgumentException e)
-            {
-                return false;
-            }
-
-            try
-            {
-                return Regex.IsMatch(email,
-                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                    RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
-            }
-            catch (RegexMatchTimeoutException)
-            {
-                return false;
             }
         }
 
-        public static bool VerificarAlphabetico(string palabra)
+        public static void VerificarDniLibre(string dni)
         {
-            Regex name_validation = new Regex(@"^[a-zA-Z]+$");
-
-            if (!name_validation.IsMatch(palabra))
+            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
             {
-                return false;
+                if (persona is Administrador administrador && dni == administrador.Dni)
+                {
+                    throw new Exception("La persona ya existe");
+                }
             }
-            return true;
+        }
+
+        public static void EmailEsValido(string eMail)
+        {
+            String sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+
+            if (eMail.Length > 40 || string.IsNullOrWhiteSpace(eMail) || !Regex.IsMatch(eMail, sFormato) || Regex.Replace(eMail, sFormato, String.Empty).Length != 0)
+            {
+                throw new Exception("El email no es valido");
+            }
+        }
+
+        public static void ValidarEsAlphabetico(string palabra)
+        {
+            Regex name_validation = new(@"^[a-zA-Z]+$");
+
+            if (!name_validation.IsMatch(palabra) || palabra.Length > 40 || string.IsNullOrWhiteSpace(palabra))
+            {
+                throw new Exception("El nombre y apellido solo puede contener letras y no mas de 40");          
+            }
+        }
+
+        public static void DniEsValido(string dni)
+        {
+            if (!int.TryParse(dni, out _) || dni.Length != 8)
+            {
+                throw new Exception("El dni tiene que estar formado solo por 8 numeros");
+            }
+        }
+
+        public static void PasswordEsValida(string password)
+        {
+            if(password.Length < 5 || password.Length > 40)
+            {
+                throw new Exception("La password debe tener mas de 5 caracteres y menos de 40");
+            }
         }
 
         public static bool ConveritAdminEnUsuario(Administrador unAdmin)
@@ -147,24 +168,27 @@ namespace NotSpotify.Utilidades
                 string[] datos = { unAdmin.Nombre, unAdmin.Apellido, unAdmin.Email, unAdmin.Password };
                 AgregarPersonaEnLista<Usuario>(datos);
                 return true;
-            }
-            
+            }           
             return false;
         }
 
-        public static bool ConveritUsuarioEnAdmin(Usuario unUsuario, string dni)
+        public static void ConveritUsuarioEnAdmin(Usuario unUsuario, string dni)
         {
-            if (!string.IsNullOrWhiteSpace(dni))
+            try
             {
+                DniEsValido(dni);
+                VerificarDniLibre(dni);
+
                 if (BorrarPersonaDeLista(unUsuario))
                 {
                     string[] datos = { unUsuario.Nombre, unUsuario.Apellido, unUsuario.Email, unUsuario.Password, dni };
                     AgregarPersonaEnLista<Administrador>(datos);
-                    return true;
                 }
             }
-
-            return false;
+            catch 
+            {
+                throw;
+            }
         }
     }
 }

@@ -14,15 +14,14 @@ namespace NotSpotify.Utilidades
 {
     static public class AdministradorDatos
     {
-        static public List<T> CargarListaDesdeArchivo<T>(string path) where T : ICargable, new()
+        static public List<T> CrearListaDesdeArchivo<T>(string path) where T : ICargable, new()
         {
             string separador = ",";
             string linea;
-            StreamReader sr = File.OpenText(path);
-            List<T> listaDeCargabe = new List<T>();
-            T unCargable;
 
-            sr.ReadLine();
+            using StreamReader sr = File.OpenText(path);
+            List<T> listaDeCargable = new();
+            T unCargable;
 
             while ((linea = sr.ReadLine()) != null)
             {
@@ -31,13 +30,10 @@ namespace NotSpotify.Utilidades
                 unCargable = new T();
                 unCargable.CargarDatosDesdeArray(fila);
 
-                listaDeCargabe.Add(unCargable);
+                listaDeCargable.Add(unCargable);
             }
 
-            sr.Close();
-            sr.Dispose();
-
-            return listaDeCargabe;
+            return listaDeCargable;
         }
 
         static public void CargarListaPersonasDesdeArchivo(string path)
@@ -47,7 +43,24 @@ namespace NotSpotify.Utilidades
 
             while ((linea = sr.ReadLine()) != null)
             {
-                PersonaFactory.CargarPersonaPorLastOrDefault(linea, ",");
+                try
+                {
+                    PersonaFactory.CargarPersonaPorLastOrDefault(linea, ",");
+                }
+                catch { }
+            }
+        }
+
+        static public void GuardarListaPersonasEnArchivo(string path)
+        {
+            using StreamWriter writer = new(path);
+            string unaPersonaCsv;
+
+            foreach (Persona perosona in VerificadorDeInicio.PersonasCargadas)
+            {
+                unaPersonaCsv = perosona.GuardarDatosEnLinea();
+
+                writer.WriteLine(unaPersonaCsv);
             }
         }
 

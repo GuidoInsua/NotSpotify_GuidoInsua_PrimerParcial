@@ -13,16 +13,23 @@ namespace NotSpotify.Clases.Factories
         {
             string[] fila = linea.Split(separador);
 
-            switch (fila.LastOrDefault())
+            try
             {
-                case "Administrador":
-                    AdministradorABM.AgregarPersonaEnLista<Administrador>(fila);
-                    break;
-                case "Usuario":
-                    AdministradorABM.AgregarPersonaEnLista<Usuario>(fila);
-                    break;
-                default:
-                    throw new ArgumentException("Error");
+                switch (fila.LastOrDefault())
+                {
+                    case "Administrador":
+                        AdministradorABM.AgregarPersonaEnLista<Administrador>(fila);
+                        break;
+                    case "Usuario":
+                        AdministradorABM.AgregarPersonaEnLista<Usuario>(fila);
+                        break;
+                    default:
+                        throw new ArgumentException("Error no es Usuario o Administrador");
+                }
+            }
+            catch
+            {
+                throw new Exception("Datos incorrectos no fue cargado");
             }
         }
     }

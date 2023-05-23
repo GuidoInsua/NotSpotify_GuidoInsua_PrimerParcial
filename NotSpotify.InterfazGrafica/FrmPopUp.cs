@@ -17,13 +17,13 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmPopUp : Form
     {
-        public string nombre;
-        public string apellido;
-        public string eMail;
-        public string password;
-        public string dni;
+        public string nombre = string.Empty;
+        public string apellido = string.Empty;
+        public string eMail = string.Empty;
+        public string password = string.Empty;
+        public string dni = string.Empty;
         public EnumOpcionSesion tipoPersona;
-        public bool accepto;
+        public bool accepto = false;
         public string titulo = "Agregar";
 
         public FrmPopUp(EnumOpcionSesion tipo)

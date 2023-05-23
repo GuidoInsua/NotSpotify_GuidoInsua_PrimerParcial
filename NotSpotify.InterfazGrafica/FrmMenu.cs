@@ -14,9 +14,10 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmMenu : Form
     {
-        private EnumOpcionSesion _tipoDeUsuarioAutenticado;
+        private readonly EnumOpcionSesion _tipoDeUsuarioAutenticado;
         public bool reproduciendo = false;
-        SoundPlayer musicPlayer = new SoundPlayer();
+        static public string estadoDescarga = string.Empty;
+        //SoundPlayer musicPlayer = new();
 
         public FrmMenu(EnumOpcionSesion tipoUsuario)
         {
@@ -31,7 +32,7 @@ namespace NotSpotify.InterfazGrafica
                 btn_admin.Visible = true;
             }
 
-            UtilidadesForms.panel = pnl_menuFormChanger;
+            UtilidadesForms.PanelChanger = pnl_menuFormChanger;
 
             UtilidadesForms.ManejadorFormsMenu("Home");
         }
@@ -43,6 +44,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void botonCerrar1_Click(object sender, EventArgs e)
         {
+            Environment.Exit(Environment.ExitCode);
             Close();
         }
 
@@ -60,27 +62,6 @@ namespace NotSpotify.InterfazGrafica
             UtilidadesForms.ManejadorFormsMenu("Library");
         }
 
-        private void ManejadorForms(string form)
-        {
-            //switch (form)
-            //{
-            //    case "Home":
-            //        libraryForm.Hide();
-            //        homeForm.TopLevel = false;
-            //        pnl_menuFormChanger.Controls.Add(homeForm);
-            //        homeForm.Dock = DockStyle.Fill;
-            //        homeForm.Show();
-            //        break;
-            //    case "Library":
-            //        homeForm.Hide();
-            //        libraryForm.TopLevel = false;
-            //        pnl_menuFormChanger.Controls.Add(libraryForm);
-            //        libraryForm.Dock = DockStyle.Fill;
-            //        libraryForm.Show();
-            //        break;
-            //}
-        }
-
         private void botonMaximizar1_Click(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
@@ -95,7 +76,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_admin_Click(object sender, EventArgs e)
         {
-            FrmEditorDatos frmEditorDatos = new FrmEditorDatos();
+            FrmEditorDatos frmEditorDatos = new();
             frmEditorDatos.ShowDialog();
         }
 

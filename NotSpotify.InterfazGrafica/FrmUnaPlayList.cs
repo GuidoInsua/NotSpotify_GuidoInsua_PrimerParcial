@@ -22,13 +22,14 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmUnaPlayList_Load(object sender, EventArgs e)
         {
-            label1.Text = playList.Descripccion;
         }
 
         public new void Show()
         {
             pictureBox1.ImageLocation = playList.DireccionDeImagen;
-            label1.Text = playList.Descripccion;
+            label3.Text = playList.Nombre;
+            label2.Text = playList.Descripccion;
+
             base.Show();
         }
 

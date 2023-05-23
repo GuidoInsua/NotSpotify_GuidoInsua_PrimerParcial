@@ -1,41 +1,55 @@
 ﻿using NotSpotify.Clases;
+using NotSpotify.Controles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmHome : Form
     {
         public bool Play;
-        public PlayList PlayList = new PlayList();
+        public PlayList PlayList = new();
+        readonly List<BotonPlayList> ControlList = new();
+
+        private void BotonPlayList_Click(object sender, EventArgs e)
+        {
+            UtilidadesForms.UnaPlayList = Utilidades.AdministradorPlayLists.playLists[((BotonPlayList)sender).TabIndex];
+            UtilidadesForms.ManejadorFormsMenu("PlayList");
+        }
 
         public FrmHome()
         {
             InitializeComponent();
         }
 
-        private void FrmHome_Load(object sender, EventArgs e)
+        private void GetAllControls(Control container)
         {
-            btn_playList1.ActualizarLabel(Utilidades.AdministradorPlayLists.playLists[1].Nombre);
-            btn_playList1.ActualizarImagen(Utilidades.AdministradorPlayLists.playLists[1].DireccionDeImagen);
-            btn_playList2.ActualizarLabel("Sumo");
-            btn_playList3.ActualizarLabel("Sumo");
-            btn_playList4.ActualizarLabel("Sumo");
-            btn_playList5.ActualizarLabel("Sumo");
-            btn_playList6.ActualizarLabel("Sumo");
+            foreach (Control c in container.Controls)
+            {
+                GetAllControls(c);
+                if (c is BotonPlayList a) ControlList.Insert(0,a);
+            }
         }
 
-        private void btn_playList1_Click(object sender, EventArgs e)
+        private void FrmHome_Load(object sender, EventArgs e)
         {
-            UtilidadesForms.unaPlayList = Utilidades.AdministradorPlayLists.playLists[1];
-            UtilidadesForms.ManejadorFormsMenu("PlayList");
+            GetAllControls(this);
+
+            for (int i = 0; i < 20; i++)
+            {
+                ControlList[i].Click += BotonPlayList_Click;
+                ControlList[i].ActualizarLabel(Utilidades.AdministradorPlayLists.playLists[i].Nombre);
+                ControlList[i].ActualizarImagen(Utilidades.AdministradorPlayLists.playLists[i].DireccionDeImagen);
+            }
         }
     }
 }

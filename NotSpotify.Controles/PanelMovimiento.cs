@@ -15,7 +15,7 @@ namespace NotSpotify.InterfazGrafica
     {
         public bool isDragging = false;
         public Point startPoint = new Point(0, 0);
-        public Form miForm;
+        public Form miForm = new Form();
 
         public PanelMovimiento()
         {

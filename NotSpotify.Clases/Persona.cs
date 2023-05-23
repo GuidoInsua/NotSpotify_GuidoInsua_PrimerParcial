@@ -42,5 +42,9 @@ namespace NotSpotify.Clases
             return !(P1 == P2);
         }
 
+        public virtual string GuardarDatosEnLinea()
+        {
+            return $"{Nombre},{Apellido},{Email},{Password}";
+        }
     }
 }

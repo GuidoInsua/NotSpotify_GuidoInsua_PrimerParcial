@@ -10,19 +10,22 @@ using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica
 {
-    public class UtilidadesForms
+    public static class UtilidadesForms
     {
-        static public Panel panel;
-        static public PlayList unaPlayList;
+        private static Panel _panelChanger = new();
+        private static PlayList _unaPlayList = new();
 
-        static FrmHome homeForm = new FrmHome();
-        static FrmLibrary libraryForm = new FrmLibrary();
-        static FrmUnaPlayList unaPlayListForm = new FrmUnaPlayList();
+        public static Panel PanelChanger { get => _panelChanger; set => _panelChanger = value; }
+        public static PlayList UnaPlayList { get => _unaPlayList; set => _unaPlayList = value; }
+
+        static readonly FrmHome homeForm = new();
+        static readonly FrmLibrary libraryForm = new();
+        static readonly FrmUnaPlayList unaPlayListForm = new();
 
         static public T ObtenerPersonaDeDataGrid<T>(DataGridView dataGrid) where T : Persona, ICargable, new()
         {
-            T persona = new T();
-            StringBuilder sb = new StringBuilder();
+            T persona = new();
+            StringBuilder sb = new();
 
             sb.Append($"{dataGrid.SelectedRows[0].Cells[0].Value.ToString()},"); 
             sb.Append($"{dataGrid.SelectedRows[0].Cells[1].Value.ToString()},");
@@ -55,14 +58,16 @@ namespace NotSpotify.InterfazGrafica
                     dataGrid.Rows[i].Cells[2].Value = persona.Email;
                     dataGrid.Rows[i].Cells[3].Value = persona.Password;
 
-                    if (persona is Administrador)
+                    if (persona is Administrador administrador)
                     {
-                        dataGrid.Rows[i].Cells[4].Value = ((Administrador)persona).Dni;
+                        dataGrid.Rows[i].Cells[4].Value = administrador.Dni;
                     }
 
                     i++;
                 }
             }
+
+            AdministradorDatos.GuardarListaPersonasEnArchivo("..\\..\\..\\..\\Archivos\\PersonasNuevo.csv");
         }
 
         static public void ManejadorFormsMenu(string form)
@@ -73,7 +78,7 @@ namespace NotSpotify.InterfazGrafica
                     libraryForm.Hide();
                     unaPlayListForm.Hide();
                     homeForm.TopLevel = false;
-                    panel.Controls.Add(homeForm);
+                    PanelChanger.Controls.Add(homeForm);
                     homeForm.Dock = DockStyle.Fill;
                     homeForm.Show();
                     break;
@@ -81,16 +86,16 @@ namespace NotSpotify.InterfazGrafica
                     homeForm.Hide();
                     unaPlayListForm.Hide();
                     libraryForm.TopLevel = false;
-                    panel.Controls.Add(libraryForm);
+                    PanelChanger.Controls.Add(libraryForm);
                     libraryForm.Dock = DockStyle.Fill;
                     libraryForm.Show();
                     break;
                 case "PlayList":
                     homeForm.Hide();
                     unaPlayListForm.TopLevel = false;
-                    panel.Controls.Add(unaPlayListForm);
+                    PanelChanger.Controls.Add(unaPlayListForm);
                     unaPlayListForm.Dock = DockStyle.Fill;
-                    unaPlayListForm.playList = unaPlayList;
+                    unaPlayListForm.playList = UnaPlayList;
                     unaPlayListForm.Show();
                     break;
             }

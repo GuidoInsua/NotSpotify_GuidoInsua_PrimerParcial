@@ -17,7 +17,7 @@ namespace NotSpotify.Controles
             InitializeComponent();
         }
 
-        public event EventHandler Click
+        new public event EventHandler Click
         {
             add { pbx_imagen.Click += value; }
             remove { pbx_imagen.Click -= value; }

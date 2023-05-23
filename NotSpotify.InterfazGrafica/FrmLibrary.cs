@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using NotSpotify.Clases;
+using NotSpotify.Utilidades;
 
 namespace NotSpotify.InterfazGrafica
 {
@@ -20,24 +22,18 @@ namespace NotSpotify.InterfazGrafica
             InitializeComponent();
         }
 
-        private void btn_tema1_Click(object sender, EventArgs e)
+        private void FrmLibrary_Load(object sender, EventArgs e)
         {
-            tema = "Sumo.wav";
-        }
+            dgv_canciones.Rows.Clear();
+            int i = 0;
 
-        private void btn_tema2_Click(object sender, EventArgs e)
-        {
-            tema = "1.wav";
-        }
+            foreach (Cancion unaCancion in VerificadorDeInicio.CancionesCargadas)
+            {
+                dgv_canciones.Rows.Add();
+                dgv_canciones.Rows[i].Cells[0].Value = unaCancion.Nombre;
 
-        private void btn_tema3_Click(object sender, EventArgs e)
-        {
-            tema = "2.wav";
-        }
-
-        private void btn_tema4_Click(object sender, EventArgs e)
-        {
-            tema = "3.wav";
+                i++;
+            }
         }
     }
 }

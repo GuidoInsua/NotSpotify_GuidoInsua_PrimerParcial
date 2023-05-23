@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             lbl_administradores = new Label();
             dgv_adminsCargados = new DataGridView();
             Nombre = new DataGridViewTextBoxColumn();
@@ -63,52 +63,54 @@
             dgv_adminsCargados.AllowUserToDeleteRows = false;
             dgv_adminsCargados.AllowUserToResizeColumns = false;
             dgv_adminsCargados.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(255, 128, 128);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dgv_adminsCargados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 128, 128);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dgv_adminsCargados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dgv_adminsCargados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgv_adminsCargados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_adminsCargados.BackgroundColor = Color.Black;
             dgv_adminsCargados.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgv_adminsCargados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.Firebrick;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Firebrick;
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgv_adminsCargados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.Firebrick;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.Firebrick;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgv_adminsCargados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgv_adminsCargados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgv_adminsCargados.Columns.AddRange(new DataGridViewColumn[] { Nombre, Apellido, Email, Password, Dni });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgv_adminsCargados.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgv_adminsCargados.DefaultCellStyle = dataGridViewCellStyle7;
             dgv_adminsCargados.EnableHeadersVisualStyles = false;
             dgv_adminsCargados.Location = new Point(12, 130);
             dgv_adminsCargados.MultiSelect = false;
             dgv_adminsCargados.Name = "dgv_adminsCargados";
             dgv_adminsCargados.ReadOnly = true;
             dgv_adminsCargados.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Firebrick;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = Color.Firebrick;
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgv_adminsCargados.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.Firebrick;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = Color.Firebrick;
+            dataGridViewCellStyle8.SelectionForeColor = Color.White;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgv_adminsCargados.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgv_adminsCargados.RowHeadersWidth = 20;
             dgv_adminsCargados.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgv_adminsCargados.RowTemplate.Height = 25;
             dgv_adminsCargados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv_adminsCargados.Size = new Size(966, 349);
+            dgv_adminsCargados.Size = new Size(966, 398);
             dgv_adminsCargados.TabIndex = 10;
             // 
             // Nombre
@@ -117,7 +119,6 @@
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
             Nombre.Resizable = DataGridViewTriState.False;
-            Nombre.Width = 170;
             // 
             // Apellido
             // 
@@ -125,7 +126,6 @@
             Apellido.Name = "Apellido";
             Apellido.ReadOnly = true;
             Apellido.Resizable = DataGridViewTriState.False;
-            Apellido.Width = 170;
             // 
             // Email
             // 
@@ -133,7 +133,6 @@
             Email.Name = "Email";
             Email.ReadOnly = true;
             Email.Resizable = DataGridViewTriState.False;
-            Email.Width = 230;
             // 
             // Password
             // 
@@ -141,7 +140,6 @@
             Password.Name = "Password";
             Password.ReadOnly = true;
             Password.Resizable = DataGridViewTriState.False;
-            Password.Width = 200;
             // 
             // Dni
             // 
@@ -149,11 +147,11 @@
             Dni.Name = "Dni";
             Dni.ReadOnly = true;
             Dni.Resizable = DataGridViewTriState.False;
-            Dni.Width = 160;
             // 
             // btn_add
             // 
-            btn_add.Location = new Point(936, 101);
+            btn_add.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_add.Location = new Point(952, 101);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(26, 26);
             btn_add.TabIndex = 11;
@@ -161,7 +159,8 @@
             // 
             // btn_editar
             // 
-            btn_editar.Location = new Point(904, 101);
+            btn_editar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_editar.Location = new Point(920, 101);
             btn_editar.Name = "btn_editar";
             btn_editar.Size = new Size(26, 26);
             btn_editar.TabIndex = 12;
@@ -169,7 +168,8 @@
             // 
             // btn_borrar
             // 
-            btn_borrar.Location = new Point(872, 101);
+            btn_borrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_borrar.Location = new Point(888, 101);
             btn_borrar.Name = "btn_borrar";
             btn_borrar.Size = new Size(26, 26);
             btn_borrar.TabIndex = 13;
@@ -177,11 +177,12 @@
             // 
             // btn_degradar
             // 
+            btn_degradar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_degradar.BackColor = Color.Cyan;
             btn_degradar.FlatAppearance.BorderSize = 0;
             btn_degradar.FlatStyle = FlatStyle.Flat;
             btn_degradar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_degradar.Location = new Point(840, 101);
+            btn_degradar.Location = new Point(856, 101);
             btn_degradar.Name = "btn_degradar";
             btn_degradar.Size = new Size(26, 26);
             btn_degradar.TabIndex = 14;

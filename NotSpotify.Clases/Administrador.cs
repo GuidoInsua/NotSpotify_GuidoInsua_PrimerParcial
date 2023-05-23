@@ -32,9 +32,14 @@ namespace NotSpotify.Clases
             Dni = fila[4];
         }
 
+        public override string GuardarDatosEnLinea()
+        {
+            return $"{Nombre},{Apellido},{Email},{Password},{Dni},Administrador";
+        }
+
         public static bool operator ==(Administrador A1, Administrador A2)
         {
-            return (A1.Email == A2.Email);
+            return (A1.Email == A2.Email || A1.Dni == A2.Dni);
         }
 
         public static bool operator !=(Administrador A1, Administrador A2)

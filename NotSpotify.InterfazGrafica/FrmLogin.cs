@@ -17,8 +17,8 @@ namespace NotSpotify.InterfazGrafica
     public partial class FrmLogin : Form
     {
         private EnumOpcionSesion _tipoDeUsuarioAutenticado;
-        private string _eMail;
-        private string _password;
+        private string _eMail = string.Empty;
+        private string _password = string.Empty;
 
         private string Email { get => _eMail; set => _eMail = value; }
         private string Password { get => _password; set => _password = value; }

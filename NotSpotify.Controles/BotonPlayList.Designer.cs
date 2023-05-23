@@ -47,6 +47,7 @@
             pbx_imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             pbx_imagen.TabIndex = 0;
             pbx_imagen.TabStop = false;
+            pbx_imagen.Click += pnl_backGround_Click;
             pbx_imagen.MouseEnter += pbx_imagen_MouseEnter;
             // 
             // pnl_backGround
@@ -60,12 +61,13 @@
             pnl_backGround.Name = "pnl_backGround";
             pnl_backGround.Size = new Size(152, 239);
             pnl_backGround.TabIndex = 1;
+            pnl_backGround.Click += pnl_backGround_Click;
             pnl_backGround.MouseEnter += pnl_backGround_MouseEnter;
             pnl_backGround.MouseLeave += pnl_backGround_MouseLeave;
             // 
             // pbx_play
             // 
-            pbx_play.BackColor = Color.Transparent;
+            pbx_play.BackColor = Color.FromArgb(30, 215, 96);
             pbx_play.Image = (Image)resources.GetObject("pbx_play.Image");
             pbx_play.Location = new Point(97, 99);
             pbx_play.Name = "pbx_play";
@@ -74,17 +76,18 @@
             pbx_play.TabIndex = 1;
             pbx_play.TabStop = false;
             pbx_play.Visible = false;
+            pbx_play.Click += pnl_backGround_Click;
             // 
             // lbl_titulo
             // 
-            lbl_titulo.AutoSize = true;
             lbl_titulo.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_titulo.ForeColor = Color.White;
             lbl_titulo.Location = new Point(12, 156);
             lbl_titulo.Name = "lbl_titulo";
-            lbl_titulo.Size = new Size(54, 19);
+            lbl_titulo.Size = new Size(130, 74);
             lbl_titulo.TabIndex = 0;
             lbl_titulo.Text = "label1";
+            lbl_titulo.Click += pnl_backGround_Click;
             // 
             // BotonPlayList
             // 
@@ -92,12 +95,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 25, 25);
             Controls.Add(pnl_backGround);
+            Margin = new Padding(12);
             Name = "BotonPlayList";
             Size = new Size(152, 239);
             Load += BotonPlayList_Load;
             ((System.ComponentModel.ISupportInitialize)pbx_imagen).EndInit();
             pnl_backGround.ResumeLayout(false);
-            pnl_backGround.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbx_play).EndInit();
             ResumeLayout(false);
         }

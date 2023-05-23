@@ -26,21 +26,23 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esAdmin);
+            FrmPopUp frmPopUp = new(VerificadorDeInicio.EnumOpcionSesion.esAdmin);
             frmPopUp.ShowDialog();
 
             while (frmPopUp.accepto)
             {
                 string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni };
 
-                if (AdministradorABM.AgregarPersonaEnLista<Administrador>(datos))
+                try
                 {
-                    MessageBox.Show("Administrador Cargado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AdministradorABM.AgregarPersonaEnLista<Administrador>(datos);
+
+                    MessageBox.Show("Administrador Cargado", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                     frmPopUp.accepto = false;
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show($"{frmPopUp.dni}Datos no validos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"ERROR\n{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                     frmPopUp.ShowDialog();
                 }
             }
@@ -54,18 +56,18 @@ namespace NotSpotify.InterfazGrafica
             {
                 Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
 
-                FrmInformacion informacionForm = new FrmInformacion(FrmInformacion.modoForm.borrarAdministrador, admin.Nombre, admin.Email);
+                FrmInformacion informacionForm = new(FrmInformacion.modoForm.borrarAdministrador, admin.Nombre, admin.Email);
                 informacionForm.ShowDialog();
 
                 if (informacionForm.accepto)
                 {
                     if (AdministradorABM.BorrarPersonaDeLista(admin))
                     {
-                        MessageBox.Show("Administrador eliminado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Administrador eliminado", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                     else
                     {
-                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                 }
 
@@ -83,7 +85,7 @@ namespace NotSpotify.InterfazGrafica
             {
                 Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
 
-                FrmPopUp frmPopUp = new FrmPopUp(VerificadorDeInicio.EnumOpcionSesion.esAdmin, admin.Nombre, admin.Apellido, admin.Email, admin.Password, admin.Dni);
+                FrmPopUp frmPopUp = new(VerificadorDeInicio.EnumOpcionSesion.esAdmin, admin.Nombre, admin.Apellido, admin.Email, admin.Password, admin.Dni);
                 frmPopUp.titulo = "Editar";
                 frmPopUp.ShowDialog();
 
@@ -91,14 +93,16 @@ namespace NotSpotify.InterfazGrafica
                 {
                     string[] datos = { frmPopUp.nombre, frmPopUp.apellido, frmPopUp.eMail, frmPopUp.password, frmPopUp.dni };
 
-                    if (AdministradorABM.ModificarPersonaEnLista<Administrador>(admin, datos))
+                    try
                     {
-                        MessageBox.Show("Administrador actualizado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AdministradorABM.ModificarPersonaEnLista<Administrador>(admin, datos);
+
+                        MessageBox.Show("Administrador actualizado", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                         frmPopUp.accepto = false;
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show($"Datos no validos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"ERROR\n{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                         frmPopUp.ShowDialog();
                     }
                 }
@@ -123,19 +127,19 @@ namespace NotSpotify.InterfazGrafica
             {
                 Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
 
-                FrmInformacion informacionForm = new FrmInformacion(FrmInformacion.modoForm.degradarAdministrador,admin.Nombre,admin.Email);
+                FrmInformacion informacionForm = new(FrmInformacion.modoForm.degradarAdministrador, admin.Nombre, admin.Email);
                 informacionForm.ShowDialog();
 
                 while (informacionForm.accepto)
                 {
                     if (AdministradorABM.ConveritAdminEnUsuario(admin))
                     {
-                        MessageBox.Show("Administrador degradado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Administrador degradado", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                         informacionForm.accepto = false;
                     }
                     else
                     {
-                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error", "", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                 }
 

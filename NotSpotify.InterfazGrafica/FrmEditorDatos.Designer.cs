@@ -113,6 +113,7 @@
             // 
             // btn_maximizar
             // 
+            btn_maximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_maximizar.BackColor = Color.Transparent;
             btn_maximizar.Location = new Point(1004, 0);
             btn_maximizar.Margin = new Padding(0);
@@ -133,6 +134,7 @@
             btn_canciones.TabIndex = 3;
             btn_canciones.Text = "Canciones";
             btn_canciones.UseVisualStyleBackColor = false;
+            btn_canciones.Click += btn_canciones_Click;
             // 
             // btn_admins
             // 

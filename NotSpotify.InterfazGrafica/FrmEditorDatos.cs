@@ -13,8 +13,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmEditorDatos : Form
     {
-        FrmUsuarios usuariosForm = new FrmUsuarios();
-        FrmAdministradores administradoresForm = new FrmAdministradores();
+        readonly FrmUsuarios usuariosForm = new();
+        readonly FrmAdministradores administradoresForm = new();
+        readonly FrmCanciones cancionesForm = new();
 
         public FrmEditorDatos()
         {
@@ -46,12 +47,18 @@ namespace NotSpotify.InterfazGrafica
             ManejadorForms("Admins");
         }
 
+        private void btn_canciones_Click(object sender, EventArgs e)
+        {
+            ManejadorForms("Canciones");
+        }
+
         private void ManejadorForms(string form)
         {
             switch (form)
             {
                 case "Usuarios":
                     administradoresForm.Hide();
+                    cancionesForm.Hide();
                     usuariosForm.TopLevel = false;
                     pnl_FrmChanger.Controls.Add(usuariosForm);
                     usuariosForm.Dock = DockStyle.Fill;
@@ -59,10 +66,19 @@ namespace NotSpotify.InterfazGrafica
                     break;
                 case "Admins":
                     usuariosForm.Hide();
+                    cancionesForm.Hide();
                     administradoresForm.TopLevel = false;
                     pnl_FrmChanger.Controls.Add(administradoresForm);
                     administradoresForm.Dock = DockStyle.Fill;
                     administradoresForm.Show();
+                    break;
+                case "Canciones":
+                    usuariosForm.Hide();
+                    administradoresForm.Hide();
+                    cancionesForm.TopLevel = false;
+                    pnl_FrmChanger.Controls.Add(cancionesForm);
+                    cancionesForm.Dock = DockStyle.Fill;
+                    cancionesForm.Show();
                     break;
             }
         }
@@ -83,5 +99,7 @@ namespace NotSpotify.InterfazGrafica
         {
             WindowState = FormWindowState.Minimized;
         }
+
+
     }
 }

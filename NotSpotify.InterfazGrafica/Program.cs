@@ -16,7 +16,7 @@ namespace NotSpotify.InterfazGrafica
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            FrmLogin loginForm = new FrmLogin();
+            FrmLogin loginForm = new();
             Application.Run(loginForm);
 
             if(loginForm.TipoDeUsuarioAutenticado == EnumOpcionSesion.esUsuario || loginForm.TipoDeUsuarioAutenticado == EnumOpcionSesion.esAdmin)

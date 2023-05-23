@@ -31,6 +31,11 @@ namespace NotSpotify.Clases
             Password = fila[3];
         }
 
+        public override string GuardarDatosEnLinea()
+        {
+            return $"{Nombre},{Apellido},{Email},{Password},Usuario";
+        }
+
         public static bool operator ==(Usuario U1, Usuario U2)
         {
             return (U1.Email == U2.Email);

@@ -17,7 +17,7 @@ namespace NotSpotify.Controles
             InitializeComponent();
         }
 
-        public event EventHandler Click
+        new public event EventHandler Click
         {
             add { btn_maximizar.Click += value; }
             remove { btn_maximizar.Click -= value; }

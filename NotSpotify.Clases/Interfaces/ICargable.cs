@@ -9,5 +9,7 @@ namespace NotSpotify.Clases.Interfaces
     public interface ICargable
     {
         public void CargarDatosDesdeArray(string[] fila);
+
+        //public string GuardarDatosEnString();
     }
 }

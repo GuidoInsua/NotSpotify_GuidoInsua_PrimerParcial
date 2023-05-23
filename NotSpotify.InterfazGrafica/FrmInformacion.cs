@@ -13,12 +13,12 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmInformacion : Form
     {
-        public bool accepto;
+        public bool accepto = false;
         public string titulo = "Agregar";
-        public string dni;
+        public string dni = string.Empty;
         public modoForm tipo;
-        public string nombre;
-        public string eMail;
+        public string nombre = string.Empty;
+        public string eMail = string.Empty;
 
         public enum modoForm
         {

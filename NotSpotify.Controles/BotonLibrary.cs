@@ -17,7 +17,7 @@ namespace NotSpotify.Controles
             InitializeComponent();
         }
 
-        public event EventHandler Click
+        new public event EventHandler Click
         {
             add { btn_library.Click += value; }
             remove { btn_library.Click -= value; }

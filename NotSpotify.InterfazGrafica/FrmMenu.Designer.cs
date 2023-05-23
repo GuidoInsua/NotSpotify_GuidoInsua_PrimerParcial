@@ -169,6 +169,7 @@
             // pnl_menuFormChanger
             // 
             pnl_menuFormChanger.AutoSize = true;
+            pnl_menuFormChanger.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pnl_menuFormChanger.BackColor = Color.Transparent;
             pnl_menuFormChanger.BackgroundImageLayout = ImageLayout.None;
             pnl_menuFormChanger.Dock = DockStyle.Fill;
