@@ -18,6 +18,7 @@ ABM
 IMPORTANTE !
 
 -En la carpeta de la solucion buscar por '.resx'
+
 -Marcar la casilla para desbloquear en todos los archivos .resx
 
 
