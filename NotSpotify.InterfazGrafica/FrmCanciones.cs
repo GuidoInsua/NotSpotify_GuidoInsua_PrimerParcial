@@ -64,6 +64,7 @@ namespace NotSpotify.InterfazGrafica
                 try
                 {
                     AdministradorCanciones.NombreCancionValido(nombre);
+                    AdministradorCanciones.ValidarLinkYouTube(link);
 
                     FrmMenu.estadoDescarga = "Descargando...";
                     lbl_cargando.Text = FrmMenu.estadoDescarga;

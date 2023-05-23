@@ -46,8 +46,28 @@ namespace NotSpotify.Utilidades
                 engine.Convert(inputFile, outputFile);
             }
 
-            File.Delete(Path.Combine(source, vid.FullName));
+            File.Delete(Path.Combine(source, vid.FullName));          
         }
+
+        /// <summary>
+        /// valida que el link de youtube exista
+        /// </summary>
+        /// <param name="url"></param>
+        /// <exception cref="Exception"></exception>
+        public static void ValidarLinkYouTube(string url)
+        {
+            try
+            {
+                var youtube = YouTube.Default;
+                var vid = youtube.GetVideo(url);
+            }
+            catch
+            {
+                throw new Exception("Link YouTube no valido");
+            }
+        }
+
+
 
         /// <summary>
         /// lee los archivos mp3 de un directorio y los guarda en una lista de canciones
