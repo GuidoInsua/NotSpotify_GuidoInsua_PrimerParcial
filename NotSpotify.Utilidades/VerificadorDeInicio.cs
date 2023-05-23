@@ -15,11 +15,9 @@ namespace NotSpotify.Utilidades
             esUsuario = 2,
         }
 
-        static private List<Cancion> _cancionesCargadas = new();
         static private List<Persona> _personasCargadas = new();
         static private Persona _personaLogueada = new();   
 
-        static public List<Cancion> CancionesCargadas { get => _cancionesCargadas; set => _cancionesCargadas = value; }
         static public Persona PersonaLogueada { get => _personaLogueada; set => _personaLogueada = value; }
         static public List<Persona> PersonasCargadas { get => _personasCargadas; set => _personasCargadas = value; }
 
@@ -29,6 +27,7 @@ namespace NotSpotify.Utilidades
             AdministradorDatos.CargarListaPersonasDesdeArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
             AdministradorCanciones.CargarListaCancionesDesdeDirectorio("..\\..\\..\\..\\Canciones");
             AdministradorPlayLists.CargarPlayLists();
+            AdministradorPlayLists.GenerarListasDeCanciones();
         }
 
         static public EnumOpcionSesion VerificarTipoDePersona(string eMailIngresado, string passwordIngresada)

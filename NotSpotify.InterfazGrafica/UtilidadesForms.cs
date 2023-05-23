@@ -67,7 +67,7 @@ namespace NotSpotify.InterfazGrafica
                 }
             }
 
-            AdministradorDatos.GuardarListaPersonasEnArchivo("..\\..\\..\\..\\Archivos\\PersonasNuevo.csv");
+            AdministradorDatos.GuardarListaPersonasEnArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
         }
 
         static public void ManejadorFormsMenu(string form)
@@ -114,11 +114,11 @@ namespace NotSpotify.InterfazGrafica
             return unaCancion;
         }
 
-        static public void TocarCancionRandom()
+        static public void TocarCancionRandom(List<Cancion> listaCanciones)
         {
             Random r = new();
 
-            AdministradorCanciones.tema = VerificadorDeInicio.CancionesCargadas[r.Next(0, VerificadorDeInicio.CancionesCargadas.Count)].Direccion;
+            AdministradorCanciones.tema = listaCanciones[r.Next(0, listaCanciones.Count)].Direccion;
 
             FrmMenu.IniciarDetenerTema();
         }

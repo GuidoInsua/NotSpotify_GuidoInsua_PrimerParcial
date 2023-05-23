@@ -76,7 +76,7 @@ namespace NotSpotify.InterfazGrafica
             dgv_canciones.Rows.Clear();
             int i = 0;
 
-            foreach (Cancion unaCancion in VerificadorDeInicio.CancionesCargadas)
+            foreach (Cancion unaCancion in AdministradorCanciones.CancionesCargadas)
             {
                 dgv_canciones.Rows.Add();
                 dgv_canciones.Rows[i].Cells[0].Value = unaCancion.Nombre;

@@ -84,6 +84,7 @@
             btn_playList11.Name = "btn_playList11";
             btn_playList11.Size = new Size(152, 239);
             btn_playList11.TabIndex = 0;
+            btn_playList11.Click += BotonPlayList_Click;
             // 
             // btn_playList1
             // 
@@ -93,6 +94,7 @@
             btn_playList1.Name = "btn_playList1";
             btn_playList1.Size = new Size(152, 239);
             btn_playList1.TabIndex = 1;
+            btn_playList1.Click += BotonPlayList_Click;
             // 
             // btn_playList2
             // 
@@ -102,6 +104,7 @@
             btn_playList2.Name = "btn_playList2";
             btn_playList2.Size = new Size(152, 239);
             btn_playList2.TabIndex = 2;
+            btn_playList2.Click += BotonPlayList_Click;
             // 
             // btn_playList3
             // 
@@ -111,6 +114,7 @@
             btn_playList3.Name = "btn_playList3";
             btn_playList3.Size = new Size(152, 239);
             btn_playList3.TabIndex = 3;
+            btn_playList3.Click += BotonPlayList_Click;
             // 
             // btn_playList4
             // 
@@ -120,6 +124,7 @@
             btn_playList4.Name = "btn_playList4";
             btn_playList4.Size = new Size(152, 239);
             btn_playList4.TabIndex = 4;
+            btn_playList4.Click += BotonPlayList_Click;
             // 
             // btn_playList5
             // 
@@ -129,6 +134,7 @@
             btn_playList5.Name = "btn_playList5";
             btn_playList5.Size = new Size(152, 239);
             btn_playList5.TabIndex = 5;
+            btn_playList5.Click += BotonPlayList_Click;
             // 
             // btn_playList6
             // 
@@ -138,6 +144,7 @@
             btn_playList6.Name = "btn_playList6";
             btn_playList6.Size = new Size(152, 239);
             btn_playList6.TabIndex = 6;
+            btn_playList6.Click += BotonPlayList_Click;
             // 
             // btn_playList7
             // 
@@ -147,6 +154,7 @@
             btn_playList7.Name = "btn_playList7";
             btn_playList7.Size = new Size(152, 239);
             btn_playList7.TabIndex = 7;
+            btn_playList7.Click += BotonPlayList_Click;
             // 
             // btn_playList8
             // 
@@ -156,6 +164,7 @@
             btn_playList8.Name = "btn_playList8";
             btn_playList8.Size = new Size(152, 239);
             btn_playList8.TabIndex = 8;
+            btn_playList8.Click += BotonPlayList_Click;
             // 
             // btn_playList9
             // 
@@ -165,6 +174,7 @@
             btn_playList9.Name = "btn_playList9";
             btn_playList9.Size = new Size(152, 239);
             btn_playList9.TabIndex = 9;
+            btn_playList9.Click += BotonPlayList_Click;
             // 
             // btn_playList10
             // 
@@ -174,6 +184,7 @@
             btn_playList10.Name = "btn_playList10";
             btn_playList10.Size = new Size(152, 239);
             btn_playList10.TabIndex = 10;
+            btn_playList10.Click += BotonPlayList_Click;
             // 
             // btn_playList12
             // 
@@ -183,6 +194,7 @@
             btn_playList12.Name = "btn_playList12";
             btn_playList12.Size = new Size(152, 239);
             btn_playList12.TabIndex = 11;
+            btn_playList12.Click += BotonPlayList_Click;
             // 
             // btn_playList13
             // 
@@ -192,6 +204,7 @@
             btn_playList13.Name = "btn_playList13";
             btn_playList13.Size = new Size(152, 239);
             btn_playList13.TabIndex = 12;
+            btn_playList13.Click += BotonPlayList_Click;
             // 
             // btn_playList14
             // 
@@ -201,6 +214,7 @@
             btn_playList14.Name = "btn_playList14";
             btn_playList14.Size = new Size(152, 239);
             btn_playList14.TabIndex = 13;
+            btn_playList14.Click += BotonPlayList_Click;
             // 
             // btn_playList15
             // 
@@ -210,6 +224,7 @@
             btn_playList15.Name = "btn_playList15";
             btn_playList15.Size = new Size(152, 239);
             btn_playList15.TabIndex = 14;
+            btn_playList15.Click += BotonPlayList_Click;
             // 
             // btn_playList16
             // 
@@ -219,6 +234,7 @@
             btn_playList16.Name = "btn_playList16";
             btn_playList16.Size = new Size(152, 239);
             btn_playList16.TabIndex = 15;
+            btn_playList16.Click += BotonPlayList_Click;
             // 
             // btn_playList17
             // 
@@ -228,6 +244,7 @@
             btn_playList17.Name = "btn_playList17";
             btn_playList17.Size = new Size(152, 239);
             btn_playList17.TabIndex = 16;
+            btn_playList17.Click += BotonPlayList_Click;
             // 
             // btn_playList18
             // 
@@ -237,6 +254,7 @@
             btn_playList18.Name = "btn_playList18";
             btn_playList18.Size = new Size(152, 239);
             btn_playList18.TabIndex = 17;
+            btn_playList18.Click += BotonPlayList_Click;
             // 
             // btn_playList19
             // 
@@ -246,6 +264,7 @@
             btn_playList19.Name = "btn_playList19";
             btn_playList19.Size = new Size(152, 239);
             btn_playList19.TabIndex = 18;
+            btn_playList19.Click += BotonPlayList_Click;
             // 
             // btn_playList20
             // 
@@ -255,11 +274,12 @@
             btn_playList20.Name = "btn_playList20";
             btn_playList20.Size = new Size(152, 239);
             btn_playList20.TabIndex = 19;
+            btn_playList20.Click += BotonPlayList_Click;
             // 
             // pbx_banner
             // 
             pbx_banner.Image = Properties.Resources.imgBanner1;
-            pbx_banner.Location = new Point(226, 12);
+            pbx_banner.Location = new Point(207, 12);
             pbx_banner.Name = "pbx_banner";
             pbx_banner.Size = new Size(1356, 310);
             pbx_banner.TabIndex = 23;

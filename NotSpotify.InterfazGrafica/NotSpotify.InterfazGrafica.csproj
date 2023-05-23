@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NotSpotify.Controles\NotSpotify.Controles.csproj" />
     <ProjectReference Include="..\NotSpotify.Utilidades\NotSpotify.Utilidades.csproj" />
   </ItemGroup>

@@ -20,7 +20,7 @@ namespace NotSpotify.InterfazGrafica
         public PlayList PlayList = new();
         readonly List<BotonPlayList> ControlList = new();
 
-        private void BotonPlayList_Click(object sender, EventArgs e)
+        public void BotonPlayList_Click(object sender, EventArgs e)
         {
             UtilidadesForms.UnaPlayList = Utilidades.AdministradorPlayLists.playLists[((BotonPlayList)sender).TabIndex];
             UtilidadesForms.ManejadorFormsMenu("PlayList");
@@ -46,7 +46,6 @@ namespace NotSpotify.InterfazGrafica
 
             for (int i = 0; i < 20; i++)
             {
-                //ControlList[i].Click += BotonPlayList_Click;
                 ControlList[i].ActualizarLabel(Utilidades.AdministradorPlayLists.playLists[i].Nombre);
                 ControlList[i].ActualizarImagen(Utilidades.AdministradorPlayLists.playLists[i].DireccionDeImagen);
             }
@@ -66,7 +65,7 @@ namespace NotSpotify.InterfazGrafica
                     break;
             }
 
-            
+
         }
     }
 }

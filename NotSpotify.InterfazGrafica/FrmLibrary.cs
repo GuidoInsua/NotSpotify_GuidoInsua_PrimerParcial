@@ -22,21 +22,27 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmLibrary_Load(object sender, EventArgs e)
         {
+        }
+
+        public new void Show()
+        {
             dgv_canciones.Rows.Clear();
             int i = 0;
 
-            foreach (Cancion unaCancion in VerificadorDeInicio.CancionesCargadas)
+            foreach (Cancion unaCancion in AdministradorCanciones.CancionesCargadas)
             {
                 dgv_canciones.Rows.Add();
                 dgv_canciones.Rows[i].Cells[0].Value = unaCancion.Nombre;
 
                 i++;
             }
+
+            base.Show();
         }
 
         private void dgv_canciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones));
+            AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones), AdministradorCanciones.CancionesCargadas);
         }
     }
 }
