@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NotSpotify.BaseDeDatos\NotSpotify.BaseDeDatos.csproj" />
     <ProjectReference Include="..\NotSpotify.Controles\NotSpotify.Controles.csproj" />
     <ProjectReference Include="..\NotSpotify.Utilidades\NotSpotify.Utilidades.csproj" />
   </ItemGroup>

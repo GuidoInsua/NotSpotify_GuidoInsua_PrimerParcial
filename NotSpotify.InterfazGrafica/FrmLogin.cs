@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static NotSpotify.Utilidades.VerificadorDeInicio;
+using NotSpotify.BaseDeDatos;
 
 namespace NotSpotify.InterfazGrafica
 {
@@ -33,6 +34,16 @@ namespace NotSpotify.InterfazGrafica
         {
             Email = "ejemplo@correo.com";
             Password = "0";
+
+            try
+            {
+                MessageBox.Show(NotSpotify.BaseDeDatos.Conexion.Leer());
+                NotSpotify.BaseDeDatos.Conexion.CargarListaPersonasDesdeSql();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Mess: {ex.Message} \n\n {ex}");
+            }
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace NotSpotify.Utilidades
         static VerificadorDeInicio()
         {
             _personasCargadas = new List<Persona>();
-            AdministradorDatos.CargarListaPersonasDesdeArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
+            //AdministradorDatos.CargarListaPersonasDesdeArchivo("..\\..\\..\\..\\Archivos\\Personas.csv"); //join path
             AdministradorCanciones.CargarListaCancionesDesdeDirectorio("..\\..\\..\\..\\Canciones");
             AdministradorPlayLists.CargarPlayLists();
             AdministradorPlayLists.GenerarListasDeCanciones();

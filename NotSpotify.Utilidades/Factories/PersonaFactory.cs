@@ -35,7 +35,29 @@ namespace NotSpotify.Clases.Factories
             }
             catch
             {
-                throw new Exception("Datos incorrectos no fue cargado");
+                throw new Exception("Datos incorrectos, no fue cargado");
+            }
+        }
+
+        static public void CargarPersonaPorLastOrDefaultSql(string[] datos)
+        {
+            try
+            {
+                switch (datos.LastOrDefault())
+                {
+                    case "Administrador":
+                        AdministradorABM.AgregarPersonaEnLista<Administrador>(datos);
+                        break;
+                    case "Usuario":
+                        AdministradorABM.AgregarPersonaEnLista<Usuario>(datos);
+                        break;
+                    default:
+                        throw new ArgumentException("Error no es Usuario o Administrador");
+                }
+            }
+            catch
+            {
+                throw new Exception("Datos incorrectos, no fue cargado");
             }
         }
     }
