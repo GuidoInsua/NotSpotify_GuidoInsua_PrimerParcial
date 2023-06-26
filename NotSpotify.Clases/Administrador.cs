@@ -1,6 +1,7 @@
 ﻿using NotSpotify.Clases.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Administrador : Persona, ICargable
+    public class Administrador : Persona
     {
-        private string _dni;
+        private string? _dni;
 
-        public string Dni { get => _dni; set => _dni = value; }
+        public string? Dni { get => _dni; set => _dni = value; }
 
         public Administrador() 
         {
@@ -27,13 +28,23 @@ namespace NotSpotify.Clases
         /// Completa los campos del administrador con los valores del array
         /// </summary>
         /// <param name="fila"></param>
-        public void CargarDatosDesdeArray(string[] fila)
+        public override void CargarDatosDesdeArray(string[] fila)
         {
             Nombre = fila[0];
             Apellido = fila[1];
             Email = fila[2];
             Password = fila[3];
             Dni = fila[4];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string GuardarDatosEnSql()
+        {
+            return "INSERT INTO Personas (Nombre, Apellido, Email, Password, Dni, Tipo) " +
+                    $"VALUES ('{Nombre}', '{Apellido}', '{Email}', '{Password}', '{Dni}', 'Administrador')";
         }
 
         /// <summary>

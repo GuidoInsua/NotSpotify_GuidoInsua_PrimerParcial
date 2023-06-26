@@ -78,8 +78,9 @@ namespace NotSpotify.InterfazGrafica
                     i++;
                 }
             }
-
-            AdministradorDatos.GuardarListaPersonasEnArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
+            NotSpotify.BaseDeDatos.Conexion.GuardarListaEnSql<Persona>(PersonasCargadas, "Personas");
+            
+            //AdministradorDatos.GuardarListaPersonasEnArchivo("..\\..\\..\\..\\Archivos\\Personas.csv");
         }
 
         /// <summary>

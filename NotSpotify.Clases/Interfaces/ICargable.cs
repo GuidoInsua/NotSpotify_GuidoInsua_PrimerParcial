@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,6 @@ namespace NotSpotify.Clases.Interfaces
     {
         public void CargarDatosDesdeArray(string[] fila);
 
-        //public string GuardarDatosEnString();
+        public string GuardarDatosEnSql();
     }
 }

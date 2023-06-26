@@ -16,9 +16,7 @@ namespace NotSpotify.Utilidades
         }
 
         static private List<Persona> _personasCargadas = new();
-        static private Persona _personaLogueada = new();   
 
-        static public Persona PersonaLogueada { get => _personaLogueada; set => _personaLogueada = value; }
         static public List<Persona> PersonasCargadas { get => _personasCargadas; set => _personasCargadas = value; }
 
         /// <summary>
@@ -27,10 +25,7 @@ namespace NotSpotify.Utilidades
         static VerificadorDeInicio()
         {
             _personasCargadas = new List<Persona>();
-            //AdministradorDatos.CargarListaPersonasDesdeArchivo("..\\..\\..\\..\\Archivos\\Personas.csv"); //join path
             AdministradorCanciones.CargarListaCancionesDesdeDirectorio("..\\..\\..\\..\\Canciones");
-            AdministradorPlayLists.CargarPlayLists();
-            AdministradorPlayLists.GenerarListasDeCanciones();
         }
 
         /// <summary>
@@ -43,23 +38,27 @@ namespace NotSpotify.Utilidades
         {
             try
             {
-                PersonaLogueada = AdministradorDatos.BuscarPersonaLogueada(eMailIngresado, passwordIngresada, PersonasCargadas);
-
-                if (PersonaLogueada is Administrador)
+                foreach (Persona persona in PersonasCargadas)
                 {
-                    return EnumOpcionSesion.esAdmin;
+                    if (persona.Email == eMailIngresado && persona.Password == passwordIngresada)
+                    {
+                        if (persona is Administrador)
+                        {
+                            return EnumOpcionSesion.esAdmin;
+                        }
+
+                        if (persona is Usuario)
+                        {
+                            return EnumOpcionSesion.esUsuario;
+                        }                        
+                    }
                 }
 
-                if (PersonaLogueada is Usuario)
-                {
-                    return EnumOpcionSesion.esUsuario;
-                }
-
-                throw new Exception("Datos correctos, no existe clase");
+                throw new Exception("Persona no logueada, no existe clase");
             }
             catch
             {
-                throw;
+                throw new Exception("Persona no logueada");
             }         
         }
 

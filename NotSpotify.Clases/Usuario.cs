@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Usuario : Persona, ICargable
+    public class Usuario : Persona
     {
         private List<PlayList> _playLists;
 
@@ -27,12 +28,22 @@ namespace NotSpotify.Clases
         /// Completa los campos del usuario con los valores del array
         /// </summary>
         /// <param name="fila"></param>
-        public void CargarDatosDesdeArray(string[] fila)
+        public override void CargarDatosDesdeArray(string[] fila)
         {
             Nombre = fila[0];
             Apellido = fila[1];
             Email = fila[2];
             Password = fila[3];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string GuardarDatosEnSql()
+        {
+            return "INSERT INTO Personas (Nombre, Apellido, Email, Password, Dni, Tipo) " +
+                    $"VALUES ('{Nombre}', '{Apellido}', '{Email}', '{Password}', '', 'Usuario')";
         }
 
         /// <summary>

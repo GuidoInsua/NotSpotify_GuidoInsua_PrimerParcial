@@ -15,31 +15,7 @@ namespace NotSpotify.Clases.Factories
         /// <param name="linea"></param>
         /// <param name="separador"></param>
         /// <exception cref="Exception"></exception>
-        static public void CargarPersonaPorLastOrDefault(string linea, string separador)
-        {
-            string[] fila = linea.Split(separador);
-
-            try
-            {
-                switch (fila.LastOrDefault())
-                {
-                    case "Administrador":
-                        AdministradorABM.AgregarPersonaEnLista<Administrador>(fila);
-                        break;
-                    case "Usuario":
-                        AdministradorABM.AgregarPersonaEnLista<Usuario>(fila);
-                        break;
-                    default:
-                        throw new ArgumentException("Error no es Usuario o Administrador");
-                }
-            }
-            catch
-            {
-                throw new Exception("Datos incorrectos, no fue cargado");
-            }
-        }
-
-        static public void CargarPersonaPorLastOrDefaultSql(string[] datos)
+        static public void CargarPersonaPorLastOrDefault(string[] datos)
         {
             try
             {

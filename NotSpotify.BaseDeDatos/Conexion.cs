@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NotSpotify.Clases;
+using NotSpotify.Clases.Interfaces;
 using NotSpotify.Utilidades;
 
 namespace NotSpotify.BaseDeDatos
@@ -28,22 +30,35 @@ namespace NotSpotify.BaseDeDatos
             ComandoSql.CommandType = System.Data.CommandType.Text; 
         }
 
-        public static string Leer()
+        static public void CargarListaDesdeSql(string tabla)
         {
-            StringBuilder sb = new StringBuilder();
-
-            try
+           try
             {
                 ConexionSql.Open();
 
-                ComandoSql.CommandText = "SELECT * FROM Prueba";
+                ComandoSql.CommandText = $"SELECT * FROM {tabla}";
 
-                using(var dataReader = ComandoSql.ExecuteReader())
+                using (var dataReader = ComandoSql.ExecuteReader())
                 {
-                    while(dataReader.Read()) 
+                    while (dataReader.Read())
                     {
-                        sb.AppendLine($"{dataReader["Id"]} - {dataReader["Nombre"]}");
+                        if (tabla == "Personas")
+                        {
+                            string[] datos = { dataReader["Nombre"].ToString(), dataReader["Apellido"].ToString(), dataReader["Email"].ToString(),
+                            dataReader["Password"].ToString(), dataReader["Dni"].ToString(), dataReader["Tipo"].ToString() };
+
+                            NotSpotify.Clases.Factories.PersonaFactory.CargarPersonaPorLastOrDefault(datos);
+                        }
+
+                        if (tabla == "PlayLists")
+                        {
+                            string[] datos = { dataReader["Nombre"].ToString(), dataReader["Descripccion"].ToString(), dataReader["DireccionDeImagen"].ToString()};
+
+                            NotSpotify.Utilidades.AdministradorPlayLists.AgregarPlayListEnLista(datos);
+                        }
                     }
+
+                    dataReader.Close();
                 }
             }
             catch
@@ -52,29 +67,24 @@ namespace NotSpotify.BaseDeDatos
             }
             finally
             {
-                ConexionSql.Close();             
+                ConexionSql.Close();
             }
-
-            return sb.ToString();
         }
 
-        static public void CargarListaPersonasDesdeSql()
+        static public void GuardarListaEnSql<T>(List<T> lista, string tabla) where T : class, ICargable
         {
             try
             {
                 ConexionSql.Open();
 
-                ComandoSql.CommandText = "SELECT * FROM Personas";
+                ComandoSql.CommandText = $"TRUNCATE TABLE {tabla}";
+                ComandoSql.ExecuteNonQuery();
 
-                using (var dataReader = ComandoSql.ExecuteReader())
+                foreach (T objeto in lista)
                 {
-                    while (dataReader.Read())
-                    {
-                        string[] datos = { dataReader["Nombre"].ToString(), dataReader["Apellido"].ToString(), dataReader["Email"].ToString(), dataReader["Password"].ToString(), dataReader["Dni"].ToString(), dataReader["Tipo"].ToString() };
-                        NotSpotify.Clases.Factories.PersonaFactory.CargarPersonaPorLastOrDefaultSql(datos);
-                    }
+                    ComandoSql.CommandText = objeto.GuardarDatosEnSql();
 
-                    dataReader.Close();
+                    ComandoSql.ExecuteNonQuery();
                 }
             }
             catch

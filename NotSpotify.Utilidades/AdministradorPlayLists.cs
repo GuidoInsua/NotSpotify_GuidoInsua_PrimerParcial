@@ -19,6 +19,21 @@ namespace NotSpotify.Utilidades
             playLists = AdministradorDatos.CrearListaDesdeArchivo<PlayList>("..\\..\\..\\..\\Archivos\\PlayLists.csv");
         }
 
+        public static void AgregarPlayListEnLista(string[] datos)
+        {
+            try
+            {
+                PlayList unaPlayList = new PlayList();
+                unaPlayList.CargarDatosDesdeArray(datos);
+
+                playLists.Insert(0, unaPlayList);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// genera listas de canciones aleatorias para cada playList
         /// </summary>

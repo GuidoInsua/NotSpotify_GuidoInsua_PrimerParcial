@@ -37,8 +37,12 @@ namespace NotSpotify.InterfazGrafica
 
             try
             {
-                MessageBox.Show(NotSpotify.BaseDeDatos.Conexion.Leer());
-                NotSpotify.BaseDeDatos.Conexion.CargarListaPersonasDesdeSql();
+                //MessageBox.Show(NotSpotify.BaseDeDatos.Conexion.Leer());
+                //NotSpotify.BaseDeDatos.Conexion.CargarListaPersonasDesdeSql();
+                NotSpotify.BaseDeDatos.Conexion.CargarListaDesdeSql("Personas");
+                NotSpotify.BaseDeDatos.Conexion.CargarListaDesdeSql("PlayLists");
+                //NotSpotify.BaseDeDatos.Conexion.GuardarListaPersonasEnSql(PersonasCargadas);
+                AdministradorPlayLists.GenerarListasDeCanciones();
             }
             catch (Exception ex) 
             {

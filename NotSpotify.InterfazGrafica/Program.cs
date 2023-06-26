@@ -1,5 +1,3 @@
-
-
 using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.InterfazGrafica

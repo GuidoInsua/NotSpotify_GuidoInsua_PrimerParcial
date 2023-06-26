@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Persona
+    public abstract class Persona : ICargable
     {
         private string _nombre;
         private string _apellido;
@@ -50,5 +50,9 @@ namespace NotSpotify.Clases
         {
             return $"{Nombre},{Apellido},{Email},{Password}";
         }
+
+        public abstract void CargarDatosDesdeArray(string[] fila);
+
+        public abstract string GuardarDatosEnSql();
     }
 }

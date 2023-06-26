@@ -52,5 +52,16 @@ namespace NotSpotify.Clases
             Descripccion = fila[1];
             DireccionDeImagen = fila[2];
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public string GuardarDatosEnSql()
+        {
+            return "INSERT INTO PlayLists (Nombre, Descripccion, DireccionDeImagen) " +
+                 $"VALUES ('{Nombre}', '{Descripccion}', '{DireccionDeImagen}')";
+        }
     }
 }

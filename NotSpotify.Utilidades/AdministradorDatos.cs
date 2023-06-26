@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using NotSpotify.Clases;
 using NotSpotify.Clases.Factories;
 using NotSpotify.Clases.Interfaces;
+using static NotSpotify.Utilidades.VerificadorDeInicio;
 
 namespace NotSpotify.Utilidades
 {
@@ -55,7 +56,8 @@ namespace NotSpotify.Utilidades
             {
                 try
                 {
-                    PersonaFactory.CargarPersonaPorLastOrDefault(linea, ",");
+                    string[] datos = linea.Split(",");
+                    PersonaFactory.CargarPersonaPorLastOrDefault(datos);
                 }
                 catch { }
             }
@@ -70,33 +72,12 @@ namespace NotSpotify.Utilidades
             using StreamWriter writer = new(path);
             string unaPersonaCsv;
 
-            foreach (Persona perosona in VerificadorDeInicio.PersonasCargadas)
+            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
             {
-                unaPersonaCsv = perosona.GuardarDatosEnLinea();
+                unaPersonaCsv = persona.GuardarDatosEnLinea();
 
                 writer.WriteLine(unaPersonaCsv);
             }
-        }
-
-        /// <summary>
-        /// retorna la persona que concida con los valores ingresados
-        /// </summary>
-        /// <param name="eMailIngresado"></param>
-        /// <param name="passwordIngresada"></param>
-        /// <param name="personas"></param>
-        /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        static public Persona BuscarPersonaLogueada(string eMailIngresado, string passwordIngresada, List<Persona> personas)
-        {
-            foreach (Persona persona in personas)
-            {
-                if (persona.Email == eMailIngresado && persona.Password == passwordIngresada)
-                {
-                    return persona;
-                }
-            }
-
-            throw new Exception("Persona no logueada");
         }
     }
 }
