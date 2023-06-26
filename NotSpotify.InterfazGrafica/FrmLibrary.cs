@@ -15,6 +15,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmLibrary : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         public FrmLibrary()
         {
             InitializeComponent();
@@ -22,6 +25,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmLibrary_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
         }
 
         public new void Show()
@@ -47,6 +51,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void dgv_canciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton selecionarCancion");
             AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones), AdministradorCanciones.CancionesCargadas);
         }
     }

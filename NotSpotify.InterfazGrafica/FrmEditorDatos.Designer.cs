@@ -51,7 +51,7 @@
             btn_cerrar.Name = "btn_cerrar";
             btn_cerrar.Size = new Size(21, 21);
             btn_cerrar.TabIndex = 1;
-            btn_cerrar.Click += btn_cerrar_Click;
+            btn_cerrar.MyClick += btn_cerrar_Click;
             // 
             // pnl_movimientoTopBar
             // 
@@ -125,7 +125,7 @@
             btn_minimizar.Name = "btn_minimizar";
             btn_minimizar.Size = new Size(21, 21);
             btn_minimizar.TabIndex = 4;
-            btn_minimizar.Click += btn_minimizar_Click;
+            btn_minimizar.MyClick += btn_minimizar_Click;
             // 
             // btn_maximizar
             // 
@@ -136,7 +136,7 @@
             btn_maximizar.Name = "btn_maximizar";
             btn_maximizar.Size = new Size(22, 21);
             btn_maximizar.TabIndex = 5;
-            btn_maximizar.Click += btn_maximizar_Click_1;
+            btn_maximizar.MyClick += btn_maximizar_Click_1;
             // 
             // btn_canciones
             // 

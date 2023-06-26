@@ -14,6 +14,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmUsuarios : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         public FrmUsuarios()
         {
             InitializeComponent();
@@ -21,6 +24,8 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
+
             UtilidadesForms.ActualizarDataGridPersona<Usuario>(dgv_usuariosCargados);
         }
 
@@ -31,6 +36,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton add");
+
             FrmPopUp frmPopUp = new(VerificadorDeInicio.EnumOpcionSesion.esUsuario);
             frmPopUp.ShowDialog();
 
@@ -62,6 +69,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_borrar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton borrar");
+
             try
             {
                 Usuario usuario = UtilidadesForms.ObtenerPersonaDeDataGrid<Usuario>(dgv_usuariosCargados);
@@ -96,6 +105,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_editar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton editar");
             try
             {
                 Usuario usuario = UtilidadesForms.ObtenerPersonaDeDataGrid<Usuario>(dgv_usuariosCargados);
@@ -143,6 +153,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_ascender_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton ascender");
             try
             {
                 Usuario usuario = UtilidadesForms.ObtenerPersonaDeDataGrid<Usuario>(dgv_usuariosCargados);

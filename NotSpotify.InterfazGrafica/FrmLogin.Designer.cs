@@ -144,7 +144,7 @@
             btn_cerrar.Name = "btn_cerrar";
             btn_cerrar.Size = new Size(21, 21);
             btn_cerrar.TabIndex = 9;
-            btn_cerrar.Click += btn_cerrar_Click;
+            btn_cerrar.MyClick += btn_cerrar_Click;
             // 
             // lbl_mensajeError
             // 

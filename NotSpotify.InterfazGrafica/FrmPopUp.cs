@@ -17,6 +17,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmPopUp : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         public string nombre = string.Empty;
         public string apellido = string.Empty;
         public string eMail = string.Empty;
@@ -48,6 +51,8 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_acceptar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton acceptar");
+
             nombre = tbx_nombre.Text;
             apellido = tbx_apellido.Text;
             eMail = tbx_eMail.Text;
@@ -59,6 +64,8 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton cancelar");
+
             accepto = false;
             Close();
         }
@@ -70,6 +77,8 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmPopUp_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
+
             tbx_nombre.Text = nombre;
             tbx_apellido.Text = apellido;
             tbx_eMail.Text = eMail;

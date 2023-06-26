@@ -68,7 +68,7 @@
             Margin = new Padding(0);
             Name = "BotonMaximizar";
             Size = new Size(22, 21);
-            Click += BotonMaximizar_Click;
+            MyClick += BotonMaximizar_Click;
             ResumeLayout(false);
         }
 

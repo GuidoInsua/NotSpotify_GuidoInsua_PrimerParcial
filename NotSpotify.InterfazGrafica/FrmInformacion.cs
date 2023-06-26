@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotSpotify.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmInformacion : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         public bool accepto = false;
         public string titulo = "Agregar";
         public string dni = string.Empty;
@@ -40,6 +44,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_acceptar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton acceptar");
             dni = tbx_dni.Text;
             accepto = true;
             Close();
@@ -47,6 +52,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton cancelar");
             accepto = false;
             Close();
         }
@@ -58,6 +64,8 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmInformacion_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
+
             switch (tipo)
             {
                 case modoForm.ascenderUsuario:

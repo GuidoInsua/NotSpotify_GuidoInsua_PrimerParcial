@@ -73,7 +73,7 @@
             Controls.Add(btn_library);
             Name = "BotonLibrary";
             Size = new Size(162, 39);
-            Click += BotonLibrary_Click;
+            MyClick += BotonLibrary_Click;
             ResumeLayout(false);
         }
 

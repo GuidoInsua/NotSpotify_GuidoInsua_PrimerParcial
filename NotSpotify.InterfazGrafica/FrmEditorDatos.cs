@@ -1,4 +1,5 @@
 ﻿using NotSpotify.Clases;
+using NotSpotify.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmEditorDatos : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         readonly FrmUsuarios usuariosForm = new();
         readonly FrmAdministradores administradoresForm = new();
         readonly FrmCanciones cancionesForm = new();
@@ -25,6 +29,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmEditorDatos_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
             ManejadorForms("Usuarios");
         }
 
@@ -35,6 +40,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton cerrar");
             Close();
         }
 
@@ -45,6 +51,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_usuarios_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton usuarios");
             ManejadorForms("Usuarios");
         }
 
@@ -55,6 +62,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_admins_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton admins");
             ManejadorForms("Admins");
         }
 
@@ -65,6 +73,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_canciones_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton canciones");
             ManejadorForms("Canciones");
         }
 
@@ -75,6 +84,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_informes_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton informes");
             ManejadorForms("Informes");
         }
 
@@ -132,6 +142,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_maximizar_Click_1(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton maximizar");
             if (WindowState == FormWindowState.Normal)
             {
                 WindowState = FormWindowState.Maximized;
@@ -149,6 +160,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_minimizar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton minimizar");
             WindowState = FormWindowState.Minimized;
         }
     }

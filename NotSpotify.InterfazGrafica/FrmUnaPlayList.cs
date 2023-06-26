@@ -18,6 +18,9 @@ namespace NotSpotify.InterfazGrafica
         public PlayList playList = new PlayList();
         static public BotonPlay btnPlay = new BotonPlay();
 
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         public FrmUnaPlayList()
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmUnaPlayList_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
         }
 
         public new void Show()
@@ -54,6 +58,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void dgv_canciones_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton unaCancion");
+
             AdministradorCanciones.SeleccionarCancion(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones), playList.Canciones);
         }
 
@@ -64,6 +70,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_playListRandom_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton random");
+
             UtilidadesForms.TocarCancionRandom(playList.Canciones);
             btnPlay.CambiarEstadoBoton(FrmMenu.play);
 

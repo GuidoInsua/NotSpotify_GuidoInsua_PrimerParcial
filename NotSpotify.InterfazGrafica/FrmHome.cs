@@ -1,5 +1,6 @@
 ﻿using NotSpotify.Clases;
 using NotSpotify.Controles;
+using NotSpotify.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,9 @@ namespace NotSpotify.InterfazGrafica
         public PlayList PlayList = new();
         readonly List<BotonPlayList> ControlList = new();
 
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         /// <summary>
         /// Actualiza la playList y abre el form playList
         /// </summary>
@@ -27,6 +31,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         public void BotonPlayList_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton playList");
             UtilidadesForms.UnaPlayList = Utilidades.AdministradorPlayLists.playLists[((BotonPlayList)sender).TabIndex];
             UtilidadesForms.ManejadorFormsMenu("PlayList");
         }
@@ -51,6 +56,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmHome_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
             GetAllControls(this);
 
             for (int i = 0; i < 20; i++)

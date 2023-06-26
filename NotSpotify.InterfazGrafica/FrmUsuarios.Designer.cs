@@ -147,7 +147,7 @@
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(26, 26);
             btn_add.TabIndex = 8;
-            btn_add.Click += btn_add_Click;
+            btn_add.MyClick += btn_add_Click;
             // 
             // btn_borrar
             // 
@@ -156,7 +156,7 @@
             btn_borrar.Name = "btn_borrar";
             btn_borrar.Size = new Size(26, 26);
             btn_borrar.TabIndex = 9;
-            btn_borrar.Click += btn_borrar_Click;
+            btn_borrar.MyClick += btn_borrar_Click;
             // 
             // btn_editar
             // 
@@ -165,7 +165,7 @@
             btn_editar.Name = "btn_editar";
             btn_editar.Size = new Size(26, 26);
             btn_editar.TabIndex = 10;
-            btn_editar.Click += btn_editar_Click;
+            btn_editar.MyClick += btn_editar_Click;
             // 
             // btn_ascender
             // 

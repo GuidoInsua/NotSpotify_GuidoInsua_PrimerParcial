@@ -17,6 +17,8 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmCanciones : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
         public FrmCanciones()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmCanciones_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
             ActualizarDataGridCanciones();
         }
 
@@ -56,6 +59,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton add");
             string link = tbx_linkCancion.Text;
             string nombre = tbx_nombre.Text;
 
@@ -111,6 +115,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_borrar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton borrar");
             AdministradorCanciones.BorrarCancionDeLista(UtilidadesForms.ObtenerCancionDeDataGrid(dgv_canciones));
             ActualizarDataGridCanciones();
         }

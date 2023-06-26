@@ -17,6 +17,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmMenu : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         private readonly EnumOpcionSesion _tipoDeUsuarioAutenticado;
         public bool reproduciendo = false;
         static public string estadoDescarga = string.Empty;
@@ -34,6 +37,8 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
+
             if (_tipoDeUsuarioAutenticado == EnumOpcionSesion.esAdmin)
             {
                 btn_admin.Visible = true;
@@ -58,8 +63,13 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void botonCerrar1_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton cerrar");
+
             waveOutDevice.Dispose();
             Environment.Exit(Environment.ExitCode);
+
+            Logs.Log("Cerrar");
+
             Close();
         }
 
@@ -70,6 +80,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_menuHome_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton home");
+
             btn_menuLibrary.ApagarBotonLibrary();
 
             UtilidadesForms.ManejadorFormsMenu("Home");
@@ -82,6 +94,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_menuLibrary_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton library");
+
             btn_menuHome.ApagarBotonHome();
 
             UtilidadesForms.ManejadorFormsMenu("Library");
@@ -94,6 +108,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void botonMaximizar1_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton maximizar");
+
             if (WindowState == FormWindowState.Normal)
             {
                 WindowState = FormWindowState.Maximized;
@@ -111,6 +127,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_admin_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton admin");
+
             FrmEditorDatos frmEditorDatos = new();
             frmEditorDatos.ShowDialog();
         }
@@ -122,6 +140,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void botonMinimizar1_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton minimizar");
             WindowState = FormWindowState.Minimized;
         }
 
@@ -132,6 +151,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_play_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton play");
             IniciarDetenerTema();
             btn_play.CambiarEstadoBoton(play);
         }
@@ -164,6 +184,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void pbx_siguiente_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton siguiente");
+
             UtilidadesForms.TocarCancionRandom(AdministradorCanciones.CancionesCargadas);
             btn_play.CambiarEstadoBoton(play);
         }
@@ -175,6 +197,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void pbx_anterior_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton anterior");
+
             UtilidadesForms.TocarCancionRandom(AdministradorCanciones.CancionesCargadas);
             btn_play.CambiarEstadoBoton(play);
         }

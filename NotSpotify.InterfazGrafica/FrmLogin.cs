@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static NotSpotify.Utilidades.VerificadorDeInicio;
 using NotSpotify.BaseDeDatos;
+using Microsoft.VisualBasic.Logging;
+using static NotSpotify.InterfazGrafica.Program;
 
 namespace NotSpotify.InterfazGrafica
 {
@@ -20,6 +22,9 @@ namespace NotSpotify.InterfazGrafica
         private EnumOpcionSesion _tipoDeUsuarioAutenticado;
         private string _eMail = string.Empty;
         private string _password = string.Empty;
+
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
 
         private string Email { get => _eMail; set => _eMail = value; }
         private string Password { get => _password; set => _password = value; }
@@ -35,13 +40,12 @@ namespace NotSpotify.InterfazGrafica
             Email = "ejemplo@correo.com";
             Password = "0";
 
+            EventoLog += Logs.Log;
+
             try
             {
-                //MessageBox.Show(NotSpotify.BaseDeDatos.Conexion.Leer());
-                //NotSpotify.BaseDeDatos.Conexion.CargarListaPersonasDesdeSql();
                 NotSpotify.BaseDeDatos.Conexion.CargarListaDesdeSql("Personas");
                 NotSpotify.BaseDeDatos.Conexion.CargarListaDesdeSql("PlayLists");
-                //NotSpotify.BaseDeDatos.Conexion.GuardarListaPersonasEnSql(PersonasCargadas);
                 AdministradorPlayLists.GenerarListasDeCanciones();
             }
             catch (Exception ex) 
@@ -57,6 +61,9 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_loginAceptar_Click(object sender, EventArgs e)
         {
+            
+            EventoLog?.Invoke($"{this.Name} - Boton acceptar");
+
             try
             {
                 TipoDeUsuarioAutenticado = VerificadorDeInicio.VerificarTipoDePersona(Email, Password);
@@ -75,6 +82,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_completarUsuario_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton completar usuario");
             VerificadorDeInicio.AutoCompletarLogin<Usuario>(ref _eMail, ref _password);
             tbx_loginMail.Text = Email;
             tbx_loginPassword.Text = Password;
@@ -87,6 +95,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_completarAdmin_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton completar admin");
             VerificadorDeInicio.AutoCompletarLogin<Administrador>(ref _eMail, ref _password);
             tbx_loginMail.Text = Email;
             tbx_loginPassword.Text = Password;
@@ -109,6 +118,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void btn_cerrar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton cerrar");
             Close();
         }
     }

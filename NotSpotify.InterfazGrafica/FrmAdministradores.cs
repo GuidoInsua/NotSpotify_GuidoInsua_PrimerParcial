@@ -14,6 +14,9 @@ namespace NotSpotify.InterfazGrafica
 {
     public partial class FrmAdministradores : Form
     {
+        public delegate void DelegadoLog(string message);
+        public static event DelegadoLog? EventoLog;
+
         public FrmAdministradores()
         {
             InitializeComponent();
@@ -21,6 +24,7 @@ namespace NotSpotify.InterfazGrafica
 
         private void FrmAdministradores_Load(object sender, EventArgs e)
         {
+            EventoLog += Logs.Log;
             UtilidadesForms.ActualizarDataGridPersona<Administrador>(dgv_adminsCargados);
         }
 
@@ -31,6 +35,8 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_add_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton add");
+
             FrmPopUp frmPopUp = new(VerificadorDeInicio.EnumOpcionSesion.esAdmin);
             frmPopUp.ShowDialog();
 
@@ -62,6 +68,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_borrar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton borrar");
             try
             {
                 Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
@@ -96,6 +103,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_editar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton editar");
             try
             {
                 Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);
@@ -143,6 +151,7 @@ namespace NotSpotify.InterfazGrafica
         /// <param name="e"></param>
         private void btn_degradar_Click(object sender, EventArgs e)
         {
+            EventoLog?.Invoke($"{this.Name} - Boton degradar");
             try
             {
                 Administrador admin = UtilidadesForms.ObtenerPersonaDeDataGrid<Administrador>(dgv_adminsCargados);

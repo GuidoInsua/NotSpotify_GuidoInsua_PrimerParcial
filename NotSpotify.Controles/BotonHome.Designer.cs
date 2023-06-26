@@ -73,7 +73,7 @@
             Controls.Add(btn_home);
             Name = "BotonHome";
             Size = new Size(162, 39);
-            Click += BotonHome_Click;
+            MyClick += BotonHome_Click;
             ResumeLayout(false);
         }
 

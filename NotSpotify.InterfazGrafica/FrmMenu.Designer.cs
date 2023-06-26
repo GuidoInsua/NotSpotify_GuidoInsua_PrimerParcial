@@ -90,7 +90,7 @@
             btn_menuLibrary.Name = "btn_menuLibrary";
             btn_menuLibrary.Size = new Size(162, 39);
             btn_menuLibrary.TabIndex = 5;
-            btn_menuLibrary.Click += btn_menuLibrary_Click;
+            btn_menuLibrary.MyClick += btn_menuLibrary_Click;
             // 
             // btn_menuHome
             // 
@@ -100,7 +100,7 @@
             btn_menuHome.Name = "btn_menuHome";
             btn_menuHome.Size = new Size(162, 39);
             btn_menuHome.TabIndex = 4;
-            btn_menuHome.Click += btn_menuHome_Click;
+            btn_menuHome.MyClick += btn_menuHome_Click;
             // 
             // pbx_menuImagenCancion
             // 
@@ -166,7 +166,7 @@
             btn_play.Name = "btn_play";
             btn_play.Size = new Size(38, 36);
             btn_play.TabIndex = 7;
-            btn_play.Click += btn_play_Click;
+            btn_play.MyClick += btn_play_Click;
             // 
             // pnl_menuFormChanger
             // 
@@ -202,7 +202,7 @@
             botonCerrar1.Name = "botonCerrar1";
             botonCerrar1.Size = new Size(21, 21);
             botonCerrar1.TabIndex = 4;
-            botonCerrar1.Click += botonCerrar1_Click;
+            botonCerrar1.MyClick += botonCerrar1_Click;
             // 
             // botonMaximizar1
             // 
@@ -213,7 +213,7 @@
             botonMaximizar1.Name = "botonMaximizar1";
             botonMaximizar1.Size = new Size(22, 21);
             botonMaximizar1.TabIndex = 5;
-            botonMaximizar1.Click += botonMaximizar1_Click;
+            botonMaximizar1.MyClick += botonMaximizar1_Click;
             // 
             // botonMinimizar1
             // 
@@ -224,7 +224,7 @@
             botonMinimizar1.Name = "botonMinimizar1";
             botonMinimizar1.Size = new Size(21, 21);
             botonMinimizar1.TabIndex = 6;
-            botonMinimizar1.Click += botonMinimizar1_Click;
+            botonMinimizar1.MyClick += botonMinimizar1_Click;
             // 
             // FrmMenu
             // 

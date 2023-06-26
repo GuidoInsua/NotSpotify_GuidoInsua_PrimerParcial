@@ -261,6 +261,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmInformes";
+            Load += FrmInformes_Load;
             ((System.ComponentModel.ISupportInitialize)pic_slash).EndInit();
             pnl_bordeJson.ResumeLayout(false);
             pnl_expJson.ResumeLayout(false);
