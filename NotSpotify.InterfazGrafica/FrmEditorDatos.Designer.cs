@@ -108,7 +108,7 @@
             btn_informes.FlatAppearance.BorderSize = 0;
             btn_informes.FlatStyle = FlatStyle.Flat;
             btn_informes.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_informes.Location = new Point(494, 27);
+            btn_informes.Location = new Point(414, 27);
             btn_informes.Name = "btn_informes";
             btn_informes.Size = new Size(131, 36);
             btn_informes.TabIndex = 6;

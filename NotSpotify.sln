@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotSpotify.Controles", "Not
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotSpotify.Utilidades", "NotSpotify.Utilidades\NotSpotify.Utilidades.csproj", "{490133B8-89E1-4579-9D91-4D8411A0A23D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotSpotify.BaseDeDatos", "NotSpotify.BaseDeDatos\NotSpotify.BaseDeDatos.csproj", "{3948F67E-4EE9-4D57-9EF7-4EE597C324DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotSpotify.BaseDeDatos", "NotSpotify.BaseDeDatos\NotSpotify.BaseDeDatos.csproj", "{3948F67E-4EE9-4D57-9EF7-4EE597C324DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotSpotify.Tests", "NotSpotify.Tests\NotSpotify.Tests.csproj", "{98B255A3-AAEA-49C9-A9C7-30E8F3EC1D4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{3948F67E-4EE9-4D57-9EF7-4EE597C324DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3948F67E-4EE9-4D57-9EF7-4EE597C324DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3948F67E-4EE9-4D57-9EF7-4EE597C324DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B255A3-AAEA-49C9-A9C7-30E8F3EC1D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B255A3-AAEA-49C9-A9C7-30E8F3EC1D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B255A3-AAEA-49C9-A9C7-30E8F3EC1D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B255A3-AAEA-49C9-A9C7-30E8F3EC1D4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
