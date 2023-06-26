@@ -50,7 +50,7 @@ namespace NotSpotify.Clases
         /// Retorna una linea string lista para cargar en CSV 
         /// </summary>
         /// <returns></returns>
-        public override string GuardarDatosEnLinea()
+        public override string GuardarEnCsv()
         {
             return $"{Nombre},{Apellido},{Email},{Password},Usuario";
         }

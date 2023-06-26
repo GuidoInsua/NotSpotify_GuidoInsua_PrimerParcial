@@ -16,6 +16,7 @@ namespace NotSpotify.InterfazGrafica
         readonly FrmUsuarios usuariosForm = new();
         readonly FrmAdministradores administradoresForm = new();
         readonly FrmCanciones cancionesForm = new();
+        readonly FrmInformes informesForm = new();
 
         public FrmEditorDatos()
         {
@@ -68,6 +69,16 @@ namespace NotSpotify.InterfazGrafica
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_informes_Click(object sender, EventArgs e)
+        {
+            ManejadorForms("Informes");
+        }
+
+        /// <summary>
         /// dependiendo del nombre del form, esconde los otros y abre al que se llama
         /// </summary>
         /// <param name="form"></param>
@@ -78,6 +89,7 @@ namespace NotSpotify.InterfazGrafica
                 case "Usuarios":
                     administradoresForm.Hide();
                     cancionesForm.Hide();
+                    informesForm.Hide();
                     usuariosForm.TopLevel = false;
                     pnl_FrmChanger.Controls.Add(usuariosForm);
                     usuariosForm.Dock = DockStyle.Fill;
@@ -86,6 +98,7 @@ namespace NotSpotify.InterfazGrafica
                 case "Admins":
                     usuariosForm.Hide();
                     cancionesForm.Hide();
+                    informesForm.Hide();
                     administradoresForm.TopLevel = false;
                     pnl_FrmChanger.Controls.Add(administradoresForm);
                     administradoresForm.Dock = DockStyle.Fill;
@@ -94,10 +107,20 @@ namespace NotSpotify.InterfazGrafica
                 case "Canciones":
                     usuariosForm.Hide();
                     administradoresForm.Hide();
+                    informesForm.Hide();
                     cancionesForm.TopLevel = false;
                     pnl_FrmChanger.Controls.Add(cancionesForm);
                     cancionesForm.Dock = DockStyle.Fill;
                     cancionesForm.Show();
+                    break;
+                case "Informes":
+                    usuariosForm.Hide();
+                    administradoresForm.Hide();
+                    cancionesForm.Hide();
+                    informesForm.TopLevel = false;
+                    pnl_FrmChanger.Controls.Add(informesForm);
+                    informesForm.Dock = DockStyle.Fill;
+                    informesForm.Show();
                     break;
             }
         }
@@ -128,7 +151,5 @@ namespace NotSpotify.InterfazGrafica
         {
             WindowState = FormWindowState.Minimized;
         }
-
-
     }
 }

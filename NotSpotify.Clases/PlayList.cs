@@ -63,5 +63,10 @@ namespace NotSpotify.Clases
             return "INSERT INTO PlayLists (Nombre, Descripccion, DireccionDeImagen) " +
                  $"VALUES ('{Nombre}', '{Descripccion}', '{DireccionDeImagen}')";
         }
+
+        public string GuardarEnCsv()
+        {
+            return $"{Nombre},{Descripccion},{DireccionDeImagen}";
+        }
     }
 }

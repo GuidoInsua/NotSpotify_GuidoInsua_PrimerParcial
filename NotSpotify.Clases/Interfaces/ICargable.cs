@@ -12,5 +12,7 @@ namespace NotSpotify.Clases.Interfaces
         public void CargarDatosDesdeArray(string[] fila);
 
         public string GuardarDatosEnSql();
+
+        public string GuardarEnCsv();
     }
 }

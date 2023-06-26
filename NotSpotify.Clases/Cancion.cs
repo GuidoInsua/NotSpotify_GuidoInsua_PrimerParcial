@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NotSpotify.Clases
 {
-    public class Cancion
+    public class Cancion : ICargable
     {
         private string _nombre = string.Empty;
         private string _direccion = string.Empty;
@@ -23,6 +23,21 @@ namespace NotSpotify.Clases
         {
             Nombre = nombre;
             Direccion = direccion;
+        }
+
+        public void CargarDatosDesdeArray(string[] fila)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GuardarDatosEnSql()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GuardarEnCsv()
+        {
+            return $"{Nombre},{Direccion}";
         }
     }
 }

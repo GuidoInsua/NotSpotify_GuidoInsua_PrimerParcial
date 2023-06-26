@@ -54,5 +54,7 @@ namespace NotSpotify.Clases
         public abstract void CargarDatosDesdeArray(string[] fila);
 
         public abstract string GuardarDatosEnSql();
+
+        public abstract string GuardarEnCsv();
     }
 }

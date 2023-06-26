@@ -33,6 +33,7 @@
             pnl_FrmChanger = new Panel();
             btn_usuarios = new Button();
             pnl_topBarrr = new Panel();
+            btn_informes = new Button();
             btn_minimizar = new Controles.BotonMinimizar();
             btn_maximizar = new Controles.BotonMaximizar();
             btn_canciones = new Button();
@@ -67,7 +68,7 @@
             pnl_FrmChanger.Dock = DockStyle.Fill;
             pnl_FrmChanger.Location = new Point(0, 0);
             pnl_FrmChanger.Name = "pnl_FrmChanger";
-            pnl_FrmChanger.Size = new Size(1047, 564);
+            pnl_FrmChanger.Size = new Size(1047, 683);
             pnl_FrmChanger.TabIndex = 6;
             // 
             // btn_usuarios
@@ -87,6 +88,7 @@
             // pnl_topBarrr
             // 
             pnl_topBarrr.BackColor = Color.Black;
+            pnl_topBarrr.Controls.Add(btn_informes);
             pnl_topBarrr.Controls.Add(btn_minimizar);
             pnl_topBarrr.Controls.Add(btn_maximizar);
             pnl_topBarrr.Controls.Add(btn_canciones);
@@ -99,6 +101,20 @@
             pnl_topBarrr.Name = "pnl_topBarrr";
             pnl_topBarrr.Size = new Size(1047, 72);
             pnl_topBarrr.TabIndex = 8;
+            // 
+            // btn_informes
+            // 
+            btn_informes.BackColor = Color.FromArgb(128, 255, 255);
+            btn_informes.FlatAppearance.BorderSize = 0;
+            btn_informes.FlatStyle = FlatStyle.Flat;
+            btn_informes.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_informes.Location = new Point(494, 27);
+            btn_informes.Name = "btn_informes";
+            btn_informes.Size = new Size(131, 36);
+            btn_informes.TabIndex = 6;
+            btn_informes.Text = "Informes";
+            btn_informes.UseVisualStyleBackColor = false;
+            btn_informes.Click += btn_informes_Click;
             // 
             // btn_minimizar
             // 
@@ -154,7 +170,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1047, 564);
+            ClientSize = new Size(1047, 683);
             ControlBox = false;
             Controls.Add(pnl_topBarrr);
             Controls.Add(pnl_FrmChanger);
@@ -175,5 +191,6 @@
         private Button btn_admins;
         private Controles.BotonMinimizar btn_minimizar;
         private Controles.BotonMaximizar btn_maximizar;
+        private Button btn_informes;
     }
 }

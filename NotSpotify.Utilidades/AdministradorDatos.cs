@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using NotSpotify.Clases;
 using NotSpotify.Clases.Factories;
 using NotSpotify.Clases.Interfaces;
@@ -64,20 +65,37 @@ namespace NotSpotify.Utilidades
         }
 
         /// <summary>
-        /// pasa la lista de personas a un archivo csv
+        /// 
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objetos"></param>
         /// <param name="path"></param>
-        static public void GuardarListaPersonasEnArchivo(string path)
+        static public void GuardarListaEnCsv<T>(List<T> objetos, string nombre) where T : ICargable
         {
-            using StreamWriter writer = new(path);
-            string unaPersonaCsv;
+            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string rutaArchivo = Path.Combine(escritorio, nombre);
 
-            foreach (Persona persona in VerificadorDeInicio.PersonasCargadas)
+            using StreamWriter writer = new(rutaArchivo);
+            string lineaCsv;
+
+            foreach (T objeto in objetos)
             {
-                unaPersonaCsv = persona.GuardarDatosEnLinea();
+                lineaCsv = objeto.GuardarEnCsv();
 
-                writer.WriteLine(unaPersonaCsv);
+                writer.WriteLine(lineaCsv);
             }
+        }
+
+        static public void GuardarListaEnJson<T>(List<T> objetos, string nombre) where T : ICargable
+        {
+            string escritorio = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string rutaArchivo = Path.Combine(escritorio, nombre);
+
+            using StreamWriter writer = new(rutaArchivo);
+
+            string json = JsonConvert.SerializeObject(objetos, Formatting.Indented);
+
+            writer.Write(json);
         }
     }
 }
