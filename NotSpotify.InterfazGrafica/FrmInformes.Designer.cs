@@ -43,12 +43,24 @@
             lbl_csv = new Label();
             pnl_contenedor = new Panel();
             pnl_separador = new Panel();
+            pbx_tickUsuarioCsv = new PictureBox();
+            pbx_tickPlayListCsv = new PictureBox();
+            pbx_tickCancionesCsv = new PictureBox();
+            pbx_tickUsuarioJson = new PictureBox();
+            pbx_tickPlayListJson = new PictureBox();
+            pbx_tickCancionesJson = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pic_slash).BeginInit();
             pnl_bordeJson.SuspendLayout();
             pnl_expJson.SuspendLayout();
             pnl_bordeCsv.SuspendLayout();
             pnl_expCsv.SuspendLayout();
             pnl_contenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickUsuarioCsv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickPlayListCsv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickCancionesCsv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickUsuarioJson).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickPlayListJson).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickCancionesJson).BeginInit();
             SuspendLayout();
             // 
             // pic_slash
@@ -77,8 +89,11 @@
             // 
             pnl_expJson.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnl_expJson.BackColor = Color.Black;
+            pnl_expJson.Controls.Add(pbx_tickCancionesJson);
             pnl_expJson.Controls.Add(btn_cancionesJson);
+            pnl_expJson.Controls.Add(pbx_tickPlayListJson);
             pnl_expJson.Controls.Add(lbl_json);
+            pnl_expJson.Controls.Add(pbx_tickUsuarioJson);
             pnl_expJson.Controls.Add(btn_PlayListsJson);
             pnl_expJson.Controls.Add(btn_usuariosJson);
             pnl_expJson.Location = new Point(4, 4);
@@ -96,7 +111,7 @@
             btn_cancionesJson.Location = new Point(9, 189);
             btn_cancionesJson.Margin = new Padding(9);
             btn_cancionesJson.Name = "btn_cancionesJson";
-            btn_cancionesJson.Size = new Size(424, 36);
+            btn_cancionesJson.Size = new Size(368, 36);
             btn_cancionesJson.TabIndex = 9;
             btn_cancionesJson.Text = "Canciones";
             btn_cancionesJson.UseVisualStyleBackColor = false;
@@ -124,7 +139,7 @@
             btn_PlayListsJson.Location = new Point(9, 135);
             btn_PlayListsJson.Margin = new Padding(9);
             btn_PlayListsJson.Name = "btn_PlayListsJson";
-            btn_PlayListsJson.Size = new Size(424, 36);
+            btn_PlayListsJson.Size = new Size(368, 36);
             btn_PlayListsJson.TabIndex = 8;
             btn_PlayListsJson.Text = "PlayLists";
             btn_PlayListsJson.UseVisualStyleBackColor = false;
@@ -139,7 +154,7 @@
             btn_usuariosJson.Location = new Point(9, 81);
             btn_usuariosJson.Margin = new Padding(9);
             btn_usuariosJson.Name = "btn_usuariosJson";
-            btn_usuariosJson.Size = new Size(424, 36);
+            btn_usuariosJson.Size = new Size(368, 36);
             btn_usuariosJson.TabIndex = 7;
             btn_usuariosJson.Text = "Usuarios";
             btn_usuariosJson.UseVisualStyleBackColor = false;
@@ -162,7 +177,10 @@
             pnl_expCsv.Controls.Add(btn_cancionesCsv);
             pnl_expCsv.Controls.Add(btn_playListsCsv);
             pnl_expCsv.Controls.Add(btn_usuariosCsv);
+            pnl_expCsv.Controls.Add(pbx_tickCancionesCsv);
             pnl_expCsv.Controls.Add(lbl_csv);
+            pnl_expCsv.Controls.Add(pbx_tickPlayListCsv);
+            pnl_expCsv.Controls.Add(pbx_tickUsuarioCsv);
             pnl_expCsv.Location = new Point(4, 4);
             pnl_expCsv.Margin = new Padding(4);
             pnl_expCsv.Name = "pnl_expCsv";
@@ -178,7 +196,7 @@
             btn_cancionesCsv.Location = new Point(9, 189);
             btn_cancionesCsv.Margin = new Padding(9);
             btn_cancionesCsv.Name = "btn_cancionesCsv";
-            btn_cancionesCsv.Size = new Size(424, 36);
+            btn_cancionesCsv.Size = new Size(368, 36);
             btn_cancionesCsv.TabIndex = 6;
             btn_cancionesCsv.Text = "Canciones";
             btn_cancionesCsv.UseVisualStyleBackColor = false;
@@ -193,7 +211,7 @@
             btn_playListsCsv.Location = new Point(9, 135);
             btn_playListsCsv.Margin = new Padding(9);
             btn_playListsCsv.Name = "btn_playListsCsv";
-            btn_playListsCsv.Size = new Size(424, 36);
+            btn_playListsCsv.Size = new Size(368, 36);
             btn_playListsCsv.TabIndex = 5;
             btn_playListsCsv.Text = "PlayLists";
             btn_playListsCsv.UseVisualStyleBackColor = false;
@@ -208,7 +226,7 @@
             btn_usuariosCsv.Location = new Point(9, 81);
             btn_usuariosCsv.Margin = new Padding(9);
             btn_usuariosCsv.Name = "btn_usuariosCsv";
-            btn_usuariosCsv.Size = new Size(424, 36);
+            btn_usuariosCsv.Size = new Size(368, 36);
             btn_usuariosCsv.TabIndex = 4;
             btn_usuariosCsv.Text = "Usuarios";
             btn_usuariosCsv.UseVisualStyleBackColor = false;
@@ -247,6 +265,66 @@
             pnl_separador.Size = new Size(450, 12);
             pnl_separador.TabIndex = 6;
             // 
+            // pbx_tickUsuarioCsv
+            // 
+            pbx_tickUsuarioCsv.Image = Properties.Resources.tickVerde;
+            pbx_tickUsuarioCsv.Location = new Point(389, 81);
+            pbx_tickUsuarioCsv.Name = "pbx_tickUsuarioCsv";
+            pbx_tickUsuarioCsv.Size = new Size(44, 36);
+            pbx_tickUsuarioCsv.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx_tickUsuarioCsv.TabIndex = 7;
+            pbx_tickUsuarioCsv.TabStop = false;
+            // 
+            // pbx_tickPlayListCsv
+            // 
+            pbx_tickPlayListCsv.Image = Properties.Resources.tickVerde;
+            pbx_tickPlayListCsv.Location = new Point(389, 135);
+            pbx_tickPlayListCsv.Name = "pbx_tickPlayListCsv";
+            pbx_tickPlayListCsv.Size = new Size(44, 36);
+            pbx_tickPlayListCsv.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx_tickPlayListCsv.TabIndex = 8;
+            pbx_tickPlayListCsv.TabStop = false;
+            // 
+            // pbx_tickCancionesCsv
+            // 
+            pbx_tickCancionesCsv.Image = Properties.Resources.tickVerde;
+            pbx_tickCancionesCsv.Location = new Point(389, 189);
+            pbx_tickCancionesCsv.Name = "pbx_tickCancionesCsv";
+            pbx_tickCancionesCsv.Size = new Size(44, 36);
+            pbx_tickCancionesCsv.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx_tickCancionesCsv.TabIndex = 9;
+            pbx_tickCancionesCsv.TabStop = false;
+            // 
+            // pbx_tickUsuarioJson
+            // 
+            pbx_tickUsuarioJson.Image = Properties.Resources.tickVerde;
+            pbx_tickUsuarioJson.Location = new Point(389, 81);
+            pbx_tickUsuarioJson.Name = "pbx_tickUsuarioJson";
+            pbx_tickUsuarioJson.Size = new Size(44, 36);
+            pbx_tickUsuarioJson.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx_tickUsuarioJson.TabIndex = 10;
+            pbx_tickUsuarioJson.TabStop = false;
+            // 
+            // pbx_tickPlayListJson
+            // 
+            pbx_tickPlayListJson.Image = Properties.Resources.tickVerde;
+            pbx_tickPlayListJson.Location = new Point(389, 135);
+            pbx_tickPlayListJson.Name = "pbx_tickPlayListJson";
+            pbx_tickPlayListJson.Size = new Size(44, 36);
+            pbx_tickPlayListJson.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx_tickPlayListJson.TabIndex = 11;
+            pbx_tickPlayListJson.TabStop = false;
+            // 
+            // pbx_tickCancionesJson
+            // 
+            pbx_tickCancionesJson.Image = Properties.Resources.tickVerde;
+            pbx_tickCancionesJson.Location = new Point(389, 189);
+            pbx_tickCancionesJson.Name = "pbx_tickCancionesJson";
+            pbx_tickCancionesJson.Size = new Size(44, 36);
+            pbx_tickCancionesJson.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbx_tickCancionesJson.TabIndex = 12;
+            pbx_tickCancionesJson.TabStop = false;
+            // 
             // FrmInformes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -270,6 +348,12 @@
             pnl_expCsv.ResumeLayout(false);
             pnl_expCsv.PerformLayout();
             pnl_contenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbx_tickUsuarioCsv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickPlayListCsv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickCancionesCsv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickUsuarioJson).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickPlayListJson).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbx_tickCancionesJson).EndInit();
             ResumeLayout(false);
         }
 
@@ -290,5 +374,11 @@
         private Button btn_cancionesCsv;
         private Button btn_playListsCsv;
         private Button btn_usuariosCsv;
+        private PictureBox pbx_tickUsuarioCsv;
+        private PictureBox pbx_tickPlayListCsv;
+        private PictureBox pbx_tickCancionesCsv;
+        private PictureBox pbx_tickUsuarioJson;
+        private PictureBox pbx_tickPlayListJson;
+        private PictureBox pbx_tickCancionesJson;
     }
 }

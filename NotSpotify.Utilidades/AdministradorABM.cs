@@ -157,7 +157,7 @@ namespace NotSpotify.Utilidades
             {
                 if (persona is Administrador administrador && dni == administrador.Dni)
                 {
-                    throw new Exception("La persona ya existe");
+                    throw new Exception("Dni en uso, la persona ya existe");
                 }
             }
         }
@@ -250,6 +250,10 @@ namespace NotSpotify.Utilidades
                 {
                     string[] datos = { unUsuario.Nombre, unUsuario.Apellido, unUsuario.Email, unUsuario.Password, dni };
                     AgregarPersonaEnLista<Administrador>(datos);
+                }
+                else
+                {
+                    throw new Exception("ERROR, El usuario no exite, no puede ser ascendido");
                 }
             }
             catch 
